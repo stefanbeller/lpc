@@ -25,68 +25,76 @@ rather a specification for a particular style.  If you are new to
 pixel art entirely, we recommend you check out the resources at the
 bottom first before proceeding.
 
+
 Basics
 ------
 
-The general tile grid is 32x32 with sub tiles at 16x16.  The rational
-being that the basic size of a square object (eg a chair or a
-character) is a 32x32 area, for versatility tileing happens at 16x16
-resolution. (Everything I've made tiles at 32x32.  16x16 is just an
-option.  The way this is worded implies that everything that tiles has
-to do it at 16x16 and can't be bigger.)
+The general tile grid is 32x32 with (possible) sub tiles at 16x16.
+The rational being that the basic size of a square object (eg a chair
+or a character) is a 32x32 area, for versatility tileing happens at
+16x16 resolution. (Everything I've made tiles at 32x32.  16x16 is just
+an option.  The way this is worded implies that everything that tiles
+has to do it at 16x16 and can't be bigger.)
+
+TODO: Sort out the above
 
 [Image showing scene on a grid shown here]
 
-Generally mention top-downness
-
-Only sprites may have black outlines; tiles must have colored
-outlines. reword to: if tiles have outlines they must be colored.  The
-only exception is if your tile is meant to be colored black.
+Only sprites may have black outlines; if tiles have outlines they must
+be colored.  The only exception is if your tile is meant to be colored
+black.
 
 Dithering should be used sparingly if at all.  None of the base
 artwork has dithering.
 
-Zoomed (and not enhanced) example of outlines here, with further text
-:) (some commentary on re-wording here, when further text is written
+TODO: Zoomed (and not enhanced) example of outlines here, with further
+text :) (some commentary on re-wording here, when further text is
+written
+
 
 Perspective
 -----------
 
-The camera angle is top-down, roughly 60 degrees
+The camera angle is top-down, roughly 60 degrees.
 
-Orthographic, which means there is *no* perspective... things don't
-get smaller as they move into the distance.  If you're using
-perspective techniques on individual props, ur doin it wrong.
+Rendering should be orthographic, which means there is *no*
+perspective... things don't get smaller as they move into the
+distance.  If you're using perspective techniques on individual props,
+ur doin it wrong.
 
 The following image is a 3d rendering demonstrating orthographic
 projection.  For examples of actual proportions, see existing body of
 pixel art.
 
-http://files.mrbeast.org/ArtStuff/LPC/60.png
+TODO: Link in http://files.mrbeast.org/ArtStuff/LPC/60.png
 
-Show some examples of objects.
+TODO: Show some examples of objects.
+
 
 Lighting and shading
+--------------------
 
 Roughly a "toon style rendering" with medium-low levels of texturing.
 We want some detail, but not so much that things are so ornate that it
-might make collaboration difficult (is this okay to say?).  We don't
-want things to be "noisy" either.  But detail is good.  Texturing
-should have a toon-style; this is accomplished with medium to low
-amounts of texturing.  Details should be used sparsely, so make them
-count!  No noise detail.
+might make collaboration difficult.  We don't want things to be
+"noisy" either.  But detail is good.  Texturing should have a
+toon-style; this is accomplished with medium to low amounts of
+texturing.  Details should be used sparsely, so make them count!
 
 Shade in blocks.  Begin drawing by blocking out the object first,
 paying attention to its volume.  Lines should be added afterward, and
 generally only around the edges and with very important details.
 Details should mostly be implied by form and color, not by outlines.
-[give pictures showing various stages of the workflow for something
-like, say, a cracked rock]
+
+TODO: give pictures showing various stages of the workflow for something
+like, say, a cracked rock
 
 Outdoor lighting should come from above, with a light source slightly
 to the left.  Inside lighting shouting should be dead center from
 above.  Anything that is meant to be both inside and outside or that
 has a very small impact on the scene should be lighted from above.
+
+TODO: Add illustration
 
 When deciding how to highlight objects, pay attention to the color of
 the light in the surroundings.  This includes indirect light (that is,
@@ -98,6 +106,8 @@ a house, or on a mountain, or in a castle, or on a space ship... *deep
 breath* it might be best not say anything at all about the effect of
 ambient lighting on the object's appearance. I think we should
 subtract this bit.
+
+TODO: Resolve above.
 
 Lighting in a given scene should feature a hue shift between
 highlights and low lights.  The best way to do this is to first pick
@@ -127,21 +137,27 @@ Color
   good color to use.
 * No colors are pure.  Saturation should be high, but no #00FF00 for
   green please..
-* To put it simply, don't think of colors in terms of numbers.  Use the HSV color picker.
+
+* To put it simply, don't think of colors in terms of numbers.  Use
+  the HSV color picker.
+
 * Your light to dark color ramps should *never* all have the same hue.
   Vary the hue and saturation a bit as you go from light to dark, or
   your objects will look flat.
+
 
 Outlines
 --------
 
  * Should be a darker version of the current color, not black.
 
+
 Hue Shifting
 ------------
 
  * Shadows should head towards the blue/purple end of the spectrum.
  * Highlights should head towards the yellow end of the spectrum.
+
 
 Tile authoring
 --------------
@@ -157,12 +173,13 @@ manner as the establishing art.
 
 [examples here]
 
-Should we make notes on external scenes versus internal scenes? Yes.Absolutely =)
+TODO: Should we make notes on external scenes versus internal scenes? Yes. Absolutely =)
 
-Examples go here.  Important examples which illustrate things:
+TODO: Examples go here.  Important examples which illustrate things:
  * grass tiles and edges
  * Buildings
  * Interior walls, including entrances/exits
+
 
 Characters
 ----------
@@ -177,11 +194,13 @@ perspective as the tiles.  The base should fit in a 32x48 space and
 the clothing should fit in 48x64 space.  The outlines should be black
 or near black, no selective outlining.
 
-[example human base here]
+TODO: [insert example human base here]
 
 Monsters are cute so far.
 
-[example monster bases]
+TODO: Expand above wording
+TODO: [insert example monster bases]
+
 
 Props and other objects
 -----------------------
@@ -197,6 +216,7 @@ Props should have shadows, or they will appear not to be part of the
 scene.  Shadows should follow the same transparency blending rules as
 mentioned in the "lighting and shadows" section above.
 
+
 Things that are important enough to be worth repeating
 ------------------------------------------------------
 
@@ -204,6 +224,7 @@ Things that are important enough to be worth repeating
  * Vary the hues of your color ramps!
  * Highlighted areas are yellow-ish, shadowed areas are purple-ish.
  * Block your art out first, including shadows, before adding detail.
+
 
 Useful, generalist resources
 ----------------------------
@@ -213,8 +234,15 @@ here, but may help people get involved:
 
 Pixel Tutorials:
 
-http://tkool.jp/fancontents/lecture/graphic/ It's in Japanese, but the tutorials are thorough and the art is all you really need to figure out what they're teaching.
-http://gas13.ru/v3/tutorials/  Excellent for teaching the why of pixel art, not just the how.  "So you want to be a Pixel Artist" is highly recommended.
-http://www.pixeljoint.com/forum/forum_posts.asp?TID=11299 A good general course on what pixel art is and how to start making it.
-http://opengameart.org/content/les-forges-pixel-art-course A pixel art course that's so good that we translated and mirrored it.  Originals in French here:  http://www.lesforges.org/tag/pixel%20art
+* http://tkool.jp/fancontents/lecture/graphic/ -- It's in Japanese,
+  but the tutorials are thorough and the art is all you really need to
+  figure out what they're teaching.
+* http://gas13.ru/v3/tutorials/ -- Excellent for teaching the why of
+  pixel art, not just the how.  "So you want to be a Pixel Artist" is
+  highly recommended.
+* http://www.pixeljoint.com/forum/forum_posts.asp?TID=11299 -- A good
+  general course on what pixel art is and how to start making it.
+* http://opengameart.org/content/les-forges-pixel-art-course A pixel
+  art course that's so good that we translated and mirrored it.
+  Originals in French here: http://www.lesforges.org/tag/pixel%20art
 
