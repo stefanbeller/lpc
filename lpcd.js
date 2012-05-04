@@ -29,7 +29,7 @@ var LPCD = {
             "state" : undefined,
             "walk_speed" : 50,
             "walk_dist" : .5,
-            "walking" : false
+            "walking" : undefined
         }
     },
 
@@ -68,7 +68,6 @@ $(document).ready(function () {
 
     // attach click event
     doc.body.onclick = LPCD.EVENT.on_click;
-    console.info('test');
 });
 
 
@@ -195,13 +194,16 @@ LPCD.EVENT.on_click = function (event) {
     "use strict";
     var player = LPCD.DATA.player;
 
-    var sx = Math.round(event.x/32) - Math.ceil($("#lpcd_iframe").width()/64);
-    var sy = Math.round(event.y/32) - Math.ceil($("#lpcd_iframe").height()/64);
+    var event_x = event.x || event.clientX;
+    var event_y = event.y || event.clientY;
+
+    var sx = Math.round(event_x/32) - Math.ceil($("#lpcd_iframe").width()/64);
+    var sy = Math.round(event_y/32) - Math.ceil($("#lpcd_iframe").height()/64);
     var x = Math.round(sx + player.x);
     var y = Math.round(sy + player.y);
 
     if (player.walking === undefined || (x !== player.x && y !== player.y)) {
-        player.walking = {"x":x, "y":y};
+        LPCD.DATA.player.walking = {"x":x, "y":y};
     }
 
     if (LPCD.TIME.walk === -1) {
