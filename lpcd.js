@@ -8,13 +8,15 @@
  ******************************************************************************/
 var LPCD = {
     "DOM" : {
-        "buffer" : "",
-        "doc" : undefined
+        "doc" : undefined,
+        "res" : {},
+        "layers" : {}
     },
 
     "DATA" : {
         "ready" : false,
         "level" : {
+            "debug" : undefined,
             "walls" : {},
             "min_x" : undefined,
             "max_x" : undefined,
@@ -25,6 +27,7 @@ var LPCD = {
             "x" : undefined,
             "y" : undefined,
             "dir" : undefined,
+            "el" : undefined,
             "sprite" : undefined,
             "state" : undefined,
             "walk_speed" : 50,
@@ -38,15 +41,17 @@ var LPCD = {
     },
 
     "CALL" : {
+        "build_map" : undefined, // (mapdata)
         "get_wall" : undefined, // (x, y)
         "set_wall" : undefined, // (x, y)
-        "drop" : undefined // (x, y, w, h, gfx_cue, [phys_cue])
+        "add_tile" : undefined, // (sx, sy, dx, dy, uri, layer)
     },
     
     "EVENT" : {
         "on_click" : undefined,
         "on_redraw" : undefined,
         "on_walk" : undefined,
+        "map_ready" : undefined,
         "make" : undefined
     }
 };
@@ -60,14 +65,8 @@ $(document).ready(function () {
     doc.body.style.backgroundColor = "black";
     doc.body.style.color = "white";
     doc.body.style.textAlign = "center";
-    doc.body.innerHTML="<h1>loading...</h1>";
-
-    // ideally queue up some graphics to be loaded and have the following stuff
-    // happen on the callback
-    LPCD.EVENT.make();
-
-    // attach click event
-    doc.body.onclick = LPCD.EVENT.on_click;
+    doc.body.innerHTML="<h1 id='text_overlay'>loading...</h1>";
+    jQuery.getJSON("./levels/start1.json", LPCD.EVENT.map_ready);
 });
 
 
@@ -84,10 +83,13 @@ $(document).ready(function () {
 LPCD.CALL.get_wall = function (x, y) {
     "use strict";
 
-    var _x = Math.round(x);
-    var _y = Math.round(y);
-    var raw = LPCD.DATA.level.walls[String(_x)+","+String(_y)];
-    return raw !== undefined ? true : false;
+    var test = function (_x, _y) {
+        var raw = LPCD.DATA.level.walls[String(_x)+","+String(_y)];
+        return raw !== undefined ? true : false;    
+    };
+
+    //return test(Math.floor(x), Math.floor(y)) || test(Math.ceil(x), Math.ceil(y));
+    return test(Math.round(x), Math.round(y));
 };
 
 
@@ -101,51 +103,46 @@ LPCD.CALL.set_wall = function (x, y) {
 };
 
 
-// "drop" is used for procedural level creation.
-LPCD.CALL.drop = function (x, y, w, h, gfx_cue, phys_cue) {
+// "add_tile" blits a tile into a tile layer.
+LPCD.CALL.add_tile = function (sx, sy, dx, dy, uri, layer) {
     "use strict";
-
-    var level = LPCD.DATA.level;  // shorthand
-
-    var wall = phys_cue !== undefined && !!phys_cue ? true : false;
-    var gfx = !!gfx_cue ? String(gfx_cue) : false; // hack
-    var _x = Math.round(x);
-    var _y = Math.round(y);
-    var xstart = _x;
-    var xstop = w>=1 ? _x+Math.round(w) : _x+1;
-    var ystop = h>=1 ? _y+Math.round(h) : _y+1;
     
-    for (;_y < ystop; _y+=1) {
-        for (_x = xstart;_x < xstop; _x+=1) {
-            if (wall) {
-                LPCD.CALL.set_wall(_x,_y);
-            }
-            if (level.min_x === undefined || _x < level.min_x) {
-                level.min_x = _x;
-            }
-            if (level.max_x === undefined || _x > level.max_x) {
-                level.max_x = _x;
-            }
-            if (level.min_y === undefined || _y < level.min_y) {
-                level.min_y = _y;
-            }
-            if (level.max_y === undefined || _y > level.max_y) {
-                level.max_y = _y;
-            }
-            if (gfx_cue) {
-                // FIXME: be more robust =)
-                LPCD.DOM.buffer += "<div class='placeholder' style='";
-                LPCD.DOM.buffer += "top:" + _y + "em;";
-                LPCD.DOM.buffer += "left:" + _x + "em;";
-                if (wall) {
-                    LPCD.DOM.buffer += "background-color:#555;";
-                    LPCD.DOM.buffer += "border: 1px solid #333;";
+    var canvas = LPCD.DOM.layers[layer];
+    var img = LPCD.DOM.res[uri];
+    canvas.ctx.drawImage(img, sx*32, sy*32, 32, 32, dx*32, dy*32, 32, 32);
+};
+
+
+// "build_map" takes map data and creates game objects from it.
+// Must be called after image resources are ready.
+LPCD.CALL.build_map = function (mapdata) {
+    "use strict";
+    var level = LPCD.DATA.level;  // shorthand
+    level.debug = mapdata;
+
+    for (var i=0; i<mapdata.layers.length; i+=1) {
+        var layer = mapdata.layers[i];
+        console.info("processing layer: " + layer.name);
+        var _x = 0;
+        var _y = 0;
+        for (var k=0; k<layer.data.length; k+=1) {
+            if (layer.data[k] > 0) {
+                var tile = mapdata.lookup_tile(layer.data[k]);
+                if (tile !== false) {
+                    var target = layer.properties.target === undefined ? "below" : layer.properties.target;
+                    LPCD.CALL.add_tile(tile.sx, tile.sy, _x, _y, tile.uri, target);
+                    if (layer.properties.is_walls !== undefined && layer.properties.is_walls > 0) {
+                        LPCD.CALL.set_wall(_x, _y);
+                    }
                 }
                 else {
-                    LPCD.DOM.buffer += "background-color:green;";
-                    LPCD.DOM.buffer += "border: 1px dotted darkgreen;";
+                    console.info("no such tile: " + layer.data[k]);
                 }
-                LPCD.DOM.buffer += "'></div>";
+            }
+            _x += 1;
+            if (_x == mapdata.width) {
+                _y += 1;
+                _x = 0;
             }
         }
     }
@@ -161,44 +158,107 @@ LPCD.CALL.drop = function (x, y, w, h, gfx_cue, phys_cue) {
  ******************************************************************************/
 
 
+// "map_ready" is called when map data is available.  It is responsible for
+// fetching images;  when all needed images are loaded, the "make" event is
+// then called and mouse events are bound.
+LPCD.EVENT.map_ready = function (mapdata, status) {
+    var pending = 0;
+    var hold = true;
+    var make_it_so = function () {
+        LPCD.CALL.build_map(mapdata);
+        LPCD.EVENT.make();
+        LPCD.DOM.doc.body.onclick = LPCD.EVENT.on_click;
+    };
+    var image_loaded = function () {
+        pending -= 1;
+        console.info("image loaded: " + this.src);
+        if (pending === 0 && !hold) {
+            make_it_so();
+        }
+    }
+    if (mapdata.orientation !== "orthogonal") {
+        throw("This demo only supports orthogonal maps!");
+    }
+    for (var i=0; i<mapdata.tilesets.length; i+=1) {
+        var tileset = mapdata.tilesets[i];
+        var img_path = tileset.image;
+        if (img_path.indexOf("../sprites/") === 0) {
+            img_path = img_path.slice(1);
+        }
+        pending += 1;
+        LPCD.DOM.res[tileset.image] = new Image();
+        LPCD.DOM.res[tileset.image].onload = image_loaded;
+        LPCD.DOM.res[tileset.image].src = img_path;
+
+        // add some extra functions to help level construction later on
+        mapdata.tilesets[i]._w = Math.floor(tileset.imagewidth/32);
+        mapdata.tilesets[i]._h = Math.floor(tileset.imageheight/32);
+        mapdata.tilesets[i]._count = tileset._w * tileset._h;
+        mapdata.tilesets[i].has = function (gid) {
+            return gid >= this.firstgid && gid < this.firstgid + this._count;
+        };
+        mapdata.tilesets[i].coords = function (gid) {
+            var within = gid - this.firstgid;
+            var x = within % this._w;
+            return {"sx":x, "sy":((within-x)/this._w)};
+        }
+    }
+    mapdata.lookup_tile = function (gid) {
+        for (var i=0; i<mapdata.tilesets.length; i+=1) {
+            var tileset = mapdata.tilesets[i];
+            if (tileset.has(gid)) {
+                var tile = tileset.coords(gid);
+                tile.uri = tileset.image;
+                return tile;
+            }
+        }
+        return false;
+    }
+    LPCD.DATA.level = {
+        "walls" : {},
+        "min_x" : 0,
+        "min_y" : 0,
+        "max_x" : mapdata.width,
+        "max_y" : mapdata.height
+    };
+    LPCD.DOM.layers = {};
+    var setup_layer = function (name) {
+        var el = LPCD.DOM.doc.createElement("canvas");
+        el.ctx = el.getContext('2d');
+        el.width = 32 * mapdata.width;
+        el.height = 32 * mapdata.height;
+        el.id = "layer_"+name;
+        LPCD.DOM.layers[name] = el;
+        LPCD.DOM.doc.body.appendChild(el);
+    };
+    setup_layer("above");
+    setup_layer("below");
+    
+    hold = false;
+    if (pending === 0) {
+        make_it_so();
+    }
+};
+
+
 // "make" is used to build the level, bootstrap the game, and start the demo.
 LPCD.EVENT.make = function () {
     "use strict";
     
     // set the player stats:
     var player = LPCD.DATA.player;
-    player.x = 0;
-    player.y = 0;
+    player.x = 16;
+    player.y = 16;
 
-    // load a level
-    LPCD.CALL.drop(-32, -32, 64, 64, 1, 0);
-
-    LPCD.CALL.drop(-5, -5, 10, 1, 1, 1);
-    LPCD.CALL.drop(-5, 5, 10, 1, 1, 1);
-    LPCD.CALL.drop(-5, -5, 1, 10, 1, 1);
-    LPCD.CALL.drop(5, -5, 1, 5, 1, 1);
-    LPCD.CALL.drop(5, 1, 1, 5, 1, 1);
-    LPCD.CALL.drop(7, -7, 1, 15, 1, 1);
-    LPCD.CALL.drop(-7, -7, 15, 1, 1, 1);
-    LPCD.CALL.drop(-7, -7, 1, 15, 1, 1);
-    LPCD.CALL.drop(6,6,1,1,1,1);
-    LPCD.CALL.drop(-6, 7, 6, 1, 1, 1);
-    LPCD.CALL.drop(1, 7, 6, 1, 1, 1);
-
-    LPCD.CALL.drop(-1, 9, 1, 1, 1, 1);
-    LPCD.CALL.drop(-3, 9, 1, 1, 1, 1);
-    LPCD.CALL.drop(-5, 9, 1, 1, 1, 1);
-    LPCD.CALL.drop(-7, 9, 1, 1, 1, 1);
-    LPCD.CALL.drop(1, 9, 1, 1, 1, 1);
-    LPCD.CALL.drop(3, 9, 1, 1, 1, 1);
-    LPCD.CALL.drop(5, 9, 1, 1, 1, 1);
-    LPCD.CALL.drop(7, 9, 1, 1, 1, 1);
-
-    var next = "<div id='game_board'>" + LPCD.DOM.buffer + "</div>";
-    next += "<div id='player' class='placeholder'></div>";
-    LPCD.DOM.doc.body.innerHTML = next;
-    LPCD.DOM.doc.body.style.backgroundColor = "transparent";
-    LPCD.DOM.doc.body.style.color = "inherit";
+    player.el = LPCD.DOM.doc.createElement("div");
+    player.el.id = "player";
+    player.el.setAttribute("class", "placeholder");
+    LPCD.DOM.doc.body.appendChild(player.el);
+    
+    //LPCD.DOM.doc.body.style.backgroundColor = "transparent";
+    //LPCD.DOM.doc.body.style.color = "inherit";
+    LPCD.DOM.doc.getElementById("text_overlay").style.display = "none";
+    LPCD.EVENT.on_redraw();
 };
 
 
@@ -254,7 +314,7 @@ LPCD.EVENT.on_walk = function () {
         LPCD.TIME.walk = setTimeout(LPCD.EVENT.on_walk, player.walk_speed);
     }
 
-    if (!LPCD.CALL.get_wall(next_x, next_y)) {
+    if (LPCD.CALL.get_wall(next_x, next_y) == 0) {
         // ok to advance
         player.x = next_x;
         player.y = next_y;
@@ -276,8 +336,10 @@ LPCD.EVENT.on_walk = function () {
 LPCD.EVENT.on_redraw = function () {
     "use strict";
     var player = LPCD.DATA.player;
-    var board = LPCD.DOM.doc.getElementById("game_board");
-
-    board.style.marginLeft = String(-1*player.x) + "em";
-    board.style.marginTop = String(-1*player.y) + "em";
+    var boards = ["below", "above"];
+    for (var i=0; i<boards.length; i+=1) {
+        var board = LPCD.DOM.doc.getElementById("layer_"+boards[i]);
+        board.style.marginLeft = String(-1*player.x) + "em";
+        board.style.marginTop = String(-1*player.y) + "em";
+    }
 };
