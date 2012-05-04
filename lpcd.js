@@ -178,6 +178,21 @@ LPCD.EVENT.make = function () {
     LPCD.CALL.drop(-5, -5, 1, 10, 1, 1);
     LPCD.CALL.drop(5, -5, 1, 5, 1, 1);
     LPCD.CALL.drop(5, 1, 1, 5, 1, 1);
+    LPCD.CALL.drop(7, -7, 1, 15, 1, 1);
+    LPCD.CALL.drop(-7, -7, 15, 1, 1, 1);
+    LPCD.CALL.drop(-7, -7, 1, 15, 1, 1);
+    LPCD.CALL.drop(6,6,1,1,1,1);
+    LPCD.CALL.drop(-6, 7, 6, 1, 1, 1);
+    LPCD.CALL.drop(1, 7, 6, 1, 1, 1);
+
+    LPCD.CALL.drop(-1, 9, 1, 1, 1, 1);
+    LPCD.CALL.drop(-3, 9, 1, 1, 1, 1);
+    LPCD.CALL.drop(-5, 9, 1, 1, 1, 1);
+    LPCD.CALL.drop(-7, 9, 1, 1, 1, 1);
+    LPCD.CALL.drop(1, 9, 1, 1, 1, 1);
+    LPCD.CALL.drop(3, 9, 1, 1, 1, 1);
+    LPCD.CALL.drop(5, 9, 1, 1, 1, 1);
+    LPCD.CALL.drop(7, 9, 1, 1, 1, 1);
 
     var next = "<div id='game_board'>" + LPCD.DOM.buffer + "</div>";
     next += "<div id='player' class='placeholder'></div>";
