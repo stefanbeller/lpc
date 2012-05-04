@@ -27,8 +27,14 @@ var LPCD = {
             "dir" : undefined,
             "sprite" : undefined,
             "state" : undefined,
+            "walk_speed" : 50,
+            "walk_dist" : .5,
             "walking" : false
         }
+    },
+
+    "TIME" : {
+        "walk" : -1
     },
 
     "CALL" : {
@@ -40,6 +46,7 @@ var LPCD = {
     "EVENT" : {
         "on_click" : undefined,
         "on_redraw" : undefined,
+        "on_walk" : undefined,
         "make" : undefined
     }
 };
@@ -190,11 +197,60 @@ LPCD.EVENT.on_click = function (event) {
 
     var sx = Math.round(event.x/32) - Math.ceil($("#lpcd_iframe").width()/64);
     var sy = Math.round(event.y/32) - Math.ceil($("#lpcd_iframe").height()/64);
-    var x = sx + player.x;
-    var y = sy + player.y;
+    var x = Math.round(sx + player.x);
+    var y = Math.round(sy + player.y);
 
-    player.x = x;
-    player.y = y;
+    if (player.walking === undefined || (x !== player.x && y !== player.y)) {
+        player.walking = {"x":x, "y":y};
+    }
+
+    if (LPCD.TIME.walk === -1) {
+        LPCD.TIME.walk = setTimeout(LPCD.EVENT.on_walk, player.walk_speed);
+    }
+};
+
+
+// "on_walk" is called periodically for both animation and player movement
+LPCD.EVENT.on_walk = function () {
+    "use strict";
+    var player = LPCD.DATA.player;
+    var next_x, next_y;
+    var dist = Math.sqrt(Math.pow(player.walking.x - player.x,2) + Math.pow(player.walking.y - player.y, 2));
+    
+    if (String(dist) === "NaN") {
+        player.walking = undefined;
+        LPCD.TIME.walk = -1;
+        throw ("Move distance is not a number...????");
+    }
+
+    if (dist <= .5) {
+        next_x = player.walking.x;
+        next_y = player.walking.y;
+        player.walking = undefined;
+        LPCD.TIME.walk = -1;
+    }
+
+    else {
+        var a = player.walk_dist/dist;
+        next_x = player.x*(1.0-a) + player.walking.x*a;
+        next_y = player.y*(1.0-a) + player.walking.y*a;
+        LPCD.TIME.walk = setTimeout(LPCD.EVENT.on_walk, player.walk_speed);
+    }
+
+    if (!LPCD.CALL.get_wall(next_x, next_y)) {
+        // ok to advance
+        player.x = next_x;
+        player.y = next_y;
+    }
+    else {
+        // hit a wall
+        clearTimeout(LPCD.TIME.walk);
+        player.walking = undefined;
+        LPCD.TIME.walk = -1;
+        player.x = Math.round(player.x);
+        player.y = Math.round(player.y);   
+    }
+    
     LPCD.EVENT.on_redraw();
 };
 
