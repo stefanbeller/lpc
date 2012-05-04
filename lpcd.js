@@ -30,8 +30,8 @@ var LPCD = {
             "el" : undefined,
             "sprite" : undefined,
             "state" : undefined,
-            "walk_speed" : 50,
-            "walk_dist" : .5,
+            "walk_speed" : 40,
+            "walk_dist" : .3,
             "walking" : undefined
         }
     },
@@ -66,6 +66,10 @@ $(document).ready(function () {
     doc.body.style.color = "white";
     doc.body.style.textAlign = "center";
     doc.body.innerHTML="<h1 id='text_overlay'>loading...</h1>";
+
+    LPCD.DATA.player.sprite = new Image();
+    LPCD.DATA.player.sprite.src = "./sprites/char_template.png";
+
     jQuery.getJSON("./levels/start1.json", LPCD.EVENT.map_ready);
 });
 
@@ -179,6 +183,7 @@ LPCD.EVENT.map_ready = function (mapdata, status) {
     if (mapdata.orientation !== "orthogonal") {
         throw("This demo only supports orthogonal maps!");
     }
+
     for (var i=0; i<mapdata.tilesets.length; i+=1) {
         var tileset = mapdata.tilesets[i];
         var img_path = tileset.image;
@@ -249,14 +254,16 @@ LPCD.EVENT.make = function () {
     var player = LPCD.DATA.player;
     player.x = 16;
     player.y = 16;
+    player.state = 0;
+    player.dir = 2;
 
-    player.el = LPCD.DOM.doc.createElement("div");
+    player.el = LPCD.DOM.doc.createElement("canvas");
     player.el.id = "player";
-    player.el.setAttribute("class", "placeholder");
+    player.el.width = 32;
+    player.el.height = 48;
     LPCD.DOM.doc.body.appendChild(player.el);
-    
-    //LPCD.DOM.doc.body.style.backgroundColor = "transparent";
-    //LPCD.DOM.doc.body.style.color = "inherit";
+    player.ctx = player.el.getContext("2d");
+
     LPCD.DOM.doc.getElementById("text_overlay").style.display = "none";
     LPCD.EVENT.on_redraw();
 };
@@ -271,9 +278,11 @@ LPCD.EVENT.on_click = function (event) {
 
     var event_x = event.x || event.clientX;
     var event_y = event.y || event.clientY;
+    var view_width = $("#lpcd_iframe").width();
+    var view_height = $("#lpcd_iframe").height();
 
-    var sx = Math.round(event_x/32) - Math.ceil($("#lpcd_iframe").width()/64);
-    var sy = Math.round(event_y/32) - Math.ceil($("#lpcd_iframe").height()/64);
+    var sx = Math.round(event_x/32) - Math.ceil(view_width/64);
+    var sy = Math.round(event_y/32) - Math.ceil(view_height/64);
     var x = Math.round(sx + player.x);
     var y = Math.round(sy + player.y);
 
@@ -291,20 +300,25 @@ LPCD.EVENT.on_click = function (event) {
 LPCD.EVENT.on_walk = function () {
     "use strict";
     var player = LPCD.DATA.player;
+    player.state += 1;
+    if (player.state > 8) {
+        player.state = 1;
+    }
     var next_x, next_y;
     var dist = Math.sqrt(Math.pow(player.walking.x - player.x,2) + Math.pow(player.walking.y - player.y, 2));
-    
+
     if (String(dist) === "NaN") {
         player.walking = undefined;
         LPCD.TIME.walk = -1;
         throw ("Move distance is not a number...????");
     }
-
+    
     if (dist <= .5) {
         next_x = player.walking.x;
         next_y = player.walking.y;
         player.walking = undefined;
         LPCD.TIME.walk = -1;
+        player.state = 0;
     }
 
     else {
@@ -312,6 +326,30 @@ LPCD.EVENT.on_walk = function () {
         next_x = player.x*(1.0-a) + player.walking.x*a;
         next_y = player.y*(1.0-a) + player.walking.y*a;
         LPCD.TIME.walk = setTimeout(LPCD.EVENT.on_walk, player.walk_speed);
+    }
+
+    if (player.walking) {
+        var opposite = (player.x - next_x) * -1;
+        var adjacent = player.y - next_y;
+        var angle = Math.atan(opposite/adjacent)/(Math.PI/180);
+        var dir = 0;
+        if (opposite >= 0 && adjacent >= 0) {
+            // north-east quadrant
+            dir = angle < 45 ? 0 : 3;
+        }
+        else if (opposite <= 0 && adjacent >= 0) {
+            // north-west quadrant
+            dir = angle > -45 ? 0 : 1;
+        }
+        else if (opposite <= 0 && adjacent <= 0) {
+            // south-west quadrant
+            dir = angle < 45 ? 2 : 1;
+        }
+        else if (opposite >= 0 && adjacent < 0) {
+            // south-east quadrant
+            dir = angle > -45 ? 2 : 3;
+        }
+        player.dir = dir;
     }
 
     if (LPCD.CALL.get_wall(next_x, next_y) == 0) {
@@ -325,7 +363,8 @@ LPCD.EVENT.on_walk = function () {
         player.walking = undefined;
         LPCD.TIME.walk = -1;
         player.x = Math.round(player.x);
-        player.y = Math.round(player.y);   
+        player.y = Math.round(player.y);
+        player.state = 0;
     }
     
     LPCD.EVENT.on_redraw();
@@ -336,6 +375,9 @@ LPCD.EVENT.on_walk = function () {
 LPCD.EVENT.on_redraw = function () {
     "use strict";
     var player = LPCD.DATA.player;
+    player.ctx.clearRect(0, 0, 32, 48);
+    player.ctx.drawImage(player.sprite, player.state*32, player.dir*48, 32, 48, 0, 0, 32, 48);
+
     var boards = ["below", "above"];
     for (var i=0; i<boards.length; i+=1) {
         var board = LPCD.DOM.doc.getElementById("layer_"+boards[i]);
