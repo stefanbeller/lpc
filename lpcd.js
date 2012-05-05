@@ -32,7 +32,7 @@ var LPCD = {
             "sprite" : undefined,
             "state" : undefined,
             "walk_speed" : 40,
-            "walk_dist" : .25,
+            "walk_dist" : .5,
             "walking" : undefined
         }
     },
@@ -360,10 +360,10 @@ LPCD.EVENT.on_walk = function () {
     var player = LPCD.DATA.player;
     var next_x, next_y, stop, check, other;
     var dist = Math.sqrt(Math.pow(player.walking.x - player.x,2) + Math.pow(player.walking.y - player.y, 2));
+    var no_rotate = false;
     var delta = function (n1, n2) {
         return Math.sqrt(Math.pow((n2-n1), 2));
     }
-
     if (dist < .5) {
         next_x = player.walking.x;
         next_y = player.walking.y;
@@ -385,7 +385,6 @@ LPCD.EVENT.on_walk = function () {
             if (LPCD.CALL.wall_check(check(next_x), next_y) > 0) {
                 next_x = other(next_x);
                 if (delta(next_y, player.y) <= .05) {
-                    //next_y = Math.round(player.y);
                     stop = true;
                 }
             }
@@ -402,7 +401,6 @@ LPCD.EVENT.on_walk = function () {
             if (LPCD.CALL.wall_check(next_x, check(next_y)) > 0) {
                 next_y = other(next_y);
                 if (delta(next_x, player.x) <= .05) {
-                    //next_x = Math.round(player.x);
                     stop = true;
                 }
             }
@@ -412,26 +410,6 @@ LPCD.EVENT.on_walk = function () {
         }
     }
 
-    if (player.walking) {
-        // determine the character's facing
-        if (player.walking.x >= player.x && player.walking.y <= player.y) {
-            // north east
-            player.dir = delta(player.x, player.walking.x) > delta(player.y, player.walking.y) ? 3 : 0;
-        }
-        else if (player.walking.x <= player.x && player.walking.y <= player.y) {
-            // north east
-            player.dir = delta(player.x, player.walking.x) > delta(player.y, player.walking.y) ? 1 : 0;
-        }
-        else if (player.walking.x <= player.x && player.walking.y >= player.y) {
-            // north east
-            player.dir = delta(player.x, player.walking.x) > delta(player.y, player.walking.y) ? 1 : 2;
-        }
-        else if (player.walking.x >= player.x && player.walking.y >= player.y) {
-            // north east
-            player.dir = delta(player.x, player.walking.x) > delta(player.y, player.walking.y) ? 3 : 2;
-        }
-    }
-    
     if (LPCD.CALL.wall_check(next_x, next_y)) {
         // hit a wall
         player.x = Math.round(player.x);
@@ -439,6 +417,26 @@ LPCD.EVENT.on_walk = function () {
         stop = true;
     }
     else {
+        if(!no_rotate && !stop) {
+            // determine the character's facing
+            if (next_x >= player.x && next_y <= player.y) {
+                // north east
+                player.dir = delta(player.x, next_x) > delta(player.y, next_y) ? 3 : 0;
+            }
+            else if (next_x <= player.x && next_y <= player.y) {
+                // north east
+                player.dir = delta(player.x, next_x) > delta(player.y, next_y) ? 1 : 0;
+            }
+            else if (next_x <= player.x && next_y >= player.y) {
+                // north east
+                player.dir = delta(player.x, next_x) > delta(player.y, next_y) ? 1 : 2;
+            }
+            else if (next_x >= player.x && next_y >= player.y) {
+                // north east
+                player.dir = delta(player.x, next_x) > delta(player.y, next_y) ? 3 : 2;
+            }
+        }
+
         player.x = next_x;
         player.y = next_y;
     }
@@ -450,10 +448,13 @@ LPCD.EVENT.on_walk = function () {
         clearTimeout(LPCD.TIME.walk);
     }
     else {
+        // update animation step
         player.state += 1;
         if (player.state > 8) {
             player.state = 1;
         }
+        
+        // schedule next walk iteration
         LPCD.TIME.walk = setTimeout(LPCD.EVENT.on_walk, player.walk_speed);
     }
     
