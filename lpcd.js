@@ -28,10 +28,11 @@ var LPCD = {
             "y" : undefined,
             "dir" : undefined,
             "el" : undefined,
+            "mouse_vector" : {"x":0, "y":0},
             "sprite" : undefined,
             "state" : undefined,
             "walk_speed" : 40,
-            "walk_dist" : .3,
+            "walk_dist" : .25,
             "walking" : undefined
         }
     },
@@ -300,25 +301,13 @@ LPCD.EVENT.on_click = function (event) {
 LPCD.EVENT.on_walk = function () {
     "use strict";
     var player = LPCD.DATA.player;
-    player.state += 1;
-    if (player.state > 8) {
-        player.state = 1;
-    }
-    var next_x, next_y;
+    var next_x, next_y, stop;
     var dist = Math.sqrt(Math.pow(player.walking.x - player.x,2) + Math.pow(player.walking.y - player.y, 2));
 
-    if (String(dist) === "NaN") {
-        player.walking = undefined;
-        LPCD.TIME.walk = -1;
-        throw ("Move distance is not a number...????");
-    }
-    
     if (dist <= .5) {
         next_x = player.walking.x;
         next_y = player.walking.y;
-        player.walking = undefined;
-        LPCD.TIME.walk = -1;
-        player.state = 0;
+        stop = true;
     }
 
     else {
@@ -329,25 +318,46 @@ LPCD.EVENT.on_walk = function () {
     }
 
     if (player.walking) {
-        var opposite = (player.x - next_x) * -1;
-        var adjacent = player.y - next_y;
-        var angle = Math.atan(opposite/adjacent)/(Math.PI/180);
+        // determine the character's facing
         var dir = 0;
-        if (opposite >= 0 && adjacent >= 0) {
-            // north-east quadrant
-            dir = angle < 45 ? 0 : 3;
+        var dist = function (n1, n2) {
+            return Math.sqrt(Math.pow((n2-n1), 2));
         }
-        else if (opposite <= 0 && adjacent >= 0) {
-            // north-west quadrant
-            dir = angle > -45 ? 0 : 1;
+        if (player.walking.x >= player.x && player.walking.y <= player.y) {
+            // north east
+            if (dist(player.x, player.walking.x) > dist(player.y, player.walking.y)) {
+                dir = 3;
+            }
+            else {
+                dir = 0;
+            }
         }
-        else if (opposite <= 0 && adjacent <= 0) {
-            // south-west quadrant
-            dir = angle < 45 ? 2 : 1;
+        else if (player.walking.x <= player.x && player.walking.y <= player.y) {
+            // north east
+            if (dist(player.x, player.walking.x) > dist(player.y, player.walking.y)) {
+                dir = 1;
+            }
+            else {
+                dir = 0;
+            }
         }
-        else if (opposite >= 0 && adjacent < 0) {
-            // south-east quadrant
-            dir = angle > -45 ? 2 : 3;
+        else if (player.walking.x <= player.x && player.walking.y >= player.y) {
+            // north east
+            if (dist(player.x, player.walking.x) > dist(player.y, player.walking.y)) {
+                dir = 1;
+            }
+            else {
+                dir = 2;
+            }
+        }
+        else if (player.walking.x >= player.x && player.walking.y >= player.y) {
+            // north east
+            if (dist(player.x, player.walking.x) > dist(player.y, player.walking.y)) {
+                dir = 3;
+            }
+            else {
+                dir = 2;
+            }
         }
         player.dir = dir;
     }
@@ -365,6 +375,18 @@ LPCD.EVENT.on_walk = function () {
         player.x = Math.round(player.x);
         player.y = Math.round(player.y);
         player.state = 0;
+    }
+
+    if (stop) {
+        player.walking = undefined;
+        LPCD.TIME.walk = -1;
+        player.state = 0;
+    }
+    else {
+        player.state += 1;
+        if (player.state > 8) {
+            player.state = 1;
+        }
     }
     
     LPCD.EVENT.on_redraw();
