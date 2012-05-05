@@ -127,7 +127,6 @@ LPCD.CALL.build_map = function (mapdata) {
 
     for (var i=0; i<mapdata.layers.length; i+=1) {
         var layer = mapdata.layers[i];
-        console.info("processing layer: " + layer.name);
         var _x = 0;
         var _y = 0;
         for (var k=0; k<layer.data.length; k+=1) {
@@ -176,7 +175,6 @@ LPCD.EVENT.map_ready = function (mapdata, status) {
     };
     var image_loaded = function () {
         pending -= 1;
-        console.info("image loaded: " + this.src);
         if (pending === 0 && !hold) {
             make_it_so();
         }
@@ -301,65 +299,78 @@ LPCD.EVENT.on_click = function (event) {
 LPCD.EVENT.on_walk = function () {
     "use strict";
     var player = LPCD.DATA.player;
-    var next_x, next_y, stop;
+    var next_x, next_y, stop, check, other;
     var dist = Math.sqrt(Math.pow(player.walking.x - player.x,2) + Math.pow(player.walking.y - player.y, 2));
+    var delta = function (n1, n2) {
+        return Math.sqrt(Math.pow((n2-n1), 2));
+    }
 
-    if (dist <= .5) {
+    if (dist < .5) {
         next_x = player.walking.x;
         next_y = player.walking.y;
         stop = true;
     }
-
     else {
         var a = player.walk_dist/dist;
         next_x = player.x*(1.0-a) + player.walking.x*a;
         next_y = player.y*(1.0-a) + player.walking.y*a;
-        LPCD.TIME.walk = setTimeout(LPCD.EVENT.on_walk, player.walk_speed);
+        if (next_x !== player.x) {
+            if (next_x < player.x) {
+                check = Math.floor;
+                other = Math.ceil;
+            }
+            else {
+                check = Math.ceil;
+                other = Math.floor;
+            }
+            if (LPCD.CALL.get_wall(check(next_x), next_y) > 0) {
+                next_x = other(next_x);
+                if (delta(next_y, player.y) <= .05) {
+                    //next_y = Math.round(player.y);
+                    stop = true;
+                }
+            }
+        }
+        if (next_y !== player.y) {
+            if (next_y < player.y) {
+                check = Math.floor;
+                other = Math.ceil;
+            }
+            else {
+                check = Math.ceil;
+                other = Math.floor;
+            }
+            if (LPCD.CALL.get_wall(next_x, check(next_y)) > 0) {
+                next_y = other(next_y);
+                if (delta(next_x, player.x) <= .05) {
+                    //next_x = Math.round(player.x);
+                    stop = true;
+                }
+            }
+        }
+        if (next_x === player.x && next_y === player.y) {
+            stop = true;
+        }
     }
 
     if (player.walking) {
         // determine the character's facing
-        var dir = 0;
-        var dist = function (n1, n2) {
-            return Math.sqrt(Math.pow((n2-n1), 2));
-        }
         if (player.walking.x >= player.x && player.walking.y <= player.y) {
             // north east
-            if (dist(player.x, player.walking.x) > dist(player.y, player.walking.y)) {
-                dir = 3;
-            }
-            else {
-                dir = 0;
-            }
+            player.dir = delta(player.x, player.walking.x) > delta(player.y, player.walking.y) ? 3 : 0;
         }
         else if (player.walking.x <= player.x && player.walking.y <= player.y) {
             // north east
-            if (dist(player.x, player.walking.x) > dist(player.y, player.walking.y)) {
-                dir = 1;
-            }
-            else {
-                dir = 0;
-            }
+            player.dir = delta(player.x, player.walking.x) > delta(player.y, player.walking.y) ? 1 : 0;
         }
         else if (player.walking.x <= player.x && player.walking.y >= player.y) {
             // north east
-            if (dist(player.x, player.walking.x) > dist(player.y, player.walking.y)) {
-                dir = 1;
-            }
-            else {
-                dir = 2;
-            }
+            player.dir = delta(player.x, player.walking.x) > delta(player.y, player.walking.y) ? 1 : 2;
         }
         else if (player.walking.x >= player.x && player.walking.y >= player.y) {
             // north east
-            if (dist(player.x, player.walking.x) > dist(player.y, player.walking.y)) {
-                dir = 3;
-            }
-            else {
-                dir = 2;
-            }
+            player.dir = delta(player.x, player.walking.x) > delta(player.y, player.walking.y) ? 3 : 2;
         }
-        player.dir = dir;
     }
 
     if (LPCD.CALL.get_wall(next_x, next_y) == 0) {
@@ -369,24 +380,23 @@ LPCD.EVENT.on_walk = function () {
     }
     else {
         // hit a wall
-        clearTimeout(LPCD.TIME.walk);
-        player.walking = undefined;
-        LPCD.TIME.walk = -1;
         player.x = Math.round(player.x);
         player.y = Math.round(player.y);
-        player.state = 0;
+        stop = true;
     }
 
     if (stop) {
+        player.state = 0;
         player.walking = undefined;
         LPCD.TIME.walk = -1;
-        player.state = 0;
+        clearTimeout(LPCD.TIME.walk);
     }
     else {
         player.state += 1;
         if (player.state > 8) {
             player.state = 1;
         }
+        LPCD.TIME.walk = setTimeout(LPCD.EVENT.on_walk, player.walk_speed);
     }
     
     LPCD.EVENT.on_redraw();
