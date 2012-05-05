@@ -98,7 +98,6 @@
          "opacity":1,
          "properties":
             {
-             "is_walls":"1",
              "target":"below"
             },
          "type":"tilelayer",
@@ -161,7 +160,6 @@
          "opacity":1,
          "properties":
             {
-             "is_walls":"1",
              "target":"below"
             },
          "type":"tilelayer",
@@ -265,6 +263,25 @@
             },
          "spacing":0,
          "tileheight":32,
+         "tileproperties":
+            {
+             "1":
+                {
+                 "wall":"a"
+                },
+             "10":
+                {
+                 "wall":"a"
+                },
+             "4":
+                {
+                 "wall":"a"
+                },
+             "7":
+                {
+                 "wall":"a"
+                }
+            },
          "tilewidth":32
         }, 
         {
@@ -280,6 +297,37 @@
             },
          "spacing":0,
          "tileheight":32,
+         "tileproperties":
+            {
+             "0":
+                {
+                 "wall":"s"
+                },
+             "2":
+                {
+                 "wall":"s"
+                },
+             "3":
+                {
+                 "wall":"sw"
+                },
+             "4":
+                {
+                 "wall":"n"
+                },
+             "5":
+                {
+                 "wall":"a"
+                },
+             "6":
+                {
+                 "wall":"a"
+                },
+             "7":
+                {
+                 "wall":"w"
+                }
+            },
          "tilewidth":32
         }, 
         {
@@ -310,6 +358,17 @@
             },
          "spacing":0,
          "tileheight":32,
+         "tileproperties":
+            {
+             "0":
+                {
+                 "wall":"a"
+                },
+             "1":
+                {
+                 "wall":"a"
+                }
+            },
          "tilewidth":32
         }, 
         {
@@ -340,6 +399,97 @@
             },
          "spacing":0,
          "tileheight":32,
+         "tileproperties":
+            {
+             "0":
+                {
+                 "wall":"se"
+                },
+             "1":
+                {
+                 "wall":"s"
+                },
+             "10":
+                {
+                 "wall":"e"
+                },
+             "11":
+                {
+                 "wall":"a"
+                },
+             "12":
+                {
+                 "wall":"w"
+                },
+             "13":
+                {
+                 "wall":"a"
+                },
+             "14":
+                {
+                 "wall":"a"
+                },
+             "15":
+                {
+                 "wall":"e"
+                },
+             "16":
+                {
+                 "wall":"a"
+                },
+             "17":
+                {
+                 "wall":"w"
+                },
+             "18":
+                {
+                 "wall":"e"
+                },
+             "19":
+                {
+                 "wall":"e"
+                },
+             "2":
+                {
+                 "wall":"sw"
+                },
+             "20":
+                {
+                 "wall":"ne"
+                },
+             "21":
+                {
+                 "wall":"n"
+                },
+             "22":
+                {
+                 "wall":"nw"
+                },
+             "3":
+                {
+                 "wall":"a"
+                },
+             "4":
+                {
+                 "wall":"a"
+                },
+             "5":
+                {
+                 "wall":"e"
+                },
+             "7":
+                {
+                 "wall":"w"
+                },
+             "8":
+                {
+                 "wall":"a"
+                },
+             "9":
+                {
+                 "wall":"a"
+                }
+            },
          "tilewidth":32
         }, 
         {
@@ -370,6 +520,109 @@
             },
          "spacing":0,
          "tileheight":32,
+         "tileproperties":
+            {
+             "10":
+                {
+                 "wall":"s"
+                },
+             "11":
+                {
+                 "wall":"sw"
+                },
+             "12":
+                {
+                 "wall":"ne"
+                },
+             "13":
+                {
+                 "wall":"n"
+                },
+             "14":
+                {
+                 "wall":"nw"
+                },
+             "15":
+                {
+                 "wall":"a"
+                },
+             "16":
+                {
+                 "wall":"a"
+                },
+             "17":
+                {
+                 "wall":"a"
+                },
+             "24":
+                {
+                 "wall":"e"
+                },
+             "25":
+                {
+                 "wall":"a"
+                },
+             "26":
+                {
+                 "wall":"w"
+                },
+             "27":
+                {
+                 "wall":"se"
+                },
+             "28":
+                {
+                 "wall":"s"
+                },
+             "29":
+                {
+                 "wall":"sw"
+                },
+             "30":
+                {
+                 "wall":"ne"
+                },
+             "31":
+                {
+                 "wall":"a"
+                },
+             "32":
+                {
+                 "wall":"nw"
+                },
+             "33":
+                {
+                 "wall":"e"
+                },
+             "34":
+                {
+                 "wall":"a"
+                },
+             "35":
+                {
+                 "wall":"w"
+                },
+             "40":
+                {
+                 "wall":"n"
+                },
+             "6":
+                {
+                 "wall":"a"
+                },
+             "7":
+                {
+                 "wall":"a"
+                },
+             "8":
+                {
+                 "wall":"a"
+                },
+             "9":
+                {
+                 "wall":"se"
+                }
+            },
          "tilewidth":32
         }, 
         {
