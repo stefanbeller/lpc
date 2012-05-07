@@ -44,25 +44,27 @@ LPCD.CALL.get_wall = function (x, y) {
 // and initiates a walk cycle.
 LPCD.EVENT.on_click = function (event) {
     "use strict";
-    var player = LPCD.DATA.player;
-
-    var event_x = event.x || event.clientX;
-    var event_y = event.y || event.clientY;
-    var view_width = $("#lpcd_iframe").width();
-    var view_height = $("#lpcd_iframe").height();
-
-    var sx = (Math.round((event_x/16)) - Math.ceil(view_width/32))-1;
-    var sy = (Math.round((event_y/16)+.5) - Math.ceil(view_height/32))-1;
-    console.info(sx);
-    var x = Math.round(sx + player.x);
-    var y = Math.round(sy + player.y);
-
-    if (player.walking === undefined || (x !== player.x && y !== player.y)) {
-        LPCD.DATA.player.walking = {"x":x, "y":y};
-    }
-
-    if (LPCD.TIME.walk === -1) {
-        LPCD.TIME.walk = setTimeout(LPCD.EVENT.on_walk, player.walk_speed);
+    if (LPCD.DATA.ready) {
+        var player = LPCD.DATA.player;
+        
+        var event_x = event.x || event.clientX;
+        var event_y = event.y || event.clientY;
+        var view_width = $("#lpcd_iframe").width();
+        var view_height = $("#lpcd_iframe").height();
+        
+        var sx = (Math.round((event_x/16)) - Math.ceil(view_width/32))-1;
+        var sy = (Math.round((event_y/16)+.5) - Math.ceil(view_height/32))-1;
+        console.info(sx);
+        var x = Math.round(sx + player.x);
+        var y = Math.round(sy + player.y);
+        
+        if (player.walking === undefined || (x !== player.x && y !== player.y)) {
+            LPCD.DATA.player.walking = {"x":x, "y":y};
+        }
+        
+        if (LPCD.TIME.walk === -1) {
+            LPCD.TIME.walk = setTimeout(LPCD.EVENT.on_walk, player.walk_speed);
+        }
     }
 };
 

@@ -19,6 +19,7 @@ var LPCD = {
     "DATA" : {
         "ready" : false,
         "level" : {
+            "name" : "",
             "debug" : undefined,
             "walls" : {},
             "min_x" : undefined,
@@ -56,9 +57,11 @@ var LPCD = {
         "set_wall" : undefined, // (x, y)
         "wall_check" : undefined, // (x, y) <-- use instead of get_wall!
         "add_tile" : undefined, // (sx, sy, dx, dy, uri, layer)
+        "cue_loading" : undefined, // ()
     },
     
     "EVENT" : {
+        "on_warp" : undefined,
         "on_click" : undefined,
         "on_redraw" : undefined,
         "on_walk" : undefined,
@@ -74,16 +77,9 @@ $(document).ready(function () {
     var doc = LPCD.DOM.doc = $("#lpcd_iframe").contents()[0];
 
     if (window.top === window) {
-        doc.head.innerHTML += '<link rel="stylesheet" type="text/css" href="lpcd.css" />';
-        doc.body.style.backgroundColor = "black";
-        doc.body.style.color = "white";
-        doc.body.style.textAlign = "center";
-        doc.body.innerHTML="<h1 id='text_overlay'>loading...</h1>";
-        
         LPCD.DATA.player.sprite = new Image();
         LPCD.DATA.player.sprite.src = "./sprites/char_template.png";
-        
-        jQuery.getJSON("./levels/start1.json", LPCD.EVENT.map_ready);
+        LPCD.EVENT.on_warp(32, 32, "start1.json");
     }
     else {
         window.document.body.innerHTML = "";

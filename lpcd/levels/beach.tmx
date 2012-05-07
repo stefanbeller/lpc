@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="64" height="64" tilewidth="32" tileheight="32">
+ <tileset firstgid="1" name="grass" tilewidth="32" tileheight="32">
+  <image source="../../sprites/grass.png" width="96" height="192"/>
+ </tileset>
+ <tileset firstgid="19" name="dirt" tilewidth="32" tileheight="32">
+  <image source="../../sprites/dirt.png" width="96" height="192"/>
+ </tileset>
+ <tileset firstgid="37" name="dirt2" tilewidth="32" tileheight="32">
+  <image source="../../sprites/dirt2.png" width="96" height="192"/>
+ </tileset>
+ <tileset firstgid="55" name="hole" tilewidth="32" tileheight="32">
+  <image source="../../sprites/hole.png" width="96" height="192"/>
+ </tileset>
+ <tileset firstgid="73" name="lavarock" tilewidth="32" tileheight="32">
+  <image source="../../sprites/lavarock.png" width="96" height="192"/>
+ </tileset>
+ <tileset firstgid="91" name="treetop" tilewidth="32" tileheight="32">
+  <image source="../../sprites/treetop.png" width="192" height="224"/>
+ </tileset>
+ <tileset firstgid="133" name="trunk" tilewidth="32" tileheight="32">
+  <image source="../../sprites/trunk.png" width="192" height="96"/>
+ </tileset>
+ <tileset firstgid="151" name="water" tilewidth="32" tileheight="32">
+  <image source="../../sprites/water.png" width="96" height="192"/>
+  <tile id="1">
+   <properties>
+    <property name="wall" value="a"/>
+   </properties>
+  </tile>
+  <tile id="2">
+   <properties>
+    <property name="wall" value="a"/>
+   </properties>
+  </tile>
+  <tile id="4">
+   <properties>
+    <property name="wall" value="a"/>
+   </properties>
+  </tile>
+  <tile id="5">
+   <properties>
+    <property name="wall" value="a"/>
+   </properties>
+  </tile>
+  <tile id="6">
+   <properties>
+    <property name="wall" value="se"/>
+   </properties>
+  </tile>
+  <tile id="7">
+   <properties>
+    <property name="wall" value="s"/>
+   </properties>
+  </tile>
+  <tile id="8">
+   <properties>
+    <property name="wall" value="sw"/>
+   </properties>
+  </tile>
+  <tile id="9">
+   <properties>
+    <property name="wall" value="e"/>
+   </properties>
+  </tile>
+  <tile id="10">
+   <properties>
+    <property name="wall" value="a"/>
+   </properties>
+  </tile>
+  <tile id="11">
+   <properties>
+    <property name="wall" value="w"/>
+   </properties>
+  </tile>
+  <tile id="12">
+   <properties>
+    <property name="wall" value="ne"/>
+   </properties>
+  </tile>
+  <tile id="13">
+   <properties>
+    <property name="wall" value="n"/>
+   </properties>
+  </tile>
+  <tile id="14">
+   <properties>
+    <property name="wall" value="nw"/>
+   </properties>
+  </tile>
+  <tile id="15">
+   <properties>
+    <property name="wall" value="a"/>
+   </properties>
+  </tile>
+  <tile id="16">
+   <properties>
+    <property name="wall" value="a"/>
+   </properties>
+  </tile>
+  <tile id="17">
+   <properties>
+    <property name="wall" value="a"/>
+   </properties>
+  </tile>
+ </tileset>
+ <tileset firstgid="169" name="waterfall" tilewidth="32" tileheight="32">
+  <image source="../../sprites/waterfall.png" width="96" height="160"/>
+ </tileset>
+ <tileset firstgid="184" name="watergrass" tilewidth="32" tileheight="32">
+  <image source="../../sprites/watergrass.png" width="96" height="192"/>
+ </tileset>
+ <tileset firstgid="202" name="wallfloor" tilewidth="32" tileheight="32">
+  <image source="../../sprites/wallfloor.png" width="160" height="160"/>
+ </tileset>
+ <tileset firstgid="227" name="shadow" tilewidth="32" tileheight="32">
+  <image source="../../sprites/shadow.png" width="160" height="64"/>
+ </tileset>
+ <tileset firstgid="237" name="rock" tilewidth="32" tileheight="32">
+  <image source="../../sprites/rock.png" width="64" height="32"/>
+  <tile id="0">
+   <properties>
+    <property name="wall" value="a"/>
+   </properties>
+  </tile>
+  <tile id="1">
+   <properties>
+    <property name="wall" value="a"/>
+   </properties>
+  </tile>
+ </tileset>
+ <tileset firstgid="239" name="house" tilewidth="32" tileheight="32">
+  <image source="../../sprites/house.png" width="352" height="352"/>
+  <tile id="0">
+   <properties>
+    <property name="wall" value="a"/>
+   </properties>
+  </tile>
+  <tile id="1">
+   <properties>
+    <property name="wall" value="a"/>
+   </properties>
+  </tile>
+  <tile id="2">
+   <properties>
+    <property name="wall" value="a"/>
+   </properties>
+  </tile>
+  <tile id="11">
+   <properties>
+    <property name="wall" value="a"/>
+   </properties>
+  </tile>
+  <tile id="12">
+   <properties>
+    <property name="wall" value="a"/>
+   </properties>
+  </tile>
+  <tile id="13">
+   <properties>
+    <property name="wall" value="a"/>
+   </properties>
+  </tile>
+  <tile id="22">
+   <properties>
+    <property name="wall" value="a"/>
+   </properties>
+  </tile>
+  <tile id="23">
+   <properties>
+    <property name="wall" value="a"/>
+   </properties>
+  </tile>
+  <tile id="24">
+   <properties>
+    <property name="wall" value="a"/>
+   </properties>
+  </tile>
+  <tile id="44">
+   <properties>
+    <property name="wall" value="a"/>
+   </properties>
+  </tile>
+  <tile id="45">
+   <properties>
+    <property name="wall" value="a"/>
+   </properties>
+  </tile>
+  <tile id="46">
+   <properties>
+    <property name="wall" value="a"/>
+   </properties>
+  </tile>
+  <tile id="55">
+   <properties>
+    <property name="wall" value="a"/>
+   </properties>
+  </tile>
+  <tile id="56">
+   <properties>
+    <property name="wall" value="a"/>
+   </properties>
+  </tile>
+  <tile id="57">
+   <properties>
+    <property name="wall" value="a"/>
+   </properties>
+  </tile>
+  <tile id="61">
+   <properties>
+    <property name="wall" value="a"/>
+   </properties>
+  </tile>
+  <tile id="66">
+   <properties>
+    <property name="wall" value="a"/>
+   </properties>
+  </tile>
+  <tile id="68">
+   <properties>
+    <property name="wall" value="a"/>
+   </properties>
+  </tile>
+  <tile id="69">
+   <properties>
+    <property name="wall" value="a"/>
+   </properties>
+  </tile>
+  <tile id="70">
+   <properties>
+    <property name="wall" value="a"/>
+   </properties>
+  </tile>
+  <tile id="71">
+   <properties>
+    <property name="wall" value="a"/>
+   </properties>
+  </tile>
+  <tile id="72">
+   <properties>
+    <property name="wall" value="a"/>
+   </properties>
+  </tile>
+ </tileset>
+ <layer name="base_layer" width="64" height="64">
+  <properties>
+   <property name="target" value="below"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJztmslSGzEQhnXnAr4YQ3ihUECCSfJ8flNminRVV1er1ZuksfHhLw6g5etV0nBTSrlZdPv/p1fR8dnzfCfNsJl3zbdFvyewWebJtCed633RxwR/bUUr/0uxxcAWdJc0z59Fz+UrBqy5YFHPmhCde7XBv6KPBa3tdwN9qV1L0sp/ZGyQMfc5CHJhtYGmJuK4y8pHbu6oD1p7w3OvNvhbvvLBM5dVHFf2Guem786fZSeuL9B44/5m7YO/iq0XtuaN+rTV4zL7Kz4TSDa/5LvRrHPx6F5bW896Lrbuu0fs7IR5rfuDHMi+G2T4t3ct4WxgrYeXInwm1MaCxz/Qc6zjRtQLOBNCLIANMs4pwP266Gen/WfZSOqLUW7pzM2p55uQpGhf1HJ7Y0u6T7TuVLsi9xAtf238m8AtrTv7nIXt5H0vw+yWON+CsP2954J3hp3zq9XX3L2D5k72W7P2fkB9b60bmb0tu09CHkjnIlrraNx791Srjb3qBJ0X/Hks/FtZpLeNfvsANq0vKDvmj3AfFj0MZrcIsx2JXkqc+37RE/EJVlb+anMEeEGY7ZmxQY27tm/KDcpkiPoZmEDAhu9EUX9TefbM1QxrHbHmLnwr0fQ0YJa4QRBvWXdtKW9wjFtzF/PjNSA2LcxY+J6ZbYtWjFPu1j2g5v+DkZnGP9y3OVtQUdu07hDSHUQjmKfm/1U/nOxc/mNbUGHbaGIE9+5W3rb6Tc3/Ed9b6x99l5Fio+Z3by+pfSuO+B7zW+o3FyPUJhl3T7wn4D8Wf63jtK4B7xBcLFrebqlNWuyauTFrFnMt/nu/e1jPlNHczsh/6ftbLWc8Z+fefpb4o2f9yBtK63w6gn+movU7k9/yfyva30nvrCPy2+N/KZ6hX1yC708NP/b81jXT9yckb89rjcP1/HGj7Jz/tXwtbsy3L+P7moYd+A+MjzR1EY+b3cc87Ce0533DBtRGBzRuBvfJwcoJj6NxSmN2X+bHsJXPwn8O8jCdG38vjq3z947jLfLPyN/Z/LNrl3W+1t9Y97ZV/l7qtbbHD6PZr7rqqqu2qk/kEX3w
+  </data>
+ </layer>
+ <layer name="edges_a" width="64" height="64">
+  <data encoding="base64" compression="zlib">
+   eJztmn1PwyAQxpnGly2b+17+r/tqGp1b1H1PuayXPDkplEKBFn7JZWbrCg933B2dSjUa6bjRdpt7EhnZatvknkRGSP9O1RsDd9rW6hoDte4FWoN71WJh273Wuga8F4hacyKtwaO67odGo0aoDj6pOnMggT1BrbS++Erte6DWXojANag1H2JPOGUscM0pEe4Jp9gPrHuv7SHifacgZl2UuufSc4fWxbnqZkL0k/a56mbGPiNB7XPUzYztC2jd5q6d8c2D7Psl9dO8D2x9kcx1S/A9wf5kpF/nnuNtoPZV97qBz8bqLrn/I1CbZKfCdZvumxOeFxtqWxuuX5pu1MvG2vBMtGTdNk38fGRITcNYcunm61KcteW8fHzp0u+jGcFz5lRr0RfjPjXKpl/WR1/4vG1aC2khfXhIXbbp3xreGwuuhTTfZ1Pol9BetE9/qO99kM9lbLER++zZ91txTN8PxRQjck1i9+Co81nbQZVV10xrEkM7584Xba+dHSLcdw6k3Nu5kf1vSbE9JaX2p6nIkb9LIef+Pmr7yjQ2k8P3rPszw9hIDt+T9lS6MZ/LXnnJ2k35XPbKpWkf+3+4+L2UdYz38MnyGZpNO8/Z9fuKXCOOYXwWmQL05Yfy0+rCdu7fq//nm9SkzF+5wPg9ifeHan/T9tvZe9TZTYepLmN8u7Sj5gu8/6PKXQf0dWhcf8PfK8Pn58D7xyKmZoL9fnFc1xcHmDuH1BN5jane9N2LODvm6QNpl7qPlrFd4w+pJ/KaPh/idTyf2PkbYx7zh2ns1QTjD4XnE3vsIfnRJ4c2Go1GTfwBvYlfIA==
+  </data>
+ </layer>
+ <layer name="edges_b" width="64" height="64">
+  <data encoding="base64" compression="zlib">
+   eJztzsEJADAIADEX0O6/bZ1CERK4/0UAAAAAAAAAAADAjOxqe2LY2x4AAAAAAADO+FgwACs=
+  </data>
+ </layer>
+ <layer name="rocks" width="64" height="64">
+  <data encoding="base64" compression="zlib">
+   eJzt2EsOhDAIgGHvf1c9w2xNQ5XODOX1fxtjbAxQyqLHAQAAAAAAAAAAgOxO7wAAYBNp3nWegZd3AE7GPe9QhzHHDjlLxryrnn9NXtfwzKjq/sFGx9k/E/Xs7I4rUw/8qzb3nKP2QWeZetIatain6sz5Jq+n/q5ap8is5s3sv6fwPdrMq96HVvXW1k17L2G5D/d/r8wkae2sl6P1tZYm7l9z8zxj0gx6e1+5P/K8d1vdF836t/i1Zyk6zT6trrGsR+ZaAwCw2wcVMz4t
+  </data>
+ </layer>
+ <layer name="canopy_a" width="64" height="64">
+  <data encoding="base64" compression="zlib">
+   eJzt1rEOwjAMhGE/MjAAAzAAD45RxRKFpKSEw83/SR4yNIOvp9ZM5+pz87n7HERnta3PyefscxGc1VS5v85KaQ6K90ApzWHE/ueM1P+cUfpfMkL/S+g//Y/e/41N+941PLuG3Pc27fton+8gcu5Puf3P1bv/v5Db/1y9+99b6b++9Z5I/S/917feE63/37Q053//3tcszTlq7qlartFzrqnlupacAQAAAAAAAAAAAAAAAAAAgHceCTsLeA==
+  </data>
+ </layer>
+ <layer name="canopy_b" width="64" height="64">
+  <data encoding="base64" compression="zlib">
+   eJzt1zEKgDAQBMA8OdhY5e8iWMgihIAgnDPNkksR9rq0xtf6lVvM85xm96vvAQAA8D5/L6hvj+xxruzsOCJz3lrdXWT3WVa0soOqxi2fOlfunv7YGQAAAAAAAAAAAN52AH5tGIM=
+  </data>
+ </layer>
+ <layer name="canopy_c" width="64" height="64">
+  <data encoding="base64" compression="zlib">
+   eJzt0LsKwzAMBVB9cpqhU6fmx0MhBVfEeUCHoJyzXCwbg24EXNt48Dx07nv/DZuvAAAAgKMeKfO8srz7XlbyXPKuHbzifAeVvOO3g14XlX07iCazKWU1nw6mJlvVd19zx50BAAAAAAAAAAD4vxm4jBa5
+  </data>
+ </layer>
+</map>

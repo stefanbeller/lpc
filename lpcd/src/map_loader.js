@@ -44,6 +44,9 @@ LPCD.CALL.build_map = function (mapdata) {
             if (layer.data[k] > 0) {
                 var tile = mapdata.lookup_tile(layer.data[k]);
                 if (tile !== false) {
+                    if (layer.properties === undefined) {
+                        layer.properties = {};
+                    }
                     var target = layer.properties.target === undefined ? "below" : layer.properties.target;
                     LPCD.CALL.add_tile(tile.sx, tile.sy, _x, _y, tile.uri, target);
                     if (layer.properties.is_walls !== undefined && layer.properties.is_walls > 0) {
@@ -115,6 +118,36 @@ LPCD.CALL.build_map = function (mapdata) {
  ******************************************************************************/
 
 
+// "on_warp" is called to request a new level be loaded and or change the
+// player's coordinates.  Arg "level" is optional.
+LPCD.EVENT.on_warp = function (x, y, level) {
+    clearTimeout(LPCD.TIME.walk);
+    LPCD.TIME.walk = -1;
+    var player = LPCD.DATA.player;
+    player.x = x;
+    player.y = y;
+    player.state = 0;
+    player.walking = undefined;
+
+    if (level !== undefined && LPCD.DATA.level.name !== level) {
+        LPCD.CALL.cue_loading();
+        LPCD.DATA.level = {
+            "name" : level,
+            "debug" : undefined,
+            "walls" : {},
+            "min_x" : undefined,
+            "max_x" : undefined,
+            "min_y" : undefined,
+            "max_y" : undefined
+        };
+        jQuery.getJSON("./levels/" + level, LPCD.EVENT.map_ready);
+    }
+    else {
+        LPCD.EVENT.on_redraw();
+    }
+}
+
+
 // "map_ready" is called when map data is available.  It is responsible for
 // fetching images;  when all needed images are loaded, the "make" event is
 // then called and mouse events are bound.
@@ -139,13 +172,16 @@ LPCD.EVENT.map_ready = function (mapdata, status) {
     for (var i=0; i<mapdata.tilesets.length; i+=1) {
         var tileset = mapdata.tilesets[i];
         var img_path = tileset.image;
-        if (img_path.indexOf("../sprites/") === 0) {
-            img_path = img_path.slice(1);
+        var slice_index = img_path.indexOf("../sprites/");
+        if (slice_index >= 0) {
+            img_path = img_path.slice(slice_index+1);
         }
-        pending += 1;
-        LPCD.DOM.res[tileset.image] = new Image();
-        LPCD.DOM.res[tileset.image].onload = image_loaded;
-        LPCD.DOM.res[tileset.image].src = img_path;
+        if (LPCD.DOM.res[tileset.image] === undefined) {
+            pending += 1;
+            LPCD.DOM.res[tileset.image] = new Image();
+            LPCD.DOM.res[tileset.image].onload = image_loaded;
+            LPCD.DOM.res[tileset.image].src = img_path;
+        }
 
         // add some extra functions to help level construction later on
         mapdata.tilesets[i]._w = Math.floor(tileset.imagewidth/32);
@@ -208,8 +244,6 @@ LPCD.EVENT.make = function () {
     
     // set the player stats:
     var player = LPCD.DATA.player;
-    player.x = 32;
-    player.y = 32;
     player.state = 0;
     player.dir = 2;
 
@@ -221,5 +255,6 @@ LPCD.EVENT.make = function () {
     player.ctx = player.el.getContext("2d");
 
     LPCD.DOM.doc.getElementById("text_overlay").style.display = "none";
+    LPCD.DATA.ready = true;
     LPCD.EVENT.on_redraw();
 };

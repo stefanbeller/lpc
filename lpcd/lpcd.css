@@ -2,6 +2,9 @@
     width: 800px;
     height: 600px;
     border: 1px solid black;
+    display: block;
+    margin: auto;
+    border-radius: 5px;
 }
 
 #layer_below, #layer_above {
