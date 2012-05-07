@@ -54,7 +54,6 @@ LPCD.EVENT.on_click = function (event) {
         
         var sx = (Math.round((event_x/16)) - Math.ceil(view_width/32))-1;
         var sy = (Math.round((event_y/16)+.5) - Math.ceil(view_height/32))-1;
-        console.info(sx);
         var x = Math.round(sx + player.x);
         var y = Math.round(sy + player.y);
         

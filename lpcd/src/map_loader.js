@@ -133,12 +133,13 @@ LPCD.EVENT.on_warp = function (x, y, level) {
         LPCD.CALL.cue_loading();
         LPCD.DATA.level = {
             "name" : level,
-            "debug" : undefined,
             "walls" : {},
-            "min_x" : undefined,
-            "max_x" : undefined,
-            "min_y" : undefined,
-            "max_y" : undefined
+            "warps" : {},
+            "dynamics" : false,
+            "min_x" : 0,
+            "max_x" : 0,
+            "min_y" : 0,
+            "max_y" : 0
         };
         jQuery.getJSON("./levels/" + level, LPCD.EVENT.map_ready);
     }
@@ -211,13 +212,18 @@ LPCD.EVENT.map_ready = function (mapdata, status) {
         }
         return false;
     }
-    LPCD.DATA.level = {
-        "walls" : {},
-        "min_x" : 0,
-        "min_y" : 0,
-        "max_x" : mapdata.width,
-        "max_y" : mapdata.height
-    };
+    LPCD.DATA.level.max_x = mapdata.width;
+    LPCD.DATA.level.max_y = mapdata.height;
+    
+    if (mapdata.properties !== undefined) {
+        if (mapdata.properties.dynamics !== undefined) {
+            LPCD.DATA.level.dynamics = mapdata.properties.dynamics;
+        }
+        if (mapdata.properties.spawn_point !== undefined) {
+            // FIXME do something with this
+        }
+    }
+
     LPCD.DOM.layers = {};
     var setup_layer = function (name) {
         var el = LPCD.DOM.doc.createElement("canvas");
@@ -256,5 +262,14 @@ LPCD.EVENT.make = function () {
 
     LPCD.DOM.doc.getElementById("text_overlay").style.display = "none";
     LPCD.DATA.ready = true;
+
+    if (LPCD.DATA.level.dynamics) {
+        var script = LPCD.DOM.doc.createElement("script");
+        script.type = "text/javascript";
+        script.src = LPCD.DATA.level.dynamics;
+        console.info("Loading dynamics script: " + script.src);
+        LPCD.DOM.doc.body.appendChild(script);
+    }
+
     LPCD.EVENT.on_redraw();
 };

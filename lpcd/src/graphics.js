@@ -36,7 +36,7 @@ LPCD.EVENT.on_redraw = function () {
     if (LPCD.DATA.ready) {
         var player = LPCD.DATA.player;
         player.ctx.clearRect(0, 0, 32, 48);
-        player.ctx.drawImage(player.sprite, player.state*32, player.dir*48, 32, 48, 0, 0, 32, 48);
+        player.ctx.drawImage(player.sprite, player.state*32, player.dir*48 + player.offset, 32, 48, 0, 0, 32, 48);
 
         var boards = ["below", "above"];
         for (var i=0; i<boards.length; i+=1) {

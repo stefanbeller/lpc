@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.0" orientation="orthogonal" width="32" height="32" tilewidth="32" tileheight="32">
+ <properties>
+  <property name="dynamics" value="./dynamics/start1.js"/>
+  <property name="spawn_point" value="32,32"/>
+ </properties>
  <tileset firstgid="1" name="dirt" tilewidth="32" tileheight="32">
   <image source="../sprites/dirt.png" width="96" height="192"/>
  </tileset>

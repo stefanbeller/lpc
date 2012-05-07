@@ -22,6 +22,8 @@ var LPCD = {
             "name" : "",
             "debug" : undefined,
             "walls" : {},
+            "warps" : {},
+            "dynamics" : false,
             "min_x" : undefined,
             "max_x" : undefined,
             "min_y" : undefined,
@@ -35,6 +37,7 @@ var LPCD = {
             "mouse_vector" : {"x":0, "y":0},
             "sprite" : undefined,
             "state" : undefined,
+            "offset" : 0,
             "walk_speed" : 40,
             "walk_dist" : .5,
             "walking" : undefined

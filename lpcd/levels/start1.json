@@ -201,7 +201,8 @@
  "orientation":"orthogonal",
  "properties":
     {
-
+     "dynamics":".\/dynamics\/start1.js",
+     "spawn_point":"32,32"
     },
  "tileheight":32,
  "tilesets":[
