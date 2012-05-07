@@ -72,14 +72,20 @@ var LPCD = {
 $(document).ready(function () {
     "use strict";
     var doc = LPCD.DOM.doc = $("#lpcd_iframe").contents()[0];
-    doc.head.innerHTML += '<link rel="stylesheet" type="text/css" href="lpcd.css" />';
-    doc.body.style.backgroundColor = "black";
-    doc.body.style.color = "white";
-    doc.body.style.textAlign = "center";
-    doc.body.innerHTML="<h1 id='text_overlay'>loading...</h1>";
 
-    LPCD.DATA.player.sprite = new Image();
-    LPCD.DATA.player.sprite.src = "./sprites/char_template.png";
-
-    jQuery.getJSON("./levels/start1.json", LPCD.EVENT.map_ready);
+    if (window.top === window) {
+        doc.head.innerHTML += '<link rel="stylesheet" type="text/css" href="lpcd.css" />';
+        doc.body.style.backgroundColor = "black";
+        doc.body.style.color = "white";
+        doc.body.style.textAlign = "center";
+        doc.body.innerHTML="<h1 id='text_overlay'>loading...</h1>";
+        
+        LPCD.DATA.player.sprite = new Image();
+        LPCD.DATA.player.sprite.src = "./sprites/char_template.png";
+        
+        jQuery.getJSON("./levels/start1.json", LPCD.EVENT.map_ready);
+    }
+    else {
+        window.document.body.innerHTML = "";
+    }
 });
