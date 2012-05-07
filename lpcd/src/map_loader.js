@@ -28,6 +28,28 @@ LPCD.CALL.add_tile = function (sx, sy, dx, dy, uri, layer) {
     canvas.ctx.drawImage(img, sx*32, sy*32, 32, 32, dx*32, dy*32, 32, 32);
 };
 
+// "add_warp" adds warp points into the level. "Destination" arg is optional.
+LPCD.CALL.add_warp = function (x1, y1, x2, y2, dx, dy, destination) {
+    "use strict";
+
+    var warps = LPCD.DATA.level.warps;
+    x1 = Math.round(x1);
+    x2 = Math.round(x2);
+    y1 = Math.round(y1);
+    y2 = Math.round(y2);
+    var _x1 = x1<x2 ? x1 : x2;
+    var _x2 = x1<x2 ? x2 : x1;
+    var _y1 = y1<y2 ? y1 : y2;
+    var _y2 = y1<y2 ? y2 : y1;
+    if (destination === undefined) {
+        destination = LPCD.DATA.LEVEL.name;
+    }
+    for (var _x = _x1 ; _x <= _x2; _x += 1) {
+        for (var _y = _y1 ; _y <= _y2; _y += 1) {
+            warps[String(_x) + "," + String(_y)] = [dx, dy, destination];
+        }
+    }
+};
 
 // "build_map" takes map data and creates game objects from it.
 // Must be called after image resources are ready.

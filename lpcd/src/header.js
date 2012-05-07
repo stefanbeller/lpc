@@ -60,6 +60,9 @@ var LPCD = {
         "set_wall" : undefined, // (x, y)
         "wall_check" : undefined, // (x, y) <-- use instead of get_wall!
         "add_tile" : undefined, // (sx, sy, dx, dy, uri, layer)
+        "add_warp" : undefined, // (x1, y1, x2, y2, [destination]);
+        "get_warp" : undefined, // (x, y)
+        "warp_check" : undefined, // (x, y) <-- use instead of get_warp!
         "cue_loading" : undefined, // ()
     },
     

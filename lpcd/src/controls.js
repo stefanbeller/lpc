@@ -29,6 +29,29 @@ LPCD.CALL.get_wall = function (x, y) {
 };
 
 
+// "warp_check" is used to trigger warp events.
+LPCD.CALL.warp_check = function (x, y) {
+    "use strict";
+
+    var i = Math.round(x);
+    var k = Math.round(y);
+    var warp = LPCD.CALL.get_warp(i, k) || LPCD.CALL.get_wall(i+1, k);
+    if (warp && LPCD.DATA.ready) {
+        LPCD.EVENT.on_warp(warp[0], warp[1], warp[2]);
+    }
+}
+
+
+// "get_warp" is used for finding warp pointsn.  Use warp_check instead.
+LPCD.CALL.get_warp = function (x, y) {
+    "use strict";
+
+    var raw = LPCD.DATA.level.warps[String(x)+","+String(y)];
+    return raw !== undefined ? raw : false;
+};
+
+
+
 
 
 /******************************************************************************
@@ -173,4 +196,5 @@ LPCD.EVENT.on_walk = function () {
     }
     
     LPCD.EVENT.on_redraw();
+    LPCD.CALL.warp_check(player.x, player.y);
 };
