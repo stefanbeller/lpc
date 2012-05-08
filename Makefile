@@ -43,6 +43,7 @@ help:
 	@echo "  changes    to make an overview of all changed/added/deprecated items"
 	@echo "  linkcheck  to check all external links for integrity"
 	@echo "  doctest    to run all doctests embedded in the documentation (if enabled)"
+	@echo "  gamelink   link together the LPC javascript assets"
 
 clean:
 	-rm -rf $(BUILDDIR)/*
