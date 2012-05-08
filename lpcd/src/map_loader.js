@@ -240,6 +240,8 @@ LPCD.EVENT.map_ready = function (mapdata, status) {
     }
     LPCD.DATA.level.max_x = mapdata.width;
     LPCD.DATA.level.max_y = mapdata.height;
+
+    LPCD.DATA.level.dynamics = "./dynamics/" + LPCD.DATA.level.name + ".js";
     
     if (mapdata.properties !== undefined) {
         if (mapdata.properties.dynamics !== undefined) {

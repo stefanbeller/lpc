@@ -116,6 +116,14 @@
    eJzt1+0OgjAMheFdON677gcJMcLo7Nk6+j6JISJCT8uHbqWU1+e1iZe/qI8ZZZk5Oz24Nru2GZnpQX8v9m28alq1B+XifWu7o9XOA+v3rOsj9MCzjy0emUbeC3tZr/+7n9+t21L/rPn/S3keqHgfZ+Xr30vm+Z/tV52jl6JG5b3QW+Ts3/tUUDxjrb/BZlLPP7oR977ImL9u/mfrI/VmdE2RsleK/1oryZy9ypj5KOvcd5mzV61n1dNlyAgAAAAAAAAAAAAAAIDnegMbkUhb
   </data>
  </layer>
+ <layer name="tall_objects" width="64" height="64">
+  <properties>
+   <property name="target" value="above"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJzt2bEJACAMBEBd2P1LsbCysggifzdBQj4QSGsAAPxg9NcVvJXefzrzZ2VADqDG3i87BgBwSr+R0vsHAAAAAACo4AdDGpkHgHsTiWIFNQ==
+  </data>
+ </layer>
  <layer name="trees_high_b" width="64" height="64">
   <properties>
    <property name="target" value="above"/>
