@@ -20,7 +20,7 @@ GAME_JS_FILES = lpcd/src/header.js lpcd/src/map_loader.js \
 GAME_JS_TARGET = lpcd/lpcd.js
 
 
-.PHONY: help clean html dirhtml singlehtml pickle json htmlhelp qthelp devhelp epub latex latexpdf text man changes linkcheck doctest gettext
+.PHONY: help clean html dirhtml singlehtml pickle json htmlhelp qthelp devhelp epub latex latexpdf text man changes linkcheck doctest gettext gamelink
 
 help:
 	@echo "Please use \`make <target>' where <target> is one of"
