@@ -14,7 +14,13 @@ ALLSPHINXOPTS   = -d $(BUILDDIR)/doctrees $(PAPEROPT_$(PAPER)) $(SPHINXOPTS) sou
 # the i18n builder cannot share the environment and doctrees with the others
 I18NSPHINXOPTS  = $(PAPEROPT_$(PAPER)) $(SPHINXOPTS) source
 
-.PHONY: help clean html dirhtml singlehtml pickle json htmlhelp qthelp devhelp epub latex latexpdf text man changes linkcheck doctest gettext
+GAME_JS_FILES = lpcd/src/header.js lpcd/src/map_loader.js \
+	lpcd/src/controls.js lpcd/src/actor_model.js \
+	lpcd/src/graphics.js
+GAME_JS_TARGET = lpcd/lpcd.js
+
+
+.PHONY: help clean html dirhtml singlehtml pickle json htmlhelp qthelp devhelp epub latex latexpdf text man changes linkcheck doctest gettext gamelink
 
 help:
 	@echo "Please use \`make <target>' where <target> is one of"
@@ -37,6 +43,7 @@ help:
 	@echo "  changes    to make an overview of all changed/added/deprecated items"
 	@echo "  linkcheck  to check all external links for integrity"
 	@echo "  doctest    to run all doctests embedded in the documentation (if enabled)"
+	@echo "  gamelink   link together the LPC javascript assets"
 
 clean:
 	-rm -rf $(BUILDDIR)/*
@@ -151,3 +158,7 @@ doctest:
 	$(SPHINXBUILD) -b doctest $(ALLSPHINXOPTS) $(BUILDDIR)/doctest
 	@echo "Testing of doctests in the sources finished, look at the " \
 	      "results in $(BUILDDIR)/doctest/output.txt."
+
+gamelink:
+	@echo "Linking together the LPC javascript..."
+	cat $(GAME_JS_FILES) > $(GAME_JS_TARGET)
