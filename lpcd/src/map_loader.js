@@ -78,7 +78,7 @@ LPCD.CALL.build_map = function (mapdata) {
                         LPCD.CALL.set_wall(_x*2+1,_y*2+1);
                         LPCD.CALL.set_wall(_x*2+1,_y*2);
                     }
-                    else if (tile.props !== undefined && tile.props.wall !== undefined) {
+                    else if (target === "below" && tile.props !== undefined && tile.props.wall !== undefined) {
                         // otherwise use the semantic value give to the wall
                         var points;
                         switch ( tile.props.wall ) {
@@ -146,8 +146,12 @@ LPCD.EVENT.on_warp = function (x, y, level) {
     clearTimeout(LPCD.TIME.walk);
     LPCD.TIME.walk = -1;
     var player = LPCD.DATA.player;
-    player.x = x;
-    player.y = y;
+    if (x !== undefined) {
+        player.x = x;
+    }
+    if (y !== undefined) {
+        player.y = y;
+    }
     player.state = 0;
     player.walking = undefined;
 
@@ -242,7 +246,15 @@ LPCD.EVENT.map_ready = function (mapdata, status) {
             LPCD.DATA.level.dynamics = mapdata.properties.dynamics;
         }
         if (mapdata.properties.spawn_point !== undefined) {
-            // FIXME do something with this
+            var parts = mapdata.properties.spawn_point.split(",");
+            if (parts.length === 2) {
+                if (LPCD.DATA.player.x === undefined) {
+                    LPCD.DATA.player.x = parseInt(parts[0], 10);
+                }
+                if (LPCD.DATA.player.y === undefined) {
+                    LPCD.DATA.player.y = parseInt(parts[1], 10);
+                }
+            }
         }
     }
 
