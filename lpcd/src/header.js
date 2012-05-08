@@ -32,7 +32,7 @@ var LPCD = {
         "player" : {
             "x" : undefined,
             "y" : undefined,
-            "dir" : undefined,
+            "dir" : 2,
             "el" : undefined,
             "mouse_vector" : {"x":0, "y":0},
             "sprite" : undefined,

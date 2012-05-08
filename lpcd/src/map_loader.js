@@ -273,7 +273,6 @@ LPCD.EVENT.make = function () {
     // set the player stats:
     var player = LPCD.DATA.player;
     player.state = 0;
-    player.dir = 2;
 
     player.el = LPCD.DOM.doc.createElement("canvas");
     player.el.id = "player";
