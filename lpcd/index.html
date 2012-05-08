@@ -1,0 +1,37 @@
+<!doctype html>
+<html><head>
+    <script src="http://code.jquery.com/jquery-1.7.2.min.js"
+            type="text/javascript"></script>
+    <script type="text/javascript" src="lpcd.js"></script>
+    <link rel="stylesheet" type="text/css" href="lpcd.css" />
+    <style type="text/css">
+    body { 
+        background-color: #222; 
+        color: #999; 
+        font-family: monospace;
+        font-size: 12pt;
+        text-align: center;
+    } 
+    </style>
+    <script type="text/javascript">
+$(document).ready(function () {
+    "use strict";
+    $("input[value='female']")[0].onchange = function () {
+        LPCD.DATA.player.offset = 0;
+        LPCD.EVENT.on_redraw();
+    };
+    $("input[value='male']")[0].onchange = function () {
+        LPCD.DATA.player.offset = 4*48;
+        LPCD.EVENT.on_redraw();
+    };
+});
+    </script>
+</head><body>
+    <iframe id="lpcd_iframe" scrolling="no" frameborder="0"></iframe>
+    <br/>
+    <form action="">
+      Character Sprite:<br/>
+      <input type="radio" name="gender" value="female" checked="checked" /> Female Template
+      <input type="radio" name="gender" value="male" /> Male Template
+    </form>
+</body></html>
