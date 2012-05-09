@@ -4,7 +4,7 @@
 
 /******************************************************************************
 
-   Constructors related to the actor model.
+  Actor constructor functions.
 
  ******************************************************************************/
 
@@ -14,13 +14,20 @@ LPCD.ACTORS.AbstractKind = function (binding) {
     "use strict";
 
     var _binding = binding === "player" ? "player" : "level";
-    return {
+    var created = {
         "on_player_enter" : function (self, player) {
         },
         "on_delete" : function (self) {
         },
-        "_binding" : _binding
+        "_rebind" : function (new_binding) {
+            _binding = new_binding === "player" ? "player" : "level";
+            LPCD.CALL.unlink_actor(created);
+            LPCD.CALL.link_actor(created);
+        }
     };
+    created.__defineGetter__("_binding", function () { return _binding; });
+
+    return created;
 };
 
 
@@ -37,7 +44,7 @@ LPCD.ACTORS.PersistentKind = function () {
 
 
 // Protoypal object which visible actors should inherit from.
-LPCD.ACTORS.VisibleKind = function (binding, img) {
+LPCD.ACTORS.VisibleKind = function (binding, x, y, img) {
     "use strict";
 
     var parent = new LPCD.ACTORS.AbstractKind(binding);
@@ -63,13 +70,14 @@ LPCD.ACTORS.VisibleKind = function (binding, img) {
     };
 
     var _canvas = LPCD.DOM.doc.createElement("canvas");
+    _canvas.setAttribute("class", "actor");
     _canvas.width = 0;
     _canvas.height = 0;
     var _ctx = _canvas.getContext("2d");
-    created.__defineGetter__("width", function() { return _canvas._width; });
-    created.__defineSetter__("width", function(w) { _canvas._width = w; repaint(); });
-    created.__defineGetter__("height", function() { return _canvas._height; });
-    created.__defineSetter__("height", function(h) { _canvas._height = h; repaint(); });
+    created.__defineGetter__("width", function() { return _canvas.width; });
+    created.__defineSetter__("width", function(w) { _canvas.width = w; repaint(); });
+    created.__defineGetter__("height", function() { return _canvas.height; });
+    created.__defineSetter__("height", function(h) { _canvas.height = h; repaint(); });
     var _src = false;
     created.__defineGetter__("img", function() { return _src; });
     created.__defineSetter__("img", function(new_src) {
@@ -95,7 +103,36 @@ LPCD.ACTORS.VisibleKind = function (binding, img) {
             _img.src = new_src;
         }
     });
+
+    var _x = x;
+    var _y = y;
+    var _z = 0;
+    created.__defineGetter__("x", function () { return _x; });
+    created.__defineSetter__("x", function (newx) { 
+        _x = newx;
+        LPCD.CALL.repaint();
+    });
+    created.__defineGetter__("y", function () { return _y; });
+    created.__defineSetter__("y", function (newy) {
+        _y = newy;
+        LPCD.CALL.repaint();
+    });
+    created.__defineGetter__("z", function () { return _z; });
+    created.__defineSetter__("z", function (newz) { 
+        _z = newz;
+        LPCD.CALL.repaint();
+    });
+
+    created._reorient = function () {
+        _canvas.style.marginLeft = String((_x-LPCD.DATA.player.x)/2) + "em";
+        _canvas.style.marginTop = String((_y-LPCD.DATA.player.y)/2) + "em";
+        _canvas.style.zIndex = String(20 + _z);
+    };
+
     created.img = img;
+    created._show = function () {
+        LPCD.DOM.doc.body.appendChild(_canvas);
+    };
 
     return created;
 };
@@ -105,17 +142,23 @@ LPCD.ACTORS.VisibleKind = function (binding, img) {
 LPCD.ACTORS.ObjectKind = function (x, y, img) {
     "use strict";
 
-    var parent = new LPCD.ACTORS.VisibleKind("level", img);
+    var parent = new LPCD.ACTORS.VisibleKind("level", x, y, img);
     var created = Object.create(parent);
 
-    var _x = x;
-    var _y = y;
+    created._blocking = function (x, y) {
+        var w = created.width/16;
+        var h = created.height/16;
+        if (x >= created.x && x <= created.x + w && y >= created.y && y <= created.y + h) {
+            return created;
+        }
+    };
 
-    created.__defineGetter__("x", function () { return _x; });
-    created.__defineSetter__("x", function (newx) { _x = newx; LPCD.CALL.repaint(); });
-    created.__defineGetter__("y", function () { return _y; });
-    created.__defineSetter__("y", function (newy) { _y = newx; LPCD.CALL.repaint(); });
-    created.y = y;
+    created.on_bumped = function (self, bumped_by) {
+        alert("hi there!");
+        return true;
+    };
+
+    return created;
 };
 
 
@@ -133,12 +176,14 @@ LPCD.CALL.link_actor = function (actor, visible) {
     "use strict";
 
     var registry = LPCD.ACTORS.registry;
-    visible = visible !== undefined ? !!visible, false;
+    visible = visible !== undefined ? !!visible : false;
     if (actor._binding !== undefined) {
         if (registry[actor._binding].indexOf(actor) === -1) {
             registry[actor._binding].push(actor);
             if (visible) {
                 registry.visible.push(actor);
+                actor._show();
+                actor._reorient();
             }
         }
     }
@@ -150,7 +195,7 @@ LPCD.CALL.link_actor = function (actor, visible) {
 
 // "unlink_actor" removes an actor object from the actor registry.
 LPCD.CALL.unlink_actor = function (actor) {
-    "use strict":
+    "use strict";
 
     var registry = LPCD.ACTORS.registry;
     if (actor._binding !== undefined) {
@@ -165,6 +210,17 @@ LPCD.CALL.unlink_actor = function (actor) {
     }
     else {
         throw ("Attempted to unlink non-actor!");
+    }
+};
+
+
+// "move_actors" Calls the "_reorient" method on all visible actors.
+LPCD.CALL.move_actors = function () {
+    "use strict";
+
+    var visible = LPCD.ACTORS.registry.visible;
+    for (var i=0; i<visible.length; i+=1) {
+        visible[i]._reorient();
     }
 };
 

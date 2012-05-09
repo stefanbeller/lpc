@@ -18,10 +18,10 @@ LPCD.API.add_warp = LPCD.CALL.add_warp;
 
 /*** actor creation functions ***/
 
-LPCD.API.create_object = function (img, x, y) {
+LPCD.API.create_object = function (x, y, img) {
     "using strict";
 
-    var actor = new LPCD.ACTORS.ObjectKind(img, x, y);
+    var actor = LPCD.ACTORS.ObjectKind (x, y, img);
     LPCD.CALL.link_actor(actor, true);
     return actor;
 };

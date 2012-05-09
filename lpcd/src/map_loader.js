@@ -295,6 +295,11 @@ LPCD.EVENT.make = function () {
     LPCD.DOM.doc.body.appendChild(player.el);
     player.ctx = player.el.getContext("2d");
 
+    var visible = LPCD.ACTORS.registry.visible;
+    for (var i=0; i<visible.length; i+=1) {
+        visible[i]._show();
+    }
+
     LPCD.DOM.doc.getElementById("text_overlay").style.display = "none";
     LPCD.DATA.ready = true;
 

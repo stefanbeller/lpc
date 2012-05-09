@@ -18,7 +18,7 @@ var LPCD = {
             "player" : [],
             "level" : [],
             "visible" : [],
-        }
+        },
         "AbstractKind" : undefined,
         "PersistentKind" : undefined,
         "VisibleKind" : undefined,
@@ -28,9 +28,9 @@ var LPCD = {
     // functions to used by script dynamics
     "API" : {
         // "undefined" parmas on add_warp will use the player's x/y vaule.
-        "add_warp" : undefined // (x1, y1, x2, y2, dx, dy, [level]),
+        "add_warp" : undefined, // (x1, y1, x2, y2, dx, dy, [level]),
 
-        "create_object" : undefined // (x, y, img)
+        "create_object" : undefined, // (x, y, img)
     },
 
     "DATA" : {
@@ -57,7 +57,8 @@ var LPCD = {
             "offset" : 0,
             "walk_speed" : 40,
             "walk_dist" : .5,
-            "walking" : undefined
+            "walking" : undefined,
+            "bumped" : [],
         }
     },
 
@@ -75,6 +76,7 @@ var LPCD = {
         "repaint" : undefined, // ()
         "link_actor" : undefined, // (actor, [visible])
         "unlink_actor" : undefined, // (actor)
+        "move_actors" : undefined, // ()
         "build_map" : undefined, // (mapdata)
         "get_wall" : undefined, // (x, y)
         "set_wall" : undefined, // (x, y)

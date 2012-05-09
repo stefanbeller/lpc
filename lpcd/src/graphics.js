@@ -45,6 +45,8 @@ LPCD.EVENT.on_redraw = function () {
         player.ctx.clearRect(0, 0, 32, 48);
         player.ctx.drawImage(player.sprite, player.state*32, player.dir*48 + player.offset, 32, 48, 0, 0, 32, 48);
 
+        LPCD.CALL.move_actors();
+
         var boards = ["below", "above"];
         for (var i=0; i<boards.length; i+=1) {
             var board = LPCD.DOM.doc.getElementById("layer_"+boards[i]);

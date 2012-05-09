@@ -24,6 +24,17 @@ LPCD.CALL.wall_check = function (x, y) {
 LPCD.CALL.get_wall = function (x, y) {
     "use strict";
 
+    var visible = LPCD.ACTORS.registry.visible;
+    var blocked_by = false;
+    for (var i=0; i<visible.length && !blocked_by; i+=1) {
+        if (visible[i]._blocking !== undefined) {
+            blocked_by = visible[i]._blocking(x, y);
+        }
+    }
+    if (!!blocked_by) {
+        LPCD.DATA.player.bumped.push(blocked_by);
+        return true;
+    }
     var raw = LPCD.DATA.level.walls[String(x)+","+String(y)];
     return raw !== undefined ? true : false;    
 };
@@ -176,6 +187,17 @@ LPCD.EVENT.on_walk = function () {
 
         player.x = next_x;
         player.y = next_y;
+    }
+
+    if (player.bumped.length > 0) {
+        var bumped = player.bumped[0];
+        player.bumped = [];
+        if (bumped.on_bumped !== undefined) {
+            var acted = bumped.on_bumped(bumped, player);
+            if (acted) {
+                stop = true;
+            }
+        }
     }
 
     if (stop) {
