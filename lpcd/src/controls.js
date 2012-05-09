@@ -195,6 +195,6 @@ LPCD.EVENT.on_walk = function () {
         LPCD.TIME.walk = setTimeout(LPCD.EVENT.on_walk, player.walk_speed);
     }
     
-    LPCD.EVENT.on_redraw();
+    LPCD.CALL.repaint();
     LPCD.CALL.warp_check(player.x, player.y);
 };

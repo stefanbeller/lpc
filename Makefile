@@ -14,9 +14,9 @@ ALLSPHINXOPTS   = -d $(BUILDDIR)/doctrees $(PAPEROPT_$(PAPER)) $(SPHINXOPTS) sou
 # the i18n builder cannot share the environment and doctrees with the others
 I18NSPHINXOPTS  = $(PAPEROPT_$(PAPER)) $(SPHINXOPTS) source
 
-GAME_JS_FILES = lpcd/src/header.js lpcd/src/map_loader.js \
+GAME_JS_FILES = lpcd/src/feature_shiv.js lpcd/src/header.js lpcd/src/map_loader.js \
 	lpcd/src/controls.js lpcd/src/actor_model.js \
-	lpcd/src/graphics.js
+	lpcd/src/graphics.js lpcd/src/api.js
 GAME_JS_TARGET = lpcd/lpcd.js
 
 

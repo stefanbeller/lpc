@@ -21,6 +21,12 @@ LPCD.CALL.cue_loading = function () {
 };
 
 
+// "repaint" is used to intelligently schedule a redraw event.
+LPCD.CALL.repaint = function () {
+    RequestAnimationFrame(LPCD.EVENT.on_redraw);
+};
+
+
 
 
 /******************************************************************************
@@ -31,6 +37,7 @@ LPCD.CALL.cue_loading = function () {
 
 
 // "on_redraw" moves sprites around when the player's coordinates change.
+// Use LPCD.CALL.repaint to schedule this event.
 LPCD.EVENT.on_redraw = function () {
     "use strict";
     if (LPCD.DATA.ready) {

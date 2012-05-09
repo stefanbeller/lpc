@@ -14,6 +14,14 @@ var LPCD = {
     },
 
     "ACTORS" : {
+        "AbstractKind" : undefined,
+        "PersistentKind" : undefined,
+        "VisibleKind" : undefined,
+        "ObjectKind" : undefined
+    },
+
+    "API" : {
+        // functions to used by script dynamics
     },
 
     "DATA" : {
@@ -55,6 +63,7 @@ var LPCD = {
           really) assume that the grid is of 32px squares!
          */
 
+        "repaint" : undefined, // ()
         "build_map" : undefined, // (mapdata)
         "get_wall" : undefined, // (x, y)
         "set_wall" : undefined, // (x, y)
@@ -80,6 +89,7 @@ var LPCD = {
 // low-level initialization event...
 $(document).ready(function () {
     "use strict";
+    LPCD.DOM.frame = $("#lpcd_iframe")[0].contentWindow;
     var doc = LPCD.DOM.doc = $("#lpcd_iframe").contents()[0];
 
     if (window.top === window) {
