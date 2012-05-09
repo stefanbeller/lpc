@@ -2,9 +2,9 @@
 
 // exits to mountain path
 // upper entrance
-window.parent.LPCD.CALL.add_warp(81, 29, 85, 29, 21, 5, "mountain_path.json");
+window.parent.LPCD.CALL.add_warp(80, 29, 85, 29, 21, 6, "mountain_path.json");
 // lower entrance
-window.parent.LPCD.CALL.add_warp(12, 127, 16, 127, 35, 65, "mountain_path.json");
+window.parent.LPCD.CALL.add_warp(12, 127, 16, 127, 35, 66, "mountain_path.json");
 
 // warps within level
 window.parent.LPCD.CALL.add_warp(9, 13, 9, 14, 98, 18, "underground_a.json");
