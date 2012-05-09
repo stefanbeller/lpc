@@ -14,14 +14,21 @@ var LPCD = {
     },
 
     "ACTORS" : {
+        "registry" : {
+            "player" : [],
+            "level" : [],
+            "visible" : [],
+        }
         "AbstractKind" : undefined,
         "PersistentKind" : undefined,
         "VisibleKind" : undefined,
         "ObjectKind" : undefined
     },
 
+    // functions to used by script dynamics
     "API" : {
-        // functions to used by script dynamics
+        // "undefined" parmas on add_warp will use the player's x/y vaule.
+        "add_warp" : undefined // (x1, y1, x2, y2, dx, dy, [level])
     },
 
     "DATA" : {
@@ -64,6 +71,8 @@ var LPCD = {
          */
 
         "repaint" : undefined, // ()
+        "link_actor" : undefined, // (actor, [visible])
+        "unlink_actor" : undefined, // (actor)
         "build_map" : undefined, // (mapdata)
         "get_wall" : undefined, // (x, y)
         "set_wall" : undefined, // (x, y)

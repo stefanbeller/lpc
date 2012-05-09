@@ -103,6 +103,8 @@ LPCD.ACTORS.VisibleKind = function (binding, img) {
 
 // Actor for non-animated objects.
 LPCD.ACTORS.ObjectKind = function (img, x, y) {
+    "use strict";
+
     var parent = new LPCD.ACTORS.VisibleKind("level", img);
     var created = Object.create(parent);
 
@@ -124,6 +126,47 @@ LPCD.ACTORS.ObjectKind = function (img, x, y) {
    Functions related to the actor model.
 
  ******************************************************************************/
+
+
+// "link_actor" adds an actor object into the actor registry.
+LPCD.CALL.link_actor = function (actor, visible) {
+    "use strict";
+
+    var registry = LPCD.ACTORS.registry;
+    visible = visible !== undefined ? !!visible, false;
+    if (actor._binding !== undefined) {
+        if (registry[actor._binding].indexOf(actor) === -1) {
+            registry[actor._binding].push(actor);
+            if (visible) {
+                registry.visible.push(actor);
+            }
+        }
+    }
+    else {
+        throw ("Attempted to link non-actor!");
+    }
+};
+
+
+// "unlink_actor" removes an actor object from the actor registry.
+LPCD.CALL.unlink_actor = function (actor) {
+    "use strict":
+
+    var registry = LPCD.ACTORS.registry;
+    if (actor._binding !== undefined) {
+        var regindex = registry[actor._binding].indexOf(actor);
+        var visindex = registry.visible.indexOf(actor);
+        if (regindex !== -1) {
+            registry[actor._binding].splice(regindex, 1);
+        }
+        if (visindex !== -1) {
+            registry.visible.splice(visindex, 1);
+        }
+    }
+    else {
+        throw ("Attempted to unlink non-actor!");
+    }
+};
 
 
 
