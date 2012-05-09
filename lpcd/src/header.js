@@ -28,7 +28,9 @@ var LPCD = {
     // functions to used by script dynamics
     "API" : {
         // "undefined" parmas on add_warp will use the player's x/y vaule.
-        "add_warp" : undefined // (x1, y1, x2, y2, dx, dy, [level])
+        "add_warp" : undefined // (x1, y1, x2, y2, dx, dy, [level]),
+
+        "create_object" : undefined // (x, y, img)
     },
 
     "DATA" : {

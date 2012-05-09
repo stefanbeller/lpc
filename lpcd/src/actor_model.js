@@ -102,7 +102,7 @@ LPCD.ACTORS.VisibleKind = function (binding, img) {
 
 
 // Actor for non-animated objects.
-LPCD.ACTORS.ObjectKind = function (img, x, y) {
+LPCD.ACTORS.ObjectKind = function (x, y, img) {
     "use strict";
 
     var parent = new LPCD.ACTORS.VisibleKind("level", img);
