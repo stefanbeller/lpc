@@ -16,7 +16,7 @@ LPCD.CALL.cue_loading = function () {
     doc.body.style.backgroundColor = "black";
     doc.body.style.color = "white";
     doc.body.style.textAlign = "center";
-    doc.body.innerHTML="<h1 id='text_overlay'>loading...</h1>";
+    doc.body.innerHTML="<div id='backdrop'><h1 id='text_overlay'>loading...</h1></div>";
     LPCD.DATA.ready = false;
 };
 
