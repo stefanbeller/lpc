@@ -50,20 +50,25 @@ LPCD.ACTORS.VisibleKind = function (binding, x, y, img) {
     var parent = new LPCD.ACTORS.AbstractKind(binding);
     var created = Object.create(parent);
    
+    var _sx = 0;
+    var _sy = 0;
+    var cropped = false;
     var repaint = function (self) {
         console.info("object repaint called");
         if (!!_src) {
             console.info("object repaint happened");
             var _img = LPCD.DOM.res[_src];
             _ctx.clearRect(0, 0, _canvas.width, _canvas.height);
-            _ctx.drawImage(_img, 0, 0, _canvas.width, _canvas.height, 0, 0, _canvas.width, _canvas.height);
+            _ctx.drawImage(_img, _sx, _sy, _canvas.width, _canvas.height, 0, 0, _canvas.width, _canvas.height);
         }
     };
 
     var set_img = function (new_src) {
         var _img = LPCD.DOM.res[new_src];
-        _canvas.width = _img.width;
-        _canvas.height = _img.height;
+        if (!cropped) {
+            _canvas.width = _img.width;
+            _canvas.height = _img.height;
+        }
         _src = new_src;
         console.info("set img:", new_src, _img.width, _img.height);
         repaint();
@@ -126,12 +131,21 @@ LPCD.ACTORS.VisibleKind = function (binding, x, y, img) {
     created._reorient = function () {
         _canvas.style.marginLeft = String((_x-LPCD.DATA.player.x)/2) + "em";
         _canvas.style.marginTop = String((_y-LPCD.DATA.player.y)/2) + "em";
-        _canvas.style.zIndex = String(20 + _z);
+        _canvas.style.zIndex = String(19 + _z);
     };
 
     created.img = img;
     created._show = function () {
         LPCD.DOM.doc.body.appendChild(_canvas);
+    };
+
+    created._crop = function (sx, sy, sw, sh) {
+        cropped = true;
+        _sx = sx;
+        _sy = sy;
+        _canvas.width = sw;
+        _canvas.height = sh;
+        repaint();
     };
 
     return created;
@@ -148,7 +162,7 @@ LPCD.ACTORS.ObjectKind = function (x, y, img) {
     created._blocking = function (x, y) {
         var w = created.width/16;
         var h = created.height/16;
-        if (x >= created.x && x <= created.x + w && y >= created.y && y <= created.y + h) {
+        if (x >= created.x && x < created.x + w && y >= created.y && y < created.y + h) {
             return created;
         }
     };

@@ -192,12 +192,16 @@ LPCD.EVENT.on_walk = function () {
     if (player.bumped.length > 0) {
         var bumped = player.bumped[0];
         player.bumped = [];
-        if (bumped.on_bumped !== undefined) {
+        if (bumped.on_bumped !== undefined && bumped !== player.ignore) {
+            player.ignore = bumped;
             var acted = bumped.on_bumped(bumped, player);
             if (acted) {
                 stop = true;
             }
         }
+    }
+    else {
+        player.ignore = undefined;
     }
 
     if (stop) {

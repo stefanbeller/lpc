@@ -27,9 +27,14 @@ var LPCD = {
 
     // functions to used by script dynamics
     "API" : {
+        "global" : {}, // handy place to store persistant game data
+        "store_default" : undefined, // (key, value)
+        "store" : undefined, // (key, value)
+        "fetch" : undefined, // (key, value)
+
         // "undefined" parmas on add_warp will use the player's x/y vaule.
         "add_warp" : undefined, // (x1, y1, x2, y2, dx, dy, [level]),
-
+        "distance" : undefined, // (actor1, actor2)
         "create_object" : undefined, // (x, y, img)
     },
 
@@ -59,6 +64,7 @@ var LPCD = {
             "walk_dist" : .5,
             "walking" : undefined,
             "bumped" : [],
+            "ignore" : undefined,
         }
     },
 

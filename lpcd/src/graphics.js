@@ -18,6 +18,11 @@ LPCD.CALL.cue_loading = function () {
     doc.body.style.textAlign = "center";
     doc.body.innerHTML="<div id='backdrop'><h1 id='text_overlay'>loading...</h1></div>";
     LPCD.DATA.ready = false;
+
+    var level_actors = LPCD.ACTORS.registry.level;
+    for (var i=0; i<level_actors.length; i+=1) {
+        LPCD.CALL.unlink_actor(level_actors[i]);
+    }
 };
 
 
