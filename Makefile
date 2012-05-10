@@ -20,7 +20,7 @@ GAME_JS_FILES = $(GAME_JS_DIR)/feature_shiv.js $(GAME_JS_DIR)/header.js \
 GAME_JS_TARGET = $(GAME_JS_DIR)/lpcd.js
 
 
-.PHONY: help clean html gamelink
+.PHONY: help clean html
 
 html: $(GAME_JS_TARGET)
 	$(SPHINXBUILD) -b html $(ALLSPHINXOPTS) $(BUILDDIR)
