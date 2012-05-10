@@ -14,6 +14,9 @@ Contents:
    styleguide
    assets
 
+And let's not forget this gem:
+
+* `Interactive Demo <demo.html>`_
 
 Indices and tables
 ==================
