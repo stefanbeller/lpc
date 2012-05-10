@@ -263,7 +263,7 @@ LPCD.ACTORS.AnimateKind = function (x, y, img) {
                 if (next_x !== self.x) {
                     if (next_x < self.x) { check = Math.floor; other = Math.ceil; }
                     else { check = Math.ceil; other = Math.floor; }
-                    if (LPCD.CALL.wall_check(check(next_x), next_y, created) > 0) {
+                    if (LPCD.CALL.wall_check(check(next_x), next_y, self) > 0) {
                         next_x = other(next_x);
                         if (delta(next_y, self.y) <= .05) { stop = true; }
                     }
@@ -277,7 +277,7 @@ LPCD.ACTORS.AnimateKind = function (x, y, img) {
                         check = Math.ceil;
                         other = Math.floor;
                     }
-                    if (LPCD.CALL.wall_check(next_x, check(next_y), created) > 0) {
+                    if (LPCD.CALL.wall_check(next_x, check(next_y), self) > 0) {
                         next_y = other(next_y);
                         if (delta(next_x, self.x) <= .05) { stop = true; }
                     }
@@ -285,7 +285,7 @@ LPCD.ACTORS.AnimateKind = function (x, y, img) {
                 if (next_x === self.x && next_y === self.y) { stop = true; }
             }
 
-            if (LPCD.CALL.wall_check(next_x, next_y, created)) {
+            if (LPCD.CALL.wall_check(next_x, next_y, self)) {
                 // hit a wall
                 self.x = Math.round(self.x);
                 self.y = Math.round(self.y);
@@ -314,14 +314,14 @@ LPCD.ACTORS.AnimateKind = function (x, y, img) {
             self.y = next_y;
         }
 
-        if (created._bumped.length > 0) {
+        if (self._bumped.length > 0) {
             // TODO : add an on_stopped event, to compliment on_bumped.
-            var bumped = created._bumped[0];
-            created._bumped = [];
+            var bumped = self._bumped[0];
+            self._bumped = [];
             if (bumped.on_bumped !== undefined && bumped !== _ignore) {
                 _ignore = bumped;
                 // call the "on_bumped" method of the other actor.
-                var acted = bumped.on_bumped(bumped, created);
+                var acted = bumped.on_bumped(bumped, self);
                 if (acted) { 
                     stopped_by = bumped;
                     stop = true;
@@ -341,7 +341,7 @@ LPCD.ACTORS.AnimateKind = function (x, y, img) {
         }
         else {
             _steps += 1;
-            setTimeout(function() {_movecycle(self);}, _move_speed);
+            setTimeout(function() {_movecycle(self);}, self._move_speed);
         }
 
         LPCD.CALL.repaint();
