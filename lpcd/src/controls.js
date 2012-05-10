@@ -11,28 +11,43 @@
 
 
 // "wall_check" is used for intelligent collision detection.
-LPCD.CALL.wall_check = function (x, y) {
+LPCD.CALL.wall_check = function (x, y, actor) {
     "use strict";
 
     var i = Math.round(x);
     var k = Math.round(y);
-    return LPCD.CALL.get_wall(i, k) || LPCD.CALL.get_wall(i+1, k);
+    return LPCD.CALL.get_wall(i, k, actor) || LPCD.CALL.get_wall(i+1, k, actor);
 }
 
 
 // "get_wall" is used for collision detection.  Use wall_check instead.
-LPCD.CALL.get_wall = function (x, y) {
+LPCD.CALL.get_wall = function (x, y, actor) {
     "use strict";
-
     var visible = LPCD.ACTORS.registry.visible;
     var blocked_by = false;
-    for (var i=0; i<visible.length && !blocked_by; i+=1) {
+    for (var i=0; i<visible.length; i+=1) {
+        if (actor !== undefined && visible[i]._identity == actor._identity) { continue; }
         if (visible[i]._blocking !== undefined) {
-            blocked_by = visible[i]._blocking(visible[0], x, y);
+            blocked_by = visible[i]._blocking(visible[i], x, y);
+            if (blocked_by) {
+                break;
+            }
+        }
+    }
+    if (actor !== undefined) {
+        // HACK so that the player can block npcs
+        var player = LPCD.DATA.player;
+        if (x >= player.x && x < player.x+2 && y >= player.y) {
+            blocked_by = player;
         }
     }
     if (!!blocked_by) {
-        LPCD.DATA.player.bumped.push(blocked_by);
+        if (actor === undefined) {
+            LPCD.DATA.player.bumped.push(blocked_by);
+        }
+        else {
+            actor._bumped.push(blocked_by);
+        }
         return true;
     }
     var raw = LPCD.DATA.level.walls[String(x)+","+String(y)];

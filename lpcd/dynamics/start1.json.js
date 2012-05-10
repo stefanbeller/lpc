@@ -72,9 +72,25 @@ batmo.on_timeout = function () {
         }
         break;
     }
-    setTimeout(batmo.on_timeout, 80);
+    if (!batmo._deleted) {
+        setTimeout(batmo.on_timeout, 80);
+    }
 };
 batmo.on_timeout();
 
 
-API.thisisatest = batmo;
+var lady = API.create_human(80, 70, "sprites/char_template.png");
+lady._move_speed = 60;
+var pace = 1;
+lady.on_timeout = function () {
+    lady._move_to(lady.x + pace*10, lady.y);
+    pace *= -1;
+    if (!lady._deleted) {
+        setTimeout(lady.on_timeout, 5000);
+    }
+};
+lady.on_timeout();
+lady.on_bumped = function (self, bumped_by) {
+    alert("Goddammit Javascript...");
+    return true;
+};

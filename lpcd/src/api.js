@@ -70,3 +70,12 @@ LPCD.API.create_critter = function (x, y, img, w, h, steps, directional, rate) {
     LPCD.CALL.link_actor(actor, true);
     return actor;
 };
+
+
+LPCD.API.create_human = function (x, y, img) {
+    "use strict";
+    
+    var actor = LPCD.ACTORS.HumonKind (x, y, img);
+    LPCD.CALL.link_actor(actor, true);
+    return actor;
+};
