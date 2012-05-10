@@ -1,3 +1,6 @@
+Liberated Pixel Cup styleguide
+==============================
+
 Preamble?  Rationale?
 ---------------------
 

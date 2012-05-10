@@ -12,6 +12,7 @@ Contents:
    :maxdepth: 2
 
    styleguide
+   assets
 
 
 Indices and tables
