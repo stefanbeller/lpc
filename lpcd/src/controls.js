@@ -28,7 +28,7 @@ LPCD.CALL.get_wall = function (x, y) {
     var blocked_by = false;
     for (var i=0; i<visible.length && !blocked_by; i+=1) {
         if (visible[i]._blocking !== undefined) {
-            blocked_by = visible[i]._blocking(x, y);
+            blocked_by = visible[i]._blocking(visible[0], x, y);
         }
     }
     if (!!blocked_by) {

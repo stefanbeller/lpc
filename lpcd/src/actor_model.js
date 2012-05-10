@@ -54,9 +54,7 @@ LPCD.ACTORS.VisibleKind = function (binding, x, y, img) {
     var _sy = 0;
     var cropped = false;
     var repaint = function (self) {
-        console.info("object repaint called");
         if (!!_src) {
-            console.info("object repaint happened");
             var _img = LPCD.DOM.res[_src];
             _ctx.clearRect(0, 0, _canvas.width, _canvas.height);
             _ctx.drawImage(_img, _sx, _sy, _canvas.width, _canvas.height, 0, 0, _canvas.width, _canvas.height);
@@ -70,7 +68,6 @@ LPCD.ACTORS.VisibleKind = function (binding, x, y, img) {
             _canvas.height = _img.height;
         }
         _src = new_src;
-        console.info("set img:", new_src, _img.width, _img.height);
         repaint();
     };
 
@@ -159,18 +156,56 @@ LPCD.ACTORS.ObjectKind = function (x, y, img) {
     var parent = new LPCD.ACTORS.VisibleKind("level", x, y, img);
     var created = Object.create(parent);
 
-    created._blocking = function (x, y) {
-        var w = created.width/16;
-        var h = created.height/16;
-        if (x >= created.x && x < created.x + w && y >= created.y && y < created.y + h) {
-            return created;
+    created._blocking = function (self, x, y) {
+        var w = self.width/16;
+        var h = self.height/16;
+        if (x >= self.x && x < self.x + w && y >= self.y && y < self.y + h) {
+            return self;
         }
     };
 
     created.on_bumped = function (self, bumped_by) {
-        alert("hi there!");
+        alert("Hi there!");
         return true;
     };
+
+    return created;
+};
+
+
+// Actor for simple animated objects with directional facings.
+LPCD.ACTORS.CritterKind = function (x, y, img, w, h, steps, directional, rate) {
+    "use strict";
+    
+    var parent = new LPCD.ACTORS.ObjectKind(x, y, img);
+    var created = Object.create(parent);
+    var _dir = 2;
+    var _step = 0;
+    created._crop(0, 0, w, h);
+    if (directional) {
+        created.__defineGetter__("dir", function () { return _dir; });
+        created.__defineSetter__("dir", function (new_dir) {
+            if (new_dir >= 4) {
+                new_dir = new_dir % 4;
+            }
+            _dir = new_dir;
+            created._reorient(); 
+        });
+    }
+    created._reorient = function () {
+        created._crop(w*_step, h*_dir, w, h);
+        parent._reorient();
+    };
+    // animation loop
+    (function animate () {
+        _step += 1;
+        if (_step >= steps) {
+            _step = 0;
+        }
+        created._crop(w*_step, h*_dir, w, h);
+        LPCD.CALL.repaint();
+        setTimeout(animate, rate);
+    })();
 
     return created;
 };
