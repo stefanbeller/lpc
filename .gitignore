@@ -4,3 +4,4 @@
 /include/
 /local
 /lpcd/lpcd.js
+*.pyc
