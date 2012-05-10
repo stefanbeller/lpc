@@ -7,6 +7,16 @@
     border-radius: 5px;
 }
 
+#backdrop {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 800px;
+    height: 600px;
+    background-color: black;
+    z-index: 1;
+}
+
 #layer_below, #layer_above {
     position: absolute;
     font-size: 32px; /* set em height */
@@ -34,5 +44,15 @@
     height: 48px;
     margin-left: 0px;
     margin-top: -32px;
+    z-index: 20;
+}
+
+.actor {
+    position: absolute;
+    font-size: 32px; /* set em height */
+    top: 50%;
+    left: 50%;
+    margin-left: 0em; /* actor.x - player.x */
+    margin-top: 0em; /* actor.y - player.y */
     z-index: 20;
 }

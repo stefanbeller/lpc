@@ -14,6 +14,28 @@ var LPCD = {
     },
 
     "ACTORS" : {
+        "registry" : {
+            "player" : [],
+            "level" : [],
+            "visible" : [],
+        },
+        "AbstractKind" : undefined,
+        "PersistentKind" : undefined,
+        "VisibleKind" : undefined,
+        "ObjectKind" : undefined
+    },
+
+    // functions to used by script dynamics
+    "API" : {
+        "global" : {}, // handy place to store persistant game data
+        "store_default" : undefined, // (key, value)
+        "store" : undefined, // (key, value)
+        "fetch" : undefined, // (key, value)
+
+        // "undefined" parmas on add_warp will use the player's x/y vaule.
+        "add_warp" : undefined, // (x1, y1, x2, y2, dx, dy, [level]),
+        "distance" : undefined, // (actor1, actor2)
+        "create_object" : undefined, // (x, y, img)
     },
 
     "DATA" : {
@@ -40,7 +62,9 @@ var LPCD = {
             "offset" : 0,
             "walk_speed" : 40,
             "walk_dist" : .5,
-            "walking" : undefined
+            "walking" : undefined,
+            "bumped" : [],
+            "ignore" : undefined,
         }
     },
 
@@ -55,6 +79,10 @@ var LPCD = {
           really) assume that the grid is of 32px squares!
          */
 
+        "repaint" : undefined, // ()
+        "link_actor" : undefined, // (actor, [visible])
+        "unlink_actor" : undefined, // (actor)
+        "move_actors" : undefined, // ()
         "build_map" : undefined, // (mapdata)
         "get_wall" : undefined, // (x, y)
         "set_wall" : undefined, // (x, y)
@@ -80,6 +108,7 @@ var LPCD = {
 // low-level initialization event...
 $(document).ready(function () {
     "use strict";
+    LPCD.DOM.frame = $("#lpcd_iframe")[0].contentWindow;
     var doc = LPCD.DOM.doc = $("#lpcd_iframe").contents()[0];
 
     if (window.top === window) {

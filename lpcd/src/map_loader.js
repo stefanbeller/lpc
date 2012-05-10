@@ -170,7 +170,7 @@ LPCD.EVENT.on_warp = function (x, y, level) {
         jQuery.getJSON("./levels/" + level, LPCD.EVENT.map_ready);
     }
     else {
-        LPCD.EVENT.on_redraw();
+        LPCD.CALL.repaint();
     }
 }
 
@@ -295,10 +295,16 @@ LPCD.EVENT.make = function () {
     LPCD.DOM.doc.body.appendChild(player.el);
     player.ctx = player.el.getContext("2d");
 
+    var visible = LPCD.ACTORS.registry.visible;
+    for (var i=0; i<visible.length; i+=1) {
+        visible[i]._show();
+    }
+
     LPCD.DOM.doc.getElementById("text_overlay").style.display = "none";
     LPCD.DATA.ready = true;
 
     if (LPCD.DATA.level.dynamics) {
+        LPCD.DOM.frame.API = LPCD.API;
         var script = LPCD.DOM.doc.createElement("script");
         script.type = "text/javascript";
         script.src = LPCD.DATA.level.dynamics;
@@ -306,5 +312,5 @@ LPCD.EVENT.make = function () {
         LPCD.DOM.doc.body.appendChild(script);
     }
 
-    LPCD.EVENT.on_redraw();
+    LPCD.CALL.repaint();
 };

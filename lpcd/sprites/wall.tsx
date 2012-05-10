@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<tileset name="wallfloor" tilewidth="32" tileheight="32">
- <image source="wallfloor.png" width="160" height="160"/>
+<tileset name="wall" tilewidth="32" tileheight="32">
+ <image source="wall.png" width="160" height="160"/>
  <tile id="0">
   <properties>
    <property name="wall" value="se"/>
@@ -88,27 +88,17 @@
  </tile>
  <tile id="18">
   <properties>
-   <property name="wall" value="a"/>
+   <property name="wall" value="e"/>
   </properties>
  </tile>
  <tile id="19">
   <properties>
-   <property name="wall" value="a"/>
-  </properties>
- </tile>
- <tile id="20">
-  <properties>
-   <property name="wall" value="ne"/>
+   <property name="wall" value="w"/>
   </properties>
  </tile>
  <tile id="21">
   <properties>
    <property name="wall" value="n"/>
-  </properties>
- </tile>
- <tile id="22">
-  <properties>
-   <property name="wall" value="nw"/>
   </properties>
  </tile>
 </tileset>
