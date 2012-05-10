@@ -11,10 +11,13 @@ ALLSPHINXOPTS   = -d $(BUILDDIR)/doctrees $(SPHINXOPTS) source/docs/
 # the i18n builder cannot share the environment and doctrees with the others
 I18NSPHINXOPTS  = $(SPHINXOPTS) source/docs/
 
-GAME_JS_FILES = lpcd/src/feature_shiv.js lpcd/src/header.js lpcd/src/map_loader.js \
-	lpcd/src/controls.js lpcd/src/actor_model.js \
-	lpcd/src/graphics.js lpcd/src/api.js
-GAME_JS_TARGET = lpcd/lpcd.js
+GAME_JS_DIR = source/static/demogame/js
+
+GAME_JS_FILES = $(GAME_JS_DIR)/feature_shiv.js $(GAME_JS_DIR)/header.js \
+	$(GAME_JS_DIR)/map_loader.js $(GAME_JS_DIR)/controls.js \
+	$(GAME_JS_DIR)/actor_model.js $(GAME_JS_DIR)/graphics.js \
+	$(GAME_JS_DIR)/api.js
+GAME_JS_TARGET = $(GAME_JS_DIR)/lpcd.js
 
 
 .PHONY: help clean html gamelink
@@ -22,17 +25,17 @@ GAME_JS_TARGET = lpcd/lpcd.js
 help:
 	@echo "Please use \`make <target>' where <target> is one of"
 	@echo "  html       to make standalone HTML files"
-	@echo "  gamelink   link together the LPC javascript assets"
 
 clean:
+	-rm $(GAME_JS_TARGET)
 	-rm -rf $(BUILDDIR)/*
 
-html:
+html: $(GAME_JS_TARGET)
 	$(SPHINXBUILD) -b html $(ALLSPHINXOPTS) $(BUILDDIR)
 	@echo
 	@echo "Build finished. The HTML pages are in $(BUILDDIR)/html."
 
-gamelink:
+$(GAME_JS_TARGET):
 	@echo "Linking together the LPC javascript..."
 	@echo
 	cat $(GAME_JS_FILES) > $(GAME_JS_TARGET)
