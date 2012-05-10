@@ -22,18 +22,19 @@ GAME_JS_TARGET = $(GAME_JS_DIR)/lpcd.js
 
 .PHONY: help clean html gamelink
 
-help:
-	@echo "Please use \`make <target>' where <target> is one of"
-	@echo "  html       to make standalone HTML files"
-
-clean:
-	-rm $(GAME_JS_TARGET)
-	-rm -rf $(BUILDDIR)/*
-
 html: $(GAME_JS_TARGET)
 	$(SPHINXBUILD) -b html $(ALLSPHINXOPTS) $(BUILDDIR)
 	@echo
 	@echo "Build finished. The HTML pages are in $(BUILDDIR)/html."
+
+help:
+	@echo "Please use \`make <target>' where <target> is one of"
+	@echo "  html       to make standalone HTML files"
+	@echo "  clean      to clean up the build environment"
+
+clean:
+	-rm $(GAME_JS_TARGET)
+	-rm -rf $(BUILDDIR)/*
 
 $(GAME_JS_TARGET):
 	@echo "Linking together the LPC javascript..."
