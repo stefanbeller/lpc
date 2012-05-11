@@ -88,19 +88,6 @@ has a very small impact on the scene should be lighted from above.
 
 TODO: Add illustration
 
-When deciding how to highlight objects, pay attention to the color of
-the light in the surroundings.  This includes indirect light (that is,
-light bouncing off of other objects). (Not sure indirect light is
-useful in a tile situation) ----- because objects don't necessarily
-need to be in a fixed context; eg a barell might be in the
-sewerbasement, in the living room, or outside the house, or on top of
-a house, or on a mountain, or in a castle, or on a space ship... *deep
-breath* it might be best not say anything at all about the effect of
-ambient lighting on the object's appearance. I think we should
-subtract this bit.
-
-TODO: Resolve above.
-
 Lighting in a given scene should feature a hue shift between
 highlights and low lights.  The best way to do this is to first pick
 the dominant color of an object.  This dominant color will tend to be
@@ -242,4 +229,8 @@ Pixel Tutorials:
 * http://opengameart.org/content/les-forges-pixel-art-course A pixel
   art course that's so good that we translated and mirrored it.
   Originals in French here: http://www.lesforges.org/tag/pixel%20art
-
+* http://www.natomic.com/hosted/marks/mpat/ Good set of resources,
+  though most important is maybe the `shading piece
+  <http://www.natomic.com/hosted/marks/mpat/shading.html>`_ which
+  describes how to avoid the dreaded "pillow shading" style and think
+  about lighting placement.
