@@ -80,6 +80,7 @@ var LPCD = {
         "repaint" : undefined, // ()
         "link_actor" : undefined, // (actor, [visible])
         "unlink_actor" : undefined, // (actor)
+        "unlink_transients" : undefined, // ()
         "move_actors" : undefined, // ()
         "build_map" : undefined, // (mapdata)
         "get_wall" : undefined, // (x, y)

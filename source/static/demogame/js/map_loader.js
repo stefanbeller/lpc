@@ -133,6 +133,25 @@ LPCD.CALL.build_map = function (mapdata) {
 
 
 
+// "load_dynamics" is called to add an iframe with a script corresponding to the current level.
+LPCD.CALL.load_dynamics = function () {
+    var level = LPCD.DATA.level;
+
+    if (level.dynamics) {
+        var dynamo = LPCD.DOM.doc.createElement("iframe");
+        dynamo.id = "script_dynamics";
+        LPCD.DOM.doc.body.appendChild(dynamo);
+
+        dynamo.doc = dynamo.contentWindow.document;
+        dynamo.contentWindow.API = LPCD.API;
+        dynamo.doc.write("<script type='text/javascript' src='"+LPCD.DATA.level.dynamics+"'></script>");
+        dynamo.doc.close();
+    }
+};
+
+
+
+
 /******************************************************************************
 
    Callbacks related to loading level data.
@@ -287,15 +306,6 @@ LPCD.EVENT.make = function () {
 
     LPCD.DOM.doc.getElementById("text_overlay").style.display = "none";
     LPCD.DATA.ready = true;
-
-    if (LPCD.DATA.level.dynamics) {
-        LPCD.DOM.frame.API = LPCD.API;
-        var script = LPCD.DOM.doc.createElement("script");
-        script.type = "text/javascript";
-        script.src = LPCD.DATA.level.dynamics;
-        console.info("Loading dynamics script: " + script.src);
-        LPCD.DOM.doc.body.appendChild(script);
-    }
-
+    LPCD.CALL.load_dynamics();
     LPCD.CALL.repaint();
 };

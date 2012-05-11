@@ -12,7 +12,7 @@ API.add_warp(34, 64, 37, 64, 13, 124, "underground_a.json");
 
 // add an ncp
 (function () {
-    var chest = API.create_object(8, 10, "sprites/chests.png");
+    var chest = API.create_object(8, 10, "./_static/sprites/chests.png");
     API.store_default("chest", true);
 
     if (API.fetch("chest")) {
