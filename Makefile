@@ -20,7 +20,7 @@ GAME_JS_FILES = $(GAME_JS_DIR)/feature_shiv.js $(GAME_JS_DIR)/header.js \
 GAME_JS_TARGET = $(GAME_JS_DIR)/lpcd.js
 
 
-.PHONY: help clean html
+.PHONY: help clean html virtualenv
 
 html: $(GAME_JS_TARGET)
 	$(SPHINXBUILD) -b html $(ALLSPHINXOPTS) $(BUILDDIR)
@@ -35,6 +35,12 @@ help:
 clean:
 	-rm $(GAME_JS_TARGET)
 	-rm -rf $(BUILDDIR)/*
+
+virtualenv:
+	virtualenv .
+	./bin/easy_install sphinx docutils
+	@echo
+	@echo "Virtualenv installed.  You may now activate it with 'source bin/activate'"
 
 $(GAME_JS_TARGET):
 	@echo "Linking together the LPC javascript..."
