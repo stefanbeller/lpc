@@ -90,6 +90,6 @@ lady.on_timeout = function () {
 };
 lady.on_timeout();
 lady.on_bumped = function (self, bumped_by) {
-    alert("Goddammit Javascript...");
+    alert("Javascript is my abusive significant other.");
     return true;
 };
