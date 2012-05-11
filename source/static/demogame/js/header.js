@@ -25,6 +25,10 @@ var LPCD = {
             // the actor that has input and screen focus
             "focus" : undefined,
         },
+        /*"misc", {
+            "min_x" : 0,
+            "min_y" : 0
+        },*/
         "AbstractKind" : undefined,
         "PersistentKind" : undefined,
         "VisibleKind" : undefined,

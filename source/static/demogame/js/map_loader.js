@@ -304,11 +304,6 @@ LPCD.EVENT.map_ready = function (mapdata, status) {
 LPCD.EVENT.make = function () {
     "use strict";
     
-    var visible = LPCD.ACTORS.registry.visible;
-    for (var i=0; i<visible.length; i+=1) {
-        visible[i]._show();
-    }
-
     LPCD.DOM.doc.getElementById("text_overlay").style.display = "none";
     LPCD.DATA.ready = true;
     var stage = LPCD.DOM.layers.actors = LPCD.DOM.doc.createElement("iframe");
@@ -317,6 +312,15 @@ LPCD.EVENT.make = function () {
     stage.setAttribute("scrolling", "no");
     stage.setAttribute("frameborder", "0");
     LPCD.DOM.doc.body.appendChild(stage);
+    stage.doc = stage.contentWindow.document;
+    stage.doc.write('<link rel="stylesheet" type="text/css" href="./_static/demogame/lpcd.css" />');
+    stage.doc.close();
+
+    var visible = LPCD.ACTORS.registry.visible;
+    for (var i=0; i<visible.length; i+=1) {
+        visible[i]._show();
+    }
+
     LPCD.CALL.load_dynamics();
     LPCD.CALL.repaint();
 };

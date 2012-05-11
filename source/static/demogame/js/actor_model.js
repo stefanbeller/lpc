@@ -111,7 +111,6 @@ LPCD.ACTORS.VisibleKind = function (binding, x, y, img) {
 
     var _x = x;
     var _y = y;
-    var _z = 0;
     created.__defineGetter__("x", function () { return _x; });
     created.__defineSetter__("x", function (newx) { 
         _x = newx;
@@ -122,22 +121,20 @@ LPCD.ACTORS.VisibleKind = function (binding, x, y, img) {
         _y = newy;
         LPCD.CALL.repaint();
     });
-    created.__defineGetter__("z", function () { return _z; });
-    created.__defineSetter__("z", function (newz) { 
-        _z = newz;
-        LPCD.CALL.repaint();
-    });
 
     created._reorient = function (self) {
         var focus = LPCD.ACTORS.registry.focus;
         _canvas.style.marginLeft = String((_x-focus.x)/2) + "em";
         _canvas.style.marginTop = String((_y-focus.y)/2) + "em";
-        _canvas.style.zIndex = String(19 + _z);
+        _canvas.style.zIndex = String(_y);
     };
 
     created.img = img;
     created._show = function () {
-        LPCD.DOM.doc.body.appendChild(_canvas);
+        var layers = LPCD.DOM.layers;
+        if (layers.actors !== undefined) {
+            layers.actors.contentWindow.document.body.appendChild(_canvas);
+        }
     };
 
     created._crop = function (sx, sy, sw, sh) {
@@ -192,7 +189,7 @@ LPCD.ACTORS.ObjectKind = function (x, y, img) {
         var draw_y = (self.y-focus.y-self._img_y_offset)/2;
         self._canvas.style.marginLeft = String(draw_x) + "em";
         self._canvas.style.marginTop = String(draw_y) + "em";
-        self._canvas.style.zIndex = String(19 + self.z);
+        self._canvas.style.zIndex = String(draw_y);
     };
 
     created.on_bumped = function (self, bumped_by) {
