@@ -516,6 +516,18 @@ LPCD.CALL.unlink_actor = function (actor, no_delete) {
 };
 
 
+// "unlink_transients" removes all actors with level binding.
+// has nothing to do with homeless individuals.
+LPCD.CALL.unlink_transients = function () {
+    "use strict";
+    
+    var targets = LPCD.ACTORS.registry.level;
+    while (targets.length > 0) {
+        LPCD.CALL.unlink_actor(targets[0]);
+    }
+};
+
+
 // "move_actors" Calls the "_reorient" method on all visible actors.
 LPCD.CALL.move_actors = function () {
     "use strict";
