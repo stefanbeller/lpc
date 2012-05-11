@@ -69,7 +69,8 @@ The following image is a 3d rendering demonstrating orthographic
 projection.  For examples of actual proportions, see existing body of
 pixel art.
 
-TODO: Link in http://files.mrbeast.org/ArtStuff/LPC/60.png
+.. image:: ../static/images/60perspective.png
+   :alt: 60 degree camera perspective example
 
 TODO: Show some examples of objects.
 
