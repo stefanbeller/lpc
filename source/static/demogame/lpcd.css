@@ -44,17 +44,6 @@
     z-index: 50;
 }
 
-#player {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 32px;
-    height: 48px;
-    margin-left: 0px;
-    margin-top: -32px;
-    z-index: 20;
-}
-
 .actor {
     position: absolute;
     font-size: 32px; /* set em height */
