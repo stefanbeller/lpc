@@ -199,10 +199,6 @@ LPCD.EVENT.map_ready = function (mapdata, status) {
     for (var i=0; i<mapdata.tilesets.length; i+=1) {
         var tileset = mapdata.tilesets[i];
         var img_path = tileset.image;
-        var slice_index = img_path.indexOf("./_static/sprites/");
-        if (slice_index >= 0) {
-            img_path = img_path.slice(slice_index+1);
-        }
         if (LPCD.DOM.res[tileset.image] === undefined) {
             pending += 1;
             LPCD.DOM.res[tileset.image] = new Image();
