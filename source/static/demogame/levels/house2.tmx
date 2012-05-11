@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="32" height="32" tilewidth="32" tileheight="32">
+ <tileset firstgid="1" source="../../sprites/inside.tsx"/>
+ <layer name="floor" width="32" height="32">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo2AUjIJRMApGwSgYBaMAFZjSANPCbcSqpSYYCfaTE7fUjP9R+0e2/ZSCRUC8mM52DhUAAMW0HW4=
+  </data>
+ </layer>
+ <layer name="walls_a" width="32" height="32">
+  <data encoding="base64" compression="zlib">
+   eJztkjsKgEAMRINoLVqL2/rZWg+g9z+TKVYIC7skYMBiHrwmTJgiIQIAAAAA+Bct2zjYKfsPtnfwNPRPDlr6PbD01+44ptwgZqWfGUXO0l+7Y0i5WcxKO0Hkvrp/TLldzEo7UeQ876/ZQT/6NVzswq5KN/bOdl7yDCB6AAZVEaY=
+  </data>
+ </layer>
+ <layer name="walls_b" width="32" height="32">
+  <data encoding="base64" compression="zlib">
+   eJztzUENAAAIBCA/ZjKA/TsZ4+YGBagCAIDfOvyP3++P2fD/yQE91wHK
+  </data>
+ </layer>
+ <layer name="walls_c" width="32" height="32">
+  <data encoding="base64" compression="zlib">
+   eJztzgEJAAAMA6DVef+CjzEGmsAEAAC2XTsAMOAB5AwAKg==
+  </data>
+ </layer>
+ <layer name="things_b" width="32" height="32">
+  <data encoding="base64" compression="zlib">
+   eJztzUENAAAIBKALZgH7F7KBXzcHBUgAAIAP6vjv4x/YDRJSAIY=
+  </data>
+ </layer>
+ <layer name="things_a" width="32" height="32">
+  <data encoding="base64" compression="zlib">
+   eJztzbENgDAQBEGnpgBTAFSAyTE50H85bPgVvGRpR9rgoitFkiRJ0owqLWEf1OlM+m+0hn3RoDvpf6M97Ide+pL+pdn86kcCyA==
+  </data>
+ </layer>
+ <layer name="things_c" width="32" height="32">
+  <data encoding="base64" compression="zlib">
+   eJztzUENAAAIBKCLZAH717KBXzcHBUgAAAB+qOO/j3/YDEYvAG4=
+  </data>
+ </layer>
+</map>

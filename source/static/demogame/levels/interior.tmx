@@ -1,0 +1,485 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="32" height="32" tilewidth="32" tileheight="32">
+ <properties>
+  <property name="dynamics" value="./dynamics/interior.js"/>
+ </properties>
+ <tileset firstgid="1" name="inside" tilewidth="32" tileheight="32">
+  <image source="../../sprites/inside.png" width="416" height="416"/>
+  <tile id="0">
+   <properties>
+    <property name="wall" value="a"/>
+   </properties>
+  </tile>
+  <tile id="1">
+   <properties>
+    <property name="wall" value="a"/>
+   </properties>
+  </tile>
+  <tile id="2">
+   <properties>
+    <property name="wall" value="a"/>
+   </properties>
+  </tile>
+  <tile id="7">
+   <properties>
+    <property name="wall" value="a"/>
+   </properties>
+  </tile>
+  <tile id="10">
+   <properties>
+    <property name="wall" value="se"/>
+   </properties>
+  </tile>
+  <tile id="11">
+   <properties>
+    <property name="wall" value="s"/>
+   </properties>
+  </tile>
+  <tile id="12">
+   <properties>
+    <property name="wall" value="sw"/>
+   </properties>
+  </tile>
+  <tile id="13">
+   <properties>
+    <property name="wall" value="a"/>
+   </properties>
+  </tile>
+  <tile id="14">
+   <properties>
+    <property name="wall" value="a"/>
+   </properties>
+  </tile>
+  <tile id="15">
+   <properties>
+    <property name="wall" value="a"/>
+   </properties>
+  </tile>
+  <tile id="20">
+   <properties>
+    <property name="wall" value="a"/>
+   </properties>
+  </tile>
+  <tile id="21">
+   <properties>
+    <property name="wall" value="a"/>
+   </properties>
+  </tile>
+  <tile id="22">
+   <properties>
+    <property name="wall" value="a"/>
+   </properties>
+  </tile>
+  <tile id="23">
+   <properties>
+    <property name="wall" value="e"/>
+   </properties>
+  </tile>
+  <tile id="24">
+   <properties>
+    <property name="wall" value="a"/>
+   </properties>
+  </tile>
+  <tile id="25">
+   <properties>
+    <property name="wall" value="w"/>
+   </properties>
+  </tile>
+  <tile id="26">
+   <properties>
+    <property name="wall" value="a"/>
+   </properties>
+  </tile>
+  <tile id="27">
+   <properties>
+    <property name="wall" value="a"/>
+   </properties>
+  </tile>
+  <tile id="28">
+   <properties>
+    <property name="wall" value="a"/>
+   </properties>
+  </tile>
+  <tile id="33">
+   <properties>
+    <property name="wall" value="a"/>
+   </properties>
+  </tile>
+  <tile id="34">
+   <properties>
+    <property name="wall" value="a"/>
+   </properties>
+  </tile>
+  <tile id="35">
+   <properties>
+    <property name="wall" value="a"/>
+   </properties>
+  </tile>
+  <tile id="39">
+   <properties>
+    <property name="wall" value="n"/>
+   </properties>
+  </tile>
+  <tile id="40">
+   <properties>
+    <property name="wall" value="n"/>
+   </properties>
+  </tile>
+  <tile id="41">
+   <properties>
+    <property name="wall" value="n"/>
+   </properties>
+  </tile>
+  <tile id="46">
+   <properties>
+    <property name="wall" value="n"/>
+   </properties>
+  </tile>
+  <tile id="53">
+   <properties>
+    <property name="wall" value="e"/>
+   </properties>
+  </tile>
+  <tile id="54">
+   <properties>
+    <property name="wall" value="w"/>
+   </properties>
+  </tile>
+  <tile id="55">
+   <properties>
+    <property name="wall" value="w"/>
+   </properties>
+  </tile>
+  <tile id="56">
+   <properties>
+    <property name="wall" value="e"/>
+   </properties>
+  </tile>
+  <tile id="57">
+   <properties>
+    <property name="wall" value="w"/>
+   </properties>
+  </tile>
+  <tile id="58">
+   <properties>
+    <property name="wall" value="e"/>
+   </properties>
+  </tile>
+  <tile id="60">
+   <properties>
+    <property name="wall" value="n"/>
+   </properties>
+  </tile>
+  <tile id="61">
+   <properties>
+    <property name="wall" value="n"/>
+   </properties>
+  </tile>
+  <tile id="62">
+   <properties>
+    <property name="wall" value="e"/>
+   </properties>
+  </tile>
+  <tile id="63">
+   <properties>
+    <property name="wall" value="w"/>
+   </properties>
+  </tile>
+  <tile id="66">
+   <properties>
+    <property name="wall" value="ne"/>
+   </properties>
+  </tile>
+  <tile id="67">
+   <properties>
+    <property name="wall" value="nw"/>
+   </properties>
+  </tile>
+  <tile id="68">
+   <properties>
+    <property name="wall" value="w"/>
+   </properties>
+  </tile>
+  <tile id="69">
+   <properties>
+    <property name="wall" value="e"/>
+   </properties>
+  </tile>
+  <tile id="70">
+   <properties>
+    <property name="wall" value="w"/>
+   </properties>
+  </tile>
+  <tile id="71">
+   <properties>
+    <property name="wall" value="e"/>
+   </properties>
+  </tile>
+  <tile id="73">
+   <properties>
+    <property name="wall" value="a"/>
+   </properties>
+  </tile>
+  <tile id="75">
+   <properties>
+    <property name="wall" value="ne"/>
+   </properties>
+  </tile>
+  <tile id="76">
+   <properties>
+    <property name="wall" value="n"/>
+   </properties>
+  </tile>
+  <tile id="77">
+   <properties>
+    <property name="wall" value="nw"/>
+   </properties>
+  </tile>
+  <tile id="79">
+   <properties>
+    <property name="wall" value="ne"/>
+   </properties>
+  </tile>
+  <tile id="80">
+   <properties>
+    <property name="wall" value="nw"/>
+   </properties>
+  </tile>
+  <tile id="81">
+   <properties>
+    <property name="wall" value="w"/>
+   </properties>
+  </tile>
+  <tile id="82">
+   <properties>
+    <property name="wall" value="e"/>
+   </properties>
+  </tile>
+  <tile id="83">
+   <properties>
+    <property name="wall" value="w"/>
+   </properties>
+  </tile>
+  <tile id="84">
+   <properties>
+    <property name="wall" value="e"/>
+   </properties>
+  </tile>
+  <tile id="87">
+   <properties>
+    <property name="wall" value="n"/>
+   </properties>
+  </tile>
+  <tile id="94">
+   <properties>
+    <property name="wall" value="w"/>
+   </properties>
+  </tile>
+  <tile id="95">
+   <properties>
+    <property name="wall" value="e"/>
+   </properties>
+  </tile>
+  <tile id="96">
+   <properties>
+    <property name="wall" value="w"/>
+   </properties>
+  </tile>
+  <tile id="97">
+   <properties>
+    <property name="wall" value="e"/>
+   </properties>
+  </tile>
+  <tile id="98">
+   <properties>
+    <property name="wall" value="n"/>
+   </properties>
+  </tile>
+  <tile id="99">
+   <properties>
+    <property name="wall" value="s"/>
+   </properties>
+  </tile>
+  <tile id="101">
+   <properties>
+    <property name="wall" value="n"/>
+   </properties>
+  </tile>
+  <tile id="153">
+   <properties>
+    <property name="wall" value="a"/>
+   </properties>
+  </tile>
+  <tile id="161">
+   <properties>
+    <property name="wall" value="w"/>
+   </properties>
+  </tile>
+  <tile id="162">
+   <properties>
+    <property name="wall" value="e"/>
+   </properties>
+  </tile>
+ </tileset>
+ <tileset firstgid="170" name="barrel" tilewidth="32" tileheight="32">
+  <image source="../../sprites/barrel.png" width="128" height="64"/>
+ </tileset>
+ <tileset firstgid="178" name="buckets" tilewidth="32" tileheight="32">
+  <image source="../../sprites/buckets.png" width="96" height="64"/>
+ </tileset>
+ <tileset firstgid="184" name="chests" tilewidth="32" tileheight="32">
+  <image source="../../sprites/chests.png" width="64" height="96"/>
+  <tile id="0">
+   <properties>
+    <property name="wall" value="a"/>
+   </properties>
+  </tile>
+  <tile id="1">
+   <properties>
+    <property name="wall" value="a"/>
+   </properties>
+  </tile>
+  <tile id="2">
+   <properties>
+    <property name="wall" value="a"/>
+   </properties>
+  </tile>
+  <tile id="3">
+   <properties>
+    <property name="wall" value="a"/>
+   </properties>
+  </tile>
+  <tile id="4">
+   <properties>
+    <property name="wall" value="a"/>
+   </properties>
+  </tile>
+  <tile id="5">
+   <properties>
+    <property name="wall" value="a"/>
+   </properties>
+  </tile>
+ </tileset>
+ <tileset firstgid="190" name="cabinets" tilewidth="32" tileheight="32">
+  <image source="../../sprites/cabinets.png" width="416" height="416"/>
+ </tileset>
+ <tileset firstgid="359" name="country" tilewidth="32" tileheight="32">
+  <image source="../../sprites/country.png" width="160" height="128"/>
+  <tile id="2">
+   <properties>
+    <property name="wall" value="a"/>
+   </properties>
+  </tile>
+  <tile id="3">
+   <properties>
+    <property name="wall" value="s"/>
+   </properties>
+  </tile>
+  <tile id="4">
+   <properties>
+    <property name="wall" value="s"/>
+   </properties>
+  </tile>
+  <tile id="5">
+   <properties>
+    <property name="wall" value="a"/>
+   </properties>
+  </tile>
+  <tile id="6">
+   <properties>
+    <property name="wall" value="a"/>
+   </properties>
+  </tile>
+  <tile id="7">
+   <properties>
+    <property name="wall" value="a"/>
+   </properties>
+  </tile>
+  <tile id="8">
+   <properties>
+    <property name="wall" value="n"/>
+   </properties>
+  </tile>
+  <tile id="9">
+   <properties>
+    <property name="wall" value="n"/>
+   </properties>
+  </tile>
+  <tile id="10">
+   <properties>
+    <property name="wall" value="a"/>
+   </properties>
+  </tile>
+  <tile id="11">
+   <properties>
+    <property name="wall" value="a"/>
+   </properties>
+  </tile>
+  <tile id="12">
+   <properties>
+    <property name="wall" value="a"/>
+   </properties>
+  </tile>
+  <tile id="13">
+   <properties>
+    <property name="wall" value="s"/>
+   </properties>
+  </tile>
+  <tile id="14">
+   <properties>
+    <property name="wall" value="s"/>
+   </properties>
+  </tile>
+  <tile id="17">
+   <properties>
+    <property name="wall" value="a"/>
+   </properties>
+  </tile>
+  <tile id="18">
+   <properties>
+    <property name="wall" value="n"/>
+   </properties>
+  </tile>
+  <tile id="19">
+   <properties>
+    <property name="wall" value="n"/>
+   </properties>
+  </tile>
+ </tileset>
+ <tileset firstgid="379" name="desklamp" tilewidth="32" tileheight="32">
+  <image source="../../sprites/desklamp.png" width="192" height="96"/>
+ </tileset>
+ <tileset firstgid="397" name="kitchen" tilewidth="32" tileheight="32">
+  <image source="../../sprites/kitchen.png" width="64" height="128"/>
+  <tile id="6">
+   <properties>
+    <property name="wall" value="a"/>
+   </properties>
+  </tile>
+ </tileset>
+ <layer name="base_layer" width="32" height="32">
+  <data encoding="base64" compression="zlib">
+   eJzt0bEOQEAQhOFDjx49eiS0HsALanhR00hE7nK3WVdI5k++Zpsp1hjGWGgLJJB6ZDBH2B8hh8KjhCnSfgW1RxNxfwhk+5P2L5J925+0f5Hs33/azXd/key7cP+/+xu00D0ccL5uLj2sin3GGGOM6bsAeQYfLA==
+  </data>
+ </layer>
+ <layer name="overlay_a" width="32" height="32">
+  <data encoding="base64" compression="zlib">
+   eJzt0TsKgDAQRdFZWzbgBqK9/01o75J9QmwCEi0mWNwDF6Z7xZgB+KJVi1pVeLg7x/1BNYVGx/1N9YV2x/23rj+FLM+/5O4/HVbnL7lJxXTH1FxxHwAAAP9zAoJREXc=
+  </data>
+ </layer>
+ <layer name="overlay_b" width="32" height="32">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo2AUDDWwHIgPA/EBKEYHR+jghmdAfBaKWRgZGGyQ5C7Swf7PQHwLir8DsSdUPAyI79HBfmzAAIiTkfigeIqB0vQAtmj8LUjscCimJ9iOxI6A4oEEo/aPglEwCkbBKBgFo2CkAwDAyRKn
+  </data>
+ </layer>
+ <layer name="overlay_c" width="32" height="32">
+  <data encoding="base64" compression="zlib">
+   eJztzbERQFAQBuGXUgAFUAFy5Eh1rAENKMUW8NIbg/1mNrng/pQkfc0R+LugMnPvqKeBzsD9iurMfaSJZroC9xtqM/eFVtoCt99ud//X+5Ik6Xk3szkGnQ==
+  </data>
+ </layer>
+ <layer name="overlay_d" width="32" height="32">
+  <data encoding="base64" compression="zlib">
+   eJztzjENAAAIA7ChG/Mo4CPhaRU0AbjR9T0AAAA2A7mKAH0=
+  </data>
+ </layer>
+</map>
