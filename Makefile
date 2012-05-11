@@ -33,8 +33,8 @@ help:
 	@echo "  clean      to clean up the build environment"
 
 clean:
-	-rm $(GAME_JS_TARGET)
 	-rm -rf $(BUILDDIR)/*
+	-rm $(GAME_JS_TARGET)
 
 virtualenv:
 	virtualenv .
