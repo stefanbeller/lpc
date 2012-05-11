@@ -178,7 +178,20 @@ perspective as the tiles.  The base should fit in a 32x48 space and
 the clothing should fit in 48x64 space.  The outlines should be black
 or near black, no selective outlining.
 
-TODO: [insert example human base here]
+.. image:: ../static/images/characters_nude.png
+   :alt: Example of unaccessorized characters
+
+We have provided a :ref:`character base <assets-character-base>` that
+you can accessorize.  (Of course, deviating from this base is
+perfectly fine if it makes sense; just try to keep your work within
+the style as described in this document and squashed stylization we
+keep generally for characters.)
+
+.. image:: ../static/images/characters_accessorized.png
+   :alt: Example of unaccessorized characters
+
+
+
 
 Monsters are cute so far.
 
