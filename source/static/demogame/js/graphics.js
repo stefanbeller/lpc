@@ -12,7 +12,7 @@
 // level is ready.
 LPCD.CALL.cue_loading = function () {
     var doc = LPCD.DOM.doc = $("#lpcd_iframe").contents()[0];
-    doc.head.innerHTML = '<link rel="stylesheet" type="text/css" href="lpcd.css" />';
+    doc.head.innerHTML = '<link rel="stylesheet" type="text/css" href="./_static/demogame/lpcd.css" />';
     doc.body.style.backgroundColor = "black";
     doc.body.style.color = "white";
     doc.body.style.textAlign = "center";

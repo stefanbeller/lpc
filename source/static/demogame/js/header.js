@@ -113,7 +113,7 @@ $(document).ready(function () {
 
     if (window.top === window) {
         LPCD.DATA.player.sprite = new Image();
-        LPCD.DATA.player.sprite.src = "./sprites/char_template.png";
+        LPCD.DATA.player.sprite.src = "./_static/sprites/char_template.png";
         LPCD.EVENT.on_warp(undefined, undefined, "start1.json");
     }
     else {

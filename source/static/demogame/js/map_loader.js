@@ -167,7 +167,7 @@ LPCD.EVENT.on_warp = function (x, y, level) {
             "min_y" : 0,
             "max_y" : 0
         };
-        jQuery.getJSON("./levels/" + level, LPCD.EVENT.map_ready);
+        jQuery.getJSON("./_static/demogame/levels/" + level, LPCD.EVENT.map_ready);
     }
     else {
         LPCD.CALL.repaint();
@@ -199,7 +199,7 @@ LPCD.EVENT.map_ready = function (mapdata, status) {
     for (var i=0; i<mapdata.tilesets.length; i+=1) {
         var tileset = mapdata.tilesets[i];
         var img_path = tileset.image;
-        var slice_index = img_path.indexOf("../sprites/");
+        var slice_index = img_path.indexOf("./_static/sprites/");
         if (slice_index >= 0) {
             img_path = img_path.slice(slice_index+1);
         }
@@ -241,7 +241,7 @@ LPCD.EVENT.map_ready = function (mapdata, status) {
     LPCD.DATA.level.max_x = mapdata.width;
     LPCD.DATA.level.max_y = mapdata.height;
 
-    LPCD.DATA.level.dynamics = "./dynamics/" + LPCD.DATA.level.name + ".js";
+    LPCD.DATA.level.dynamics = "./_static/demogame/dynamics/" + LPCD.DATA.level.name + ".js";
     
     if (mapdata.properties !== undefined) {
         if (mapdata.properties.dynamics !== undefined) {
