@@ -25,7 +25,7 @@ GAME_JS_TARGET = $(GAME_JS_DIR)/lpcd.js
 html: $(GAME_JS_TARGET)
 	$(SPHINXBUILD) -b html $(ALLSPHINXOPTS) $(BUILDDIR)
 	@echo
-	@echo "Build finished. The HTML pages are in $(BUILDDIR)/html."
+	@echo "Build finished. The HTML pages are in $(BUILDDIR)/"
 
 help:
 	@echo "Please use \`make <target>' where <target> is one of"

@@ -4,6 +4,8 @@ Asset list
 This is a list of all assets!
 
 
+.. _assets-character-base:
+
 Character base
 ==============
 
