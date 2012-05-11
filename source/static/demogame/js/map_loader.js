@@ -138,13 +138,17 @@ LPCD.CALL.load_dynamics = function () {
     var level = LPCD.DATA.level;
 
     if (level.dynamics) {
+        // the bs cgi query is used to prevent caching
+        var src = LPCD.DATA.level.dynamics + "?a=" + Date.now();
         var dynamo = LPCD.DOM.doc.createElement("iframe");
         dynamo.id = "script_dynamics";
         LPCD.DOM.doc.body.appendChild(dynamo);
 
         dynamo.doc = dynamo.contentWindow.document;
         dynamo.contentWindow.API = LPCD.API;
-        dynamo.doc.write("<script type='text/javascript' src='"+LPCD.DATA.level.dynamics+"'></script>");
+
+
+        dynamo.doc.write("<script type='text/javascript' src='"+src+"'></script>");
         dynamo.doc.close();
     }
 };
