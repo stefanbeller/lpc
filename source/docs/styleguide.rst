@@ -29,30 +29,17 @@ pixel art entirely, we recommend you check out the resources at the
 bottom first before proceeding.
 
 
-Basics
-------
+Grid size
+---------
 
 The general tile grid is 32x32 with (possible) sub tiles at 16x16.
-The rational being that the basic size of a square object (eg a chair
-or a character) is a 32x32 area, for versatility tileing happens at
-16x16 resolution. (Everything I've made tiles at 32x32.  16x16 is just
-an option.  The way this is worded implies that everything that tiles
-has to do it at 16x16 and can't be bigger.)
+The rationale being that the basic size of a square object (eg a chair
+or a character) is a 32x32 area.  All base assets are designed to work
+at 32x32 tiling, and it's recommended that you build yours to be so as
+well.  However, for versatility tiling can happen at 16x16 resolution.
 
-TODO: Sort out the above
-
-[Image showing scene on a grid shown here]
-
-Only sprites may have black outlines; if tiles have outlines they must
-be colored.  The only exception is if your tile is meant to be colored
-black.
-
-Dithering should be used sparingly if at all.  None of the base
-artwork has dithering.
-
-TODO: Zoomed (and not enhanced) example of outlines here, with further
-text :) (some commentary on re-wording here, when further text is
-written
+.. image:: ../static/images/32x32grid.png
+   :alt: 32x32 grid example
 
 
 Perspective
@@ -61,9 +48,12 @@ Perspective
 The camera angle is top-down, roughly 60 degrees.
 
 Rendering should be orthographic, which means there is *no*
-perspective... things don't get smaller as they move into the
-distance.  If you're using perspective techniques on individual props,
-ur doin it wrong.
+perspective... things **do not** get smaller as they move into the
+distance.  If you're using perspective techniques on your props or
+tiles, ur doin it wrong.
+
+.. image:: ../static/images/chest_perspective.png
+   :alt: Chest perspective example
 
 The following image is a 3d rendering demonstrating orthographic
 projection.  For examples of actual proportions, see existing body of
@@ -71,8 +61,6 @@ pixel art.
 
 .. image:: ../static/images/60perspective.png
    :alt: 60 degree camera perspective example
-
-TODO: Show some examples of objects.
 
 
 Lighting and shading
@@ -135,16 +123,16 @@ grass background.
 Color
 -----
 
+* Dithering should be used sparingly if at all.  None of the base
+  artwork has dithering.
 * Don't reach for that RGB color selector.  See that #00ff00 swatch
   that you're thinking about using for grass?  Don't do it!  If your
   color has a zero as any of the RGB components, it's probably not a
   good color to use.
 * No colors are pure.  Saturation should be high, but no #00FF00 for
   green please..
-
 * To put it simply, don't think of colors in terms of numbers.  Use
   the HSV color picker.
-
 * Your light to dark color ramps should *never* all have the same hue.
   Vary the hue and saturation a bit as you go from light to dark, or
   your objects will look flat.
@@ -153,7 +141,12 @@ Color
 Outlines
 --------
 
- * Should be a darker version of the current color, not black.
+.. image:: ../static/images/rock_outlinedemo.png
+   :alt: Rock outline demo
+
+Outlines should be a darker version of the current color, or a dark
+color generally, not black.  (Extreme circumstances obviously may have
+exceptions.)
 
 
 Hue Shifting
