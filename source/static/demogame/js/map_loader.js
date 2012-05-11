@@ -282,6 +282,7 @@ LPCD.EVENT.map_ready = function (mapdata, status) {
     LPCD.DOM.layers = {};
     var setup_layer = function (name) {
         var el = LPCD.DOM.doc.createElement("canvas");
+        el.setAttribute("draggable", "false");
         el.ctx = el.getContext('2d');
         el.width = 32 * mapdata.width;
         el.height = 32 * mapdata.height;
@@ -310,6 +311,12 @@ LPCD.EVENT.make = function () {
 
     LPCD.DOM.doc.getElementById("text_overlay").style.display = "none";
     LPCD.DATA.ready = true;
+    var stage = LPCD.DOM.layers.actors = LPCD.DOM.doc.createElement("iframe");
+    stage.id = "stage";
+    stage.setAttribute("draggable", "false");
+    stage.setAttribute("scrolling", "no");
+    stage.setAttribute("frameborder", "0");
+    LPCD.DOM.doc.body.appendChild(stage);
     LPCD.CALL.load_dynamics();
     LPCD.CALL.repaint();
 };

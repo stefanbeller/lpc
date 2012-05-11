@@ -1,3 +1,10 @@
+iframe, canvas {
+    -moz-user-select: none; 
+    -khtml-user-select: none; 
+    -webkit-user-select: none; 
+    -o-user-select: none;
+}
+
 #lpcd_iframe {
     width: 100%;
     max-width: 800px;
@@ -11,6 +18,13 @@
 
 #script_dynamics {
     display: none;
+}
+
+#stage {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    z-index: 20;
 }
 
 #character_selector {

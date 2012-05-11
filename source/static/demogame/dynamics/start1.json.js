@@ -79,17 +79,23 @@ batmo.on_timeout = function () {
 batmo.on_timeout();
 
 
-var lady = API.create_human(80, 70, "./_static/sprites/char_template.png");
+var alice = API.create_human(80, 70, "./_static/sprites/char_alice.png");
 var pace = 1;
-lady.on_timeout = function () {
-    lady._move_to(lady.x + pace*10, lady.y);
+alice.on_timeout = function () {
+    alice._move_to(alice.x + pace*10, alice.y);
     pace *= -1;
-    if (!lady._deleted) {
-        setTimeout(lady.on_timeout, 5000);
+    if (!alice._deleted) {
+        setTimeout(alice.on_timeout, 5000);
     }
 };
-lady.on_timeout();
-lady.on_bumped = function (self, bumped_by) {
+alice.on_timeout();
+alice.on_bumped = function (self, bumped_by) {
     alert("What a gorgeous day today :)");
+    return true;
+};
+
+var bob = API.create_human(81, 36, "./_static/sprites/char_bob.png");
+bob.on_bumped = function (self, bumped_by) {
+    alert("Hi!  My name is Robert'); DROP TABLE Students;--");
     return true;
 };
