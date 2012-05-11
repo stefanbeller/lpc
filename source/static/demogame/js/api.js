@@ -55,9 +55,27 @@ LPCD.API.fetch = function (key) {
 /*** actor creation functions ***/
 
 LPCD.API.create_object = function (x, y, img) {
-    "using strict";
+    "use strict";
 
     var actor = LPCD.ACTORS.ObjectKind (x, y, img);
+    LPCD.CALL.link_actor(actor, true);
+    return actor;
+};
+
+
+LPCD.API.create_critter = function (x, y, img, w, h, steps, directional, rate) {
+    "use strict";
+
+    var actor = LPCD.ACTORS.CritterKind (x, y, img, w, h, steps, directional, rate);
+    LPCD.CALL.link_actor(actor, true);
+    return actor;
+};
+
+
+LPCD.API.create_human = function (x, y, img) {
+    "use strict";
+    
+    var actor = LPCD.ACTORS.HumonKind (x, y, img);
     LPCD.CALL.link_actor(actor, true);
     return actor;
 };

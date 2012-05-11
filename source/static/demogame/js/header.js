@@ -65,6 +65,7 @@ var LPCD = {
             "walking" : undefined,
             "bumped" : [],
             "ignore" : undefined,
+            "_is_player" : true,
         }
     },
 
