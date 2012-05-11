@@ -27,7 +27,7 @@ API.add_warp(0, 0, 1, 128, 126, 39, "start1.json");
 
 // add some fun stuff
 
-var batmo = API.create_critter(96, 55, "sprites/batty_bat.png", 32, 32, 3, true, 150);
+var batmo = API.create_critter(96, 55, "./_static/sprites/batty_bat.png", 32, 32, 3, true, 150);
 
 batmo.on_bumped = function (self, bumped_by) {
     alert("I'm a hedgehog!");
@@ -79,7 +79,7 @@ batmo.on_timeout = function () {
 batmo.on_timeout();
 
 
-var lady = API.create_human(80, 70, "sprites/char_template.png");
+var lady = API.create_human(80, 70, "./_static/sprites/char_template.png");
 lady._move_speed = 60;
 var pace = 1;
 lady.on_timeout = function () {
