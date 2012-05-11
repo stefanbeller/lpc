@@ -3,5 +3,5 @@
 /lib/
 /include/
 /local
-/lpcd/lpcd.js
+/source/static/demogame/js/lpcd.js
 *.pyc
