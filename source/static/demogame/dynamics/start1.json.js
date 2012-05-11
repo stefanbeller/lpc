@@ -80,7 +80,6 @@ batmo.on_timeout();
 
 
 var lady = API.create_human(80, 70, "./_static/sprites/char_template.png");
-lady._move_speed = 60;
 var pace = 1;
 lady.on_timeout = function () {
     lady._move_to(lady.x + pace*10, lady.y);

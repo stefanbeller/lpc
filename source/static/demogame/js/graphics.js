@@ -27,36 +27,25 @@ LPCD.CALL.cue_loading = function () {
 
 
 // "repaint" is used to intelligently schedule a redraw event.
-LPCD.CALL.repaint = function () {
-    RequestAnimationFrame(LPCD.EVENT.on_redraw);
-};
-
-
-
-
-/******************************************************************************
-
-  Callbacks related to the graphics engine.
-
- ******************************************************************************/
-
-
-// "on_redraw" moves sprites around when the player's coordinates change.
-// Use LPCD.CALL.repaint to schedule this event.
-LPCD.EVENT.on_redraw = function () {
+// A closure is used to encapsulate the function for the redraw event, because
+// there is absolutely no circumstance in which it should be called directly.
+LPCD.CALL.repaint = (function () {
     "use strict";
-    if (LPCD.DATA.ready) {
-        var player = LPCD.DATA.player;
-        player.ctx.clearRect(0, 0, 32, 48);
-        player.ctx.drawImage(player.sprite, player.state*32, player.dir*48 + player.offset, 32, 48, 0, 0, 32, 48);
 
-        LPCD.CALL.move_actors();
-
-        var boards = ["below", "above"];
-        for (var i=0; i<boards.length; i+=1) {
-            var board = LPCD.DOM.doc.getElementById("layer_"+boards[i]);
-            board.style.marginLeft = String(-.5*player.x) + "em";
-            board.style.marginTop = String(-.5*player.y) + "em";
+    var on_redraw = function () {
+        if (LPCD.DATA.ready) {
+            var focus = LPCD.ACTORS.registry.focus;
+            LPCD.CALL.move_actors();
+            var boards = ["below", "above"];
+            for (var i=0; i<boards.length; i+=1) {
+                var board = LPCD.DOM.doc.getElementById("layer_"+boards[i]);
+                board.style.marginLeft = String(-.5*focus.x) + "em";
+                board.style.marginTop = String(-.5*focus.y) + "em";
+            }
         }
-    }
-};
+    };
+
+    return function () {
+        RequestAnimationFrame(on_redraw);
+    };
+})();

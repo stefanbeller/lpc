@@ -143,17 +143,15 @@ LPCD.CALL.build_map = function (mapdata) {
 // "on_warp" is called to request a new level be loaded and or change the
 // player's coordinates.  Arg "level" is optional.
 LPCD.EVENT.on_warp = function (x, y, level) {
-    clearTimeout(LPCD.TIME.walk);
-    LPCD.TIME.walk = -1;
-    var player = LPCD.DATA.player;
+    var focus = LPCD.ACTORS.registry.focus;
+    
     if (x !== undefined) {
-        player.x = x;
+        focus.x = x;
     }
     if (y !== undefined) {
-        player.y = y;
+        focus.y = y;
     }
-    player.state = 0;
-    player.walking = undefined;
+    focus._stop();
 
     if (level !== undefined && LPCD.DATA.level.name !== level) {
         LPCD.CALL.cue_loading();
@@ -184,7 +182,8 @@ LPCD.EVENT.map_ready = function (mapdata, status) {
     var make_it_so = function () {
         LPCD.CALL.build_map(mapdata);
         LPCD.EVENT.make();
-        LPCD.DOM.doc.body.onclick = LPCD.EVENT.on_click;
+        LPCD.DOM.doc.body.onmousedown = LPCD.EVENT.on_mouse_down;        
+        LPCD.DOM.doc.body.onmouseup = LPCD.EVENT.on_mouse_up;
     };
     var image_loaded = function () {
         pending -= 1;
@@ -246,11 +245,12 @@ LPCD.EVENT.map_ready = function (mapdata, status) {
         if (mapdata.properties.spawn_point !== undefined) {
             var parts = mapdata.properties.spawn_point.split(",");
             if (parts.length === 2) {
-                if (LPCD.DATA.player.x === undefined) {
-                    LPCD.DATA.player.x = parseInt(parts[0], 10);
+                var focus = LPCD.ACTORS.registry.focus;
+                if (focus.x === undefined) {
+                    focus.x = parseInt(parts[0], 10);
                 }
-                if (LPCD.DATA.player.y === undefined) {
-                    LPCD.DATA.player.y = parseInt(parts[1], 10);
+                if (focus.y === undefined) {
+                    focus.y = parseInt(parts[1], 10);
                 }
             }
         }
@@ -280,17 +280,6 @@ LPCD.EVENT.map_ready = function (mapdata, status) {
 LPCD.EVENT.make = function () {
     "use strict";
     
-    // set the player stats:
-    var player = LPCD.DATA.player;
-    player.state = 0;
-
-    player.el = LPCD.DOM.doc.createElement("canvas");
-    player.el.id = "player";
-    player.el.width = 32;
-    player.el.height = 48;
-    LPCD.DOM.doc.body.appendChild(player.el);
-    player.ctx = player.el.getContext("2d");
-
     var visible = LPCD.ACTORS.registry.visible;
     for (var i=0; i<visible.length; i+=1) {
         visible[i]._show();

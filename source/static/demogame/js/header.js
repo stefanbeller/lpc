@@ -15,9 +15,15 @@ var LPCD = {
 
     "ACTORS" : {
         "registry" : {
+            // these refer to where the npc attaches, not if they are the player
             "player" : [],
             "level" : [],
+            
+            // a second list, maintained of everything visible
             "visible" : [],
+
+            // the actor that has input and screen focus
+            "focus" : undefined,
         },
         "AbstractKind" : undefined,
         "PersistentKind" : undefined,
@@ -50,27 +56,18 @@ var LPCD = {
             "max_x" : undefined,
             "min_y" : undefined,
             "max_y" : undefined
-        },
-        "player" : {
-            "x" : undefined,
-            "y" : undefined,
-            "dir" : 2,
-            "el" : undefined,
-            "mouse_vector" : {"x":0, "y":0},
-            "sprite" : undefined,
-            "state" : undefined,
-            "offset" : 0,
-            "walk_speed" : 40,
-            "walk_dist" : .5,
-            "walking" : undefined,
-            "bumped" : [],
-            "ignore" : undefined,
-            "_is_player" : true,
         }
     },
 
+    "CURSOR" : {
+        "downed_time" : -1,
+        "x" : undefined,
+        "y" : undefined,
+        "active" : false
+    },
+
     "TIME" : {
-        "walk" : -1
+        "mouse_timer" : -1
     },
 
     "CALL" : {
@@ -97,8 +94,9 @@ var LPCD = {
     
     "EVENT" : {
         "on_warp" : undefined,
-        "on_click" : undefined,
-        "on_redraw" : undefined,
+        "on_mouse_check" : undefined,
+        "on_mouse_down" : undefined,
+        "on_mouse_up" : undefined,
         "on_walk" : undefined,
         "map_ready" : undefined,
         "make" : undefined
@@ -113,8 +111,9 @@ $(document).ready(function () {
     var doc = LPCD.DOM.doc = $("#lpcd_iframe").contents()[0];
 
     if (window.top === window) {
-        LPCD.DATA.player.sprite = new Image();
-        LPCD.DATA.player.sprite.src = "./_static/sprites/char_template.png";
+        var player = new LPCD.ACTORS.HumonKind(
+            undefined, undefined, "./_static/sprites/char_template.png");
+        player._gain_input_focus();
         LPCD.EVENT.on_warp(undefined, undefined, "start1.json");
     }
     else {
