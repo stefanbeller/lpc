@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.0" orientation="orthogonal" width="32" height="32" tilewidth="32" tileheight="32">
- <tileset firstgid="1" source="../sprites/inside.tsx"/>
+ <tileset firstgid="1" source="../../sprites/inside.tsx"/>
  <layer name="floor" width="32" height="32">
   <data encoding="base64" compression="zlib">
    eJxjYBgFo2AUjIJRMApGwSgYBaMAFZjSANPCbcSqpSYYCfaTE7fUjP9R+0e2/ZSCRUC8mM52DhUAAMW0HW4=

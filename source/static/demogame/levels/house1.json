@@ -119,7 +119,7 @@
  "tilesets":[
         {
          "firstgid":1,
-         "image":"..\/sprites\/house.png",
+         "image":".\/_static\/sprites\/house.png",
          "imageheight":352,
          "imagewidth":352,
          "margin":0,
@@ -225,7 +225,7 @@
         }, 
         {
          "firstgid":122,
-         "image":"..\/sprites\/inside.png",
+         "image":".\/_static\/sprites\/inside.png",
          "imageheight":416,
          "imagewidth":416,
          "margin":0,
@@ -495,7 +495,7 @@
         }, 
         {
          "firstgid":291,
-         "image":"..\/sprites\/cabinets.png",
+         "image":".\/_static\/sprites\/cabinets.png",
          "imageheight":416,
          "imagewidth":416,
          "margin":0,

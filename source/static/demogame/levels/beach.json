@@ -90,7 +90,7 @@
  "tilesets":[
         {
          "firstgid":1,
-         "image":"..\/..\/sprites\/grass.png",
+         "image":".\/_static\/sprites\/grass.png",
          "imageheight":192,
          "imagewidth":96,
          "margin":0,
@@ -105,7 +105,7 @@
         }, 
         {
          "firstgid":19,
-         "image":"..\/..\/sprites\/dirt.png",
+         "image":"\/./_static/sprites\/dirt.png",
          "imageheight":192,
          "imagewidth":96,
          "margin":0,
@@ -120,7 +120,7 @@
         }, 
         {
          "firstgid":37,
-         "image":"..\/..\/sprites\/dirt2.png",
+         "image":".\/_static\/sprites\/dirt2.png",
          "imageheight":192,
          "imagewidth":96,
          "margin":0,
@@ -135,7 +135,7 @@
         }, 
         {
          "firstgid":55,
-         "image":"..\/..\/sprites\/hole.png",
+         "image":".\/_static\/sprites\/hole.png",
          "imageheight":192,
          "imagewidth":96,
          "margin":0,
@@ -150,7 +150,7 @@
         }, 
         {
          "firstgid":73,
-         "image":"..\/..\/sprites\/lavarock.png",
+         "image":".\/_static\/sprites\/lavarock.png",
          "imageheight":192,
          "imagewidth":96,
          "margin":0,
@@ -165,7 +165,7 @@
         }, 
         {
          "firstgid":91,
-         "image":"..\/..\/sprites\/treetop.png",
+         "image":".\/_static\/sprites\/treetop.png",
          "imageheight":224,
          "imagewidth":192,
          "margin":0,
@@ -180,7 +180,7 @@
         }, 
         {
          "firstgid":133,
-         "image":"..\/..\/sprites\/trunk.png",
+         "image":".\/_static\/sprites\/trunk.png",
          "imageheight":96,
          "imagewidth":192,
          "margin":0,
@@ -195,7 +195,7 @@
         }, 
         {
          "firstgid":151,
-         "image":"..\/..\/sprites\/water.png",
+         "image":".\/_static\/sprites\/water.png",
          "imageheight":192,
          "imagewidth":96,
          "margin":0,
@@ -277,7 +277,7 @@
         }, 
         {
          "firstgid":169,
-         "image":"..\/..\/sprites\/waterfall.png",
+         "image":".\/_static\/sprites\/waterfall.png",
          "imageheight":160,
          "imagewidth":96,
          "margin":0,
@@ -292,7 +292,7 @@
         }, 
         {
          "firstgid":184,
-         "image":"..\/..\/sprites\/watergrass.png",
+         "image":".\/_static\/sprites\/watergrass.png",
          "imageheight":192,
          "imagewidth":96,
          "margin":0,
@@ -307,7 +307,7 @@
         }, 
         {
          "firstgid":202,
-         "image":"..\/..\/sprites\/wallfloor.png",
+         "image":".\/_static\/sprites\/wallfloor.png",
          "imageheight":160,
          "imagewidth":160,
          "margin":0,
@@ -322,7 +322,7 @@
         }, 
         {
          "firstgid":227,
-         "image":"..\/..\/sprites\/shadow.png",
+         "image":".\/_static\/sprites\/shadow.png",
          "imageheight":64,
          "imagewidth":160,
          "margin":0,
@@ -337,7 +337,7 @@
         }, 
         {
          "firstgid":237,
-         "image":"..\/..\/sprites\/rock.png",
+         "image":".\/_static\/sprites\/rock.png",
          "imageheight":32,
          "imagewidth":64,
          "margin":0,
@@ -363,7 +363,7 @@
         }, 
         {
          "firstgid":239,
-         "image":"..\/..\/sprites\/house.png",
+         "image":".\/_static\/sprites\/house.png",
          "imageheight":352,
          "imagewidth":352,
          "margin":0,

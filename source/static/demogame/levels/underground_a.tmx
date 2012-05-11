@@ -1,36 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.0" orientation="orthogonal" width="64" height="64" tilewidth="32" tileheight="32">
  <tileset firstgid="1" name="dirt" tilewidth="32" tileheight="32">
-  <image source="../sprites/dirt.png" width="96" height="192"/>
+  <image source="../../sprites/dirt.png" width="96" height="192"/>
  </tileset>
  <tileset firstgid="19" name="dirt2" tilewidth="32" tileheight="32">
-  <image source="../sprites/dirt2.png" width="96" height="192"/>
+  <image source="../../sprites/dirt2.png" width="96" height="192"/>
  </tileset>
- <tileset firstgid="37" source="../sprites/wall.tsx"/>
+ <tileset firstgid="37" source="../../sprites/wall.tsx"/>
  <tileset firstgid="62" name="dungeon" tilewidth="32" tileheight="32">
-  <image source="../sprites/dungeon.png" width="416" height="416"/>
+  <image source="../../sprites/dungeon.png" width="416" height="416"/>
  </tileset>
- <tileset firstgid="231" source="../sprites/barrel.tsx"/>
- <tileset firstgid="239" source="../sprites/chests.tsx"/>
- <tileset firstgid="245" source="../sprites/rock.tsx"/>
- <tileset firstgid="247" source="../sprites/hole.tsx"/>
- <tileset firstgid="265" source="../sprites/water.tsx"/>
+ <tileset firstgid="231" source="../../sprites/barrel.tsx"/>
+ <tileset firstgid="239" source="../../sprites/chests.tsx"/>
+ <tileset firstgid="245" source="../../sprites/rock.tsx"/>
+ <tileset firstgid="247" source="../../sprites/hole.tsx"/>
+ <tileset firstgid="265" source="../../sprites/water.tsx"/>
  <tileset firstgid="283" name="waterfall" tilewidth="32" tileheight="32">
-  <image source="../sprites/waterfall.png" width="96" height="160"/>
+  <image source="../../sprites/waterfall.png" width="96" height="160"/>
  </tileset>
  <tileset firstgid="298" name="cement" tilewidth="32" tileheight="32">
-  <image source="../sprites/cement.png" width="96" height="192"/>
+  <image source="../../sprites/cement.png" width="96" height="192"/>
  </tileset>
- <tileset firstgid="316" source="../sprites/cementstair.tsx"/>
+ <tileset firstgid="316" source="../../sprites/cementstair.tsx"/>
  <tileset firstgid="336" name="brackish" tilewidth="32" tileheight="32">
-  <image source="../sprites/brackish.png" width="96" height="192"/>
+  <image source="../../sprites/brackish.png" width="96" height="192"/>
  </tileset>
- <tileset firstgid="354" source="../sprites/holek.tsx"/>
- <tileset firstgid="372" source="../sprites/holemid.tsx"/>
+ <tileset firstgid="354" source="../../sprites/holek.tsx"/>
+ <tileset firstgid="372" source="../../sprites/holemid.tsx"/>
  <tileset firstgid="390" name="lavarock" tilewidth="32" tileheight="32">
-  <image source="../sprites/lavarock.png" width="96" height="192"/>
+  <image source="../../sprites/lavarock.png" width="96" height="192"/>
  </tileset>
- <tileset firstgid="408" source="../sprites/lava.tsx"/>
+ <tileset firstgid="408" source="../../sprites/lava.tsx"/>
  <layer name="base_layer" width="64" height="64">
   <data encoding="base64" compression="zlib">
    eJzt2EsOwjAMBNBkzY49J+hV+FyNI8OiUqOKkLbxeJzai1khEb9JWlqmlNIUiUSGyK0IexaW21sHNTvCb63ff3YNP7OLlh0x25610J3s8UvNwlizd45nTumV9e3a1+GezzXtqHOgef/x7rd2/tczoe2//PfvPeWR278ByPkuczT8W84Bc38sxrNf895kMd79ZQfsOcIffpbdo1/72dTabKPYNd5P2eaWHTHrqH6peS36t3Yh+f1s59EevPhrHXjyIztlz8G0e/Nr/u9nMZ79Ws+VFuPZXvOzZ2J2wJ4l/Dx7+PnzhH/JOy85s790toL0WzWj/My9P+qX7EHb32uW7sCzn3H2rdjP4O/pgvHOY8Wu6UeZe68BrX337kd3MIIf0Unv+ky/hTPA3n/JLkb1W7j22fu/tQvJtSz6a50gvncUPyre/WUH7DlYuc5hz4HOB4fKED4=

@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.0" orientation="orthogonal" width="64" height="64" tilewidth="32" tileheight="32">
  <tileset firstgid="1" name="grass" tilewidth="32" tileheight="32">
-  <image source="../sprites/grass.png" width="96" height="192"/>
+  <image source="../../sprites/grass.png" width="96" height="192"/>
  </tileset>
  <tileset firstgid="19" name="dirt" tilewidth="32" tileheight="32">
-  <image source="../sprites/dirt.png" width="96" height="192"/>
+  <image source="../../sprites/dirt.png" width="96" height="192"/>
  </tileset>
  <tileset firstgid="37" name="dirt2" tilewidth="32" tileheight="32">
-  <image source="../sprites/dirt2.png" width="96" height="192"/>
+  <image source="../../sprites/dirt2.png" width="96" height="192"/>
  </tileset>
  <tileset firstgid="55" name="lavarock" tilewidth="32" tileheight="32">
-  <image source="../sprites/lavarock.png" width="96" height="192"/>
+  <image source="../../sprites/lavarock.png" width="96" height="192"/>
  </tileset>
  <tileset firstgid="73" name="treetop" tilewidth="32" tileheight="32">
-  <image source="../sprites/treetop.png" width="192" height="224"/>
+  <image source="../../sprites/treetop.png" width="192" height="224"/>
  </tileset>
  <tileset firstgid="115" name="trunk" tilewidth="32" tileheight="32">
-  <image source="../sprites/trunk.png" width="192" height="96"/>
+  <image source="../../sprites/trunk.png" width="192" height="96"/>
  </tileset>
  <layer name="ground" width="64" height="64">
   <data encoding="base64" compression="zlib">

@@ -197,7 +197,7 @@
  "tilesets":[
         {
          "firstgid":1,
-         "image":"..\/sprites\/dirt.png",
+         "image":".\/_static\/sprites\/dirt.png",
          "imageheight":192,
          "imagewidth":96,
          "margin":0,
@@ -212,7 +212,7 @@
         }, 
         {
          "firstgid":19,
-         "image":"..\/sprites\/grass.png",
+         "image":".\/_static\/sprites\/grass.png",
          "imageheight":192,
          "imagewidth":96,
          "margin":0,
@@ -227,7 +227,7 @@
         }, 
         {
          "firstgid":37,
-         "image":"..\/sprites\/dirt2.png",
+         "image":".\/_static\/sprites\/dirt2.png",
          "imageheight":192,
          "imagewidth":96,
          "margin":0,
@@ -242,7 +242,7 @@
         }, 
         {
          "firstgid":55,
-         "image":"..\/sprites\/lavarock.png",
+         "image":".\/_static\/sprites\/lavarock.png",
          "imageheight":192,
          "imagewidth":96,
          "margin":0,
@@ -257,7 +257,7 @@
         }, 
         {
          "firstgid":73,
-         "image":"..\/sprites\/wallfloor.png",
+         "image":".\/_static\/sprites\/wallfloor.png",
          "imageheight":160,
          "imagewidth":160,
          "margin":0,
@@ -363,7 +363,7 @@
         }, 
         {
          "firstgid":98,
-         "image":"..\/sprites\/trunk.png",
+         "image":".\/_static\/sprites\/trunk.png",
          "imageheight":96,
          "imagewidth":192,
          "margin":0,
@@ -393,7 +393,7 @@
         }, 
         {
          "firstgid":116,
-         "image":"..\/sprites\/water.png",
+         "image":".\/_static\/sprites\/water.png",
          "imageheight":192,
          "imagewidth":96,
          "margin":0,
@@ -475,7 +475,7 @@
         }, 
         {
          "firstgid":134,
-         "image":"..\/sprites\/watergrass.png",
+         "image":".\/_static\/sprites\/watergrass.png",
          "imageheight":192,
          "imagewidth":96,
          "margin":0,
@@ -557,7 +557,7 @@
         }, 
         {
          "firstgid":152,
-         "image":"..\/sprites\/rock.png",
+         "image":".\/_static\/sprites\/rock.png",
          "imageheight":32,
          "imagewidth":64,
          "margin":0,
@@ -583,7 +583,7 @@
         }, 
         {
          "firstgid":154,
-         "image":"..\/sprites\/waterfall.png",
+         "image":".\/_static\/sprites\/waterfall.png",
          "imageheight":160,
          "imagewidth":96,
          "margin":0,
@@ -598,7 +598,7 @@
         }, 
         {
          "firstgid":169,
-         "image":"..\/sprites\/cementstair.png",
+         "image":".\/_static\/sprites\/cementstair.png",
          "imageheight":128,
          "imagewidth":160,
          "margin":0,
@@ -613,7 +613,7 @@
         }, 
         {
          "firstgid":189,
-         "image":"..\/sprites\/dungeon.png",
+         "image":".\/_static\/sprites\/dungeon.png",
          "imageheight":416,
          "imagewidth":416,
          "margin":0,
@@ -639,7 +639,7 @@
         }, 
         {
          "firstgid":358,
-         "image":"..\/sprites\/stairs.png",
+         "image":".\/_static\/sprites\/stairs.png",
          "imageheight":448,
          "imagewidth":256,
          "margin":0,
@@ -654,7 +654,7 @@
         }, 
         {
          "firstgid":470,
-         "image":"..\/sprites\/cabinets.png",
+         "image":".\/_static\/sprites\/cabinets.png",
          "imageheight":416,
          "imagewidth":416,
          "margin":0,
@@ -669,7 +669,7 @@
         }, 
         {
          "firstgid":639,
-         "image":"..\/sprites\/house.png",
+         "image":".\/_static\/sprites\/house.png",
          "imageheight":352,
          "imagewidth":352,
          "margin":0,
@@ -775,7 +775,7 @@
         }, 
         {
          "firstgid":760,
-         "image":"..\/sprites\/barrel.png",
+         "image":".\/_static\/sprites\/barrel.png",
          "imageheight":64,
          "imagewidth":128,
          "margin":0,
@@ -817,7 +817,7 @@
         }, 
         {
          "firstgid":768,
-         "image":"..\/sprites\/treetop.png",
+         "image":".\/_static\/sprites\/treetop.png",
          "imageheight":224,
          "imagewidth":192,
          "margin":0,
@@ -847,7 +847,7 @@
         }, 
         {
          "firstgid":810,
-         "image":"..\/sprites\/chests.png",
+         "image":".\/_static\/sprites\/chests.png",
          "imageheight":96,
          "imagewidth":64,
          "margin":0,

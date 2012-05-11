@@ -64,7 +64,7 @@
  "tilesets":[
         {
          "firstgid":1,
-         "image":"..\/sprites\/inside.png",
+         "image":".\/_static\/sprites\/inside.png",
          "imageheight":416,
          "imagewidth":416,
          "margin":0,
@@ -334,7 +334,7 @@
         }, 
         {
          "firstgid":170,
-         "image":"..\/sprites\/barrel.png",
+         "image":".\/_static\/sprites\/barrel.png",
          "imageheight":64,
          "imagewidth":128,
          "margin":0,
@@ -349,7 +349,7 @@
         }, 
         {
          "firstgid":178,
-         "image":"..\/sprites\/buckets.png",
+         "image":".\/_static\/sprites\/buckets.png",
          "imageheight":64,
          "imagewidth":96,
          "margin":0,
@@ -364,7 +364,7 @@
         }, 
         {
          "firstgid":184,
-         "image":"..\/sprites\/chests.png",
+         "image":".\/_static\/sprites\/chests.png",
          "imageheight":96,
          "imagewidth":64,
          "margin":0,
@@ -406,7 +406,7 @@
         }, 
         {
          "firstgid":190,
-         "image":"..\/sprites\/cabinets.png",
+         "image":".\/_static\/sprites\/cabinets.png",
          "imageheight":416,
          "imagewidth":416,
          "margin":0,
@@ -421,7 +421,7 @@
         }, 
         {
          "firstgid":359,
-         "image":"..\/sprites\/country.png",
+         "image":".\/_static\/sprites\/country.png",
          "imageheight":128,
          "imagewidth":160,
          "margin":0,
@@ -503,7 +503,7 @@
         }, 
         {
          "firstgid":379,
-         "image":"..\/sprites\/desklamp.png",
+         "image":".\/_static\/sprites\/desklamp.png",
          "imageheight":96,
          "imagewidth":192,
          "margin":0,
@@ -518,7 +518,7 @@
         }, 
         {
          "firstgid":397,
-         "image":"..\/sprites\/kitchen.png",
+         "image":".\/_static\/sprites\/kitchen.png",
          "imageheight":128,
          "imagewidth":64,
          "margin":0,
