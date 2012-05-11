@@ -1,10 +1,18 @@
 #lpcd_iframe {
-    width: 800px;
+    width: 100%;
+    max-width: 800px;
     height: 600px;
     border: 1px solid black;
     display: block;
     margin: auto;
+    margin-top: 10px;
     border-radius: 5px;
+}
+
+#character_selector {
+    display: block;
+    text-align: center;
+    margin: auto;
 }
 
 #backdrop {

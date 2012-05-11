@@ -5,15 +5,6 @@
           type="text/javascript"></script>
   <script type="text/javascript" src="{{ pathto('_static/demogame/js/lpcd.js', 1) }}"></script>
   <link rel="stylesheet" type="text/css" href="{{ pathto('_static/demogame/lpcd.css', 1) }}" />
-  <style type="text/css">
-  body { 
-      background-color: #222; 
-      color: #999; 
-      font-family: monospace;
-      font-size: 12pt;
-      text-align: center;
-  } 
-  </style>
   <script type="text/javascript">
 $(document).ready(function () {
     "use strict";
@@ -30,9 +21,10 @@ $(document).ready(function () {
 {% endblock %}
 
 {% block body %}
+  <br/>
   <iframe id="lpcd_iframe" scrolling="no" frameborder="0"></iframe>
   <br/>
-  <form action="">
+  <form action="" id="character_selector">
     Character Sprite:<br/>
     <input type="radio" name="gender" value="female" checked="checked" /> Female Template
     <input type="radio" name="gender" value="male" /> Male Template
