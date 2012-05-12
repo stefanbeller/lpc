@@ -22,11 +22,36 @@ import os
 
 def setup(app):
     app.add_directive('asset', AssetDirective)
+    app.add_directive('thumbtoc', ThumbTOCDirective)
 
 
-class asset_node(nodes.paragraph, nodes.Element):
-    pass
+class ThumbTOCDirective(Directive):
+    has_content = True
+    required_arguments = 0
+    optional_arguments = 0
+    final_argument_whitespace = False
 
+    def run(self):
+        container = nodes.container(classes=['thumbtoc_container'])
+        for entry in self.content:
+            name, ref, img_url = entry.split('|')
+
+            subcontainer = nodes.container(classes=['thumbtoc_item'])
+            img_ref = nodes.reference(refuri=ref)
+            image = nodes.image(uri=img_url, alt=name, refuri=ref, target=ref)
+            img_ref += image
+            textpar_node = nodes.paragraph(classes=["thumbtoc_text"])
+            link = nodes.reference('', name, refuri=ref)
+            textpar_node.append(link)
+            subcontainer += [img_ref, textpar_node]
+            
+            container += subcontainer
+
+        return [container]
+
+
+## Asset stuff
+## -----------
 
 class AssetDirective(Directive):
     required_arguments = 1

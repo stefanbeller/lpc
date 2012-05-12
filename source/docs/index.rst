@@ -3,25 +3,10 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to Liberated Pixel Cup styleguide's documentation!
-==========================================================
+Liberated Pixel Cup style guide, assets, and demo
+================================================
 
-Contents:
-
-.. toctree::
-   :maxdepth: 2
-
-   styleguide
-   assets
-
-And let's not forget this gem:
-
-* `Interactive Demo <demo.html>`_
-
-Indices and tables
-==================
-
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
-
+.. thumbtoc::
+   Style Guide|styleguide.html|../static/images/styleguide_index.png
+   Asset Directory|assets.html|../static/images/assets_index.png
+   Interactive Demo|demo.html|../static/images/demo_index.png
