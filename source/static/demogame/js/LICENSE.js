@@ -21,4 +21,8 @@
      along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 
+ ******************************************************************************
+
+     Check out our git repository: https://gitorious.org/liberated-pixel-cup
+
  ******************************************************************************/
