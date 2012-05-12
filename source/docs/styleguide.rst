@@ -239,10 +239,10 @@ Pixel Tutorials:
   highly recommended.
 * http://www.pixeljoint.com/forum/forum_posts.asp?TID=11299 -- A good
   general course on what pixel art is and how to start making it.
-* http://opengameart.org/content/les-forges-pixel-art-course A pixel
+* http://opengameart.org/content/les-forges-pixel-art-course -- A pixel
   art course that's so good that we translated and mirrored it.
   Originals in French here: http://www.lesforges.org/tag/pixel%20art
-* http://www.natomic.com/hosted/marks/mpat/ Good set of resources,
+* http://www.natomic.com/hosted/marks/mpat/ -- Decent set of resources,
   though most important is maybe the `shading piece
   <http://www.natomic.com/hosted/marks/mpat/shading.html>`_ which
   describes how to avoid the dreaded "pillow shading" style and think
