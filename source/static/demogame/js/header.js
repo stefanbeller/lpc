@@ -85,6 +85,7 @@ var LPCD = {
          */
 
         "repaint" : undefined, // ()
+        "find_actor" : undefined, // (key, value)
         "link_actor" : undefined, // (actor, [visible])
         "unlink_actor" : undefined, // (actor)
         "unlink_transients" : undefined, // ()

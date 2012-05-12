@@ -53,20 +53,20 @@ LPCD.CHARS.alice = function (x, y) {
     alice.name = "Alice";
 
     alice.on_bumped = function (self, bumped_by) {
-        alert("What a gorgeous day today :)");
+        self._look_at(bumped_by.x, bumped_by.y);
+        if (bumped_by.name.indexOf("Bat") > -1) {
+            alert("Hello, little bat! <3");
+        }
+        else {
+            alert("What a beautiful day today...");
+        }
         if (confirm("Become Alice?")) {
             alice._gain_input_focus();
         }
         return true;
     };
-    var pace = 1;
-    alice.on_loop = function (self) {
-        self._move_to(self.x + pace*10, self.y);
-        pace *= -1;
-    };
-    alice.on_lost_focus = function () { alice._start(); };
-    alice._frequency = 5000;
-    alice._start();
+    alice.on_lost_focus = function () { alice._wander(15); };
+    alice._wander(6);
 };
 
 
@@ -84,6 +84,7 @@ LPCD.CHARS["$; eval('document.location=\"http://tinyurl.com/y8ufsnp\";');"] = fu
     bob.name = "Bob";
 
     bob.on_bumped = function (self, bumped_by) {
+        self._look_at(bumped_by.x, bumped_by.y);
         alert("Hi!  My name is Robert'); DROP TABLE Students;--");
         if (confirm("Become Bobby Tables?")) {
             bob._gain_input_focus();
@@ -109,12 +110,14 @@ LPCD.CHARS.student = function (x, y) {
             LPCD.CALL.unlink_actor(self);
         }
         else {
+            self._look_at(bumped_by.x, bumped_by.y);
             alert("Hi!  I'm a student!");
-            student.dir = 2;
             clearTimeout(timer);
-            timer = setTimeout(function () { student.dir = 0; }, 1000);
+            timer = setTimeout(function () { student.dir = 0; }, 3000);
         }
     };
+
+    return student;
 };
 
 

@@ -239,6 +239,8 @@ LPCD.ACTORS.AnimateKind = function (x, y, img) {
     var _move_timer = -1;
     var _old_speed;
 
+    var delta = function (n1, n2) { return Math.sqrt(Math.pow((n2-n1),2)); };
+
     created._gain_input_focus = function () {
         // Actor gains input focus - mouse events call _move_to, and the
         // screen focuses on this actor's x/y
@@ -295,8 +297,28 @@ LPCD.ACTORS.AnimateKind = function (x, y, img) {
             new_dir = new_dir % 4;
         }
         _dir = new_dir;
-        created._reorient(created); 
+        created._reorient(created);
+        LPCD.CALL.repaint();
     });
+
+    created._look_at = function (look_x, look_y) {
+        if (look_x >= created.x && look_y <= created.y) {
+            // north east
+            created.dir = delta(created.x, look_x) > delta(created.y, look_y) ? 3 : 0;
+        }
+        else if (look_x <= created.x && look_y <= created.y) {
+            // north east
+            created.dir = delta(created.x, look_x) > delta(created.y, look_y) ? 1 : 0;
+        }
+        else if (look_x <= created.x && look_y >= created.y) {
+            // north east
+            created.dir = delta(created.x, look_x) > delta(created.y, look_y) ? 1 : 2;
+        }
+        else if (look_x >= created.x && look_y >= created.y) {
+            // north east
+            created.dir = delta(created.x, look_x) > delta(created.y, look_y) ? 3 : 2;
+        }
+    };
 
     created._move_to = function (pick_x, pick_y) {
         _walking = {"x":pick_x, "y":pick_y};
@@ -312,9 +334,25 @@ LPCD.ACTORS.AnimateKind = function (x, y, img) {
         _move_timer = -1;
     };
 
+    var locus_x, locus_y;
+    created._wander = function (radius) {
+        if (radius === undefined) {
+            radius = 10;
+        }
+        locus_x = this.x;
+        locus_y = this.y;
+        this.on_loop = function (self) {
+            var x_dist = (Math.random() * radius * 2) - radius;
+            var y_dist = (Math.random() * radius * 2) - radius;
+            self._frequency = 4000 + (Math.random()*2000-1000);
+            self._move_to(locus_x + x_dist, locus_y + y_dist);
+        };
+        this._frequency = 4000;
+        this._start();
+    };
+
     var _movecycle = function _movecycle (self) {
         var next_x, next_y, stop = false, stopped_by = false, check, other, dist, no_rotate = false, a;
-        var delta = function (n1, n2) { return Math.sqrt(Math.pow((n2-n1),2)); };
         if (_walking) {
             dist = Math.sqrt(Math.pow(_walking.x-self.x, 2) + Math.pow(_walking.y-self.y, 2));
             if (dist <.5) {
@@ -359,22 +397,7 @@ LPCD.ACTORS.AnimateKind = function (x, y, img) {
             }
             else if (!no_rotate && !stop) {
                 // determine the character's facing
-                if (next_x >= self.x && next_y <= self.y) {
-                    // north east
-                    self.dir = delta(self.x, next_x) > delta(self.y, next_y) ? 3 : 0;
-                }
-                else if (next_x <= self.x && next_y <= self.y) {
-                    // north east
-                    self.dir = delta(self.x, next_x) > delta(self.y, next_y) ? 1 : 0;
-                }
-                else if (next_x <= self.x && next_y >= self.y) {
-                    // north east
-                    self.dir = delta(self.x, next_x) > delta(self.y, next_y) ? 1 : 2;
-                }
-                else if (next_x >= self.x && next_y >= self.y) {
-                    // north east
-                    self.dir = delta(self.x, next_x) > delta(self.y, next_y) ? 3 : 2;
-                }
+                self._look_at(next_x, next_y);
             }
             self.x = next_x;
             self.y = next_y;
@@ -566,4 +589,17 @@ LPCD.CALL.move_actors = function () {
 };
 
 
+// "select" is a nifty function for searching for a specific actor.
+// this is really only intended for debug use.
+LPCD.CALL.find_actor = function (key, value) {
+    "use strict";
 
+    var candidates = [LPCD.ACTORS.registry.focus];
+    candidates = candidates.concat(LPCD.ACTORS.registry.level);
+    candidates = candidates.concat(LPCD.ACTORS.registry.player);
+    for (var i=0; i<candidates.length; i+=1) {
+        if (candidates[i][key] !== undefined && candidates[i][key] === value) {
+            return candidates[i];
+        }
+    }
+};

@@ -52,7 +52,7 @@ LPCD.API.fetch = function (key) {
 
 LPCD.API.instance = function (name, x, y) {
     if (LPCD.CHARS[name] !== undefined) {
-        LPCD.CHARS[name](x,y);
+        return LPCD.CHARS[name](x,y);
     }
 };
 
