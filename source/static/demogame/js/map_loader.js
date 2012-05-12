@@ -265,16 +265,12 @@ LPCD.EVENT.map_ready = function (mapdata, status) {
         if (mapdata.properties.dynamics !== undefined) {
             LPCD.DATA.level.dynamics = mapdata.properties.dynamics;
         }
-        if (mapdata.properties.spawn_point !== undefined) {
+        if (mapdata.properties.spawn_point !== undefined && LPCD.DATA.bootstrapping) {
             var parts = mapdata.properties.spawn_point.split(",");
             if (parts.length === 2) {
                 var focus = LPCD.ACTORS.registry.focus;
-                if (focus.x === undefined) {
-                    focus.x = parseInt(parts[0], 10);
-                }
-                if (focus.y === undefined) {
-                    focus.y = parseInt(parts[1], 10);
-                }
+                focus.x = parseInt(parts[0], 10);
+                focus.y = parseInt(parts[1], 10);
             }
         }
     }
@@ -306,6 +302,8 @@ LPCD.EVENT.make = function () {
     
     LPCD.DOM.doc.getElementById("text_overlay").style.display = "none";
     LPCD.DATA.ready = true;
+    LPCD.DATA.bootstrapping = false;
+
     var stage = LPCD.DOM.layers.actors = LPCD.DOM.doc.createElement("iframe");
     stage.id = "stage";
     stage.setAttribute("draggable", "false");
@@ -315,6 +313,9 @@ LPCD.EVENT.make = function () {
     stage.doc = stage.contentWindow.document;
     stage.doc.write('<link rel="stylesheet" type="text/css" href="./_static/demogame/lpcd.css" />');
     stage.doc.close();
+
+    LPCD.ACTORS.registry.focus._bumped = [];
+    LPCD.CALL.mouse_cancel();
 
     var visible = LPCD.ACTORS.registry.visible;
     for (var i=0; i<visible.length; i+=1) {

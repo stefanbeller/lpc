@@ -13,16 +13,30 @@
 LPCD.ACTORS.AbstractKind = function (binding) {
     "use strict";
 
+    var _loop_timer = -1;
     var _binding = binding === "player" ? "player" : "level";
     var created = {
         "on_player_enter" : function (self, player) {
         },
         "on_delete" : function (self) {
         },
+        "on_loop" : function (self) {
+        },
         "_rebind" : function (new_binding) {
             _binding = new_binding === "player" ? "player" : "level";
             LPCD.CALL.unlink_actor(created);
             LPCD.CALL.link_actor(created);
+        },
+        "_frequency" : 100,
+        "_start" : function () {
+            clearTimeout(_loop_timer);
+            (function inner_loop (self) {
+                if (!self._deleted && !self._is_player) {
+                    self.on_loop(self);
+                }
+                _loop_timer = setTimeout(
+                    function () { inner_loop(self); }, self._frequency);
+            })(this);
         }
     };
     created.__defineGetter__("_binding", function () { return _binding; });
@@ -137,7 +151,9 @@ LPCD.ACTORS.VisibleKind = function (binding, x, y, img) {
         }
     };
     created._hide = function () {
-        _canvas.parentNode.removeChild(_canvas);
+        if (_canvas.parentNode) {
+            _canvas.parentNode.removeChild(_canvas);
+        }
     };
 
     created._crop = function (sx, sy, sw, sh) {
@@ -220,7 +236,6 @@ LPCD.ACTORS.AnimateKind = function (x, y, img) {
     var _steps = 0;
     var _is_player = false;
     var _walking = false;
-    var _origin_level;
     var _move_timer = -1;
     var _old_speed;
 
@@ -230,12 +245,13 @@ LPCD.ACTORS.AnimateKind = function (x, y, img) {
 
         try {
             LPCD.ACTORS.registry.focus._lose_input_focus();
+            _ignore = LPCD.ACTORS.registry.focus;
+            LPCD.ACTORS.registry.focus._ignore = this;
         } catch (err) {/* don't worry about it */}
         LPCD.ACTORS.registry.focus = this;
         LPCD.CALL.unlink_actor(this, true);
         LPCD.ACTORS.registry.visible.push(this);
         this._show();
-        _origin_level = LPCD.DATA.level.name;
         _is_player = true;
         _old_speed = this._move_speed;
         this._move_speed -= 25; // speed up
@@ -245,10 +261,9 @@ LPCD.ACTORS.AnimateKind = function (x, y, img) {
 
     created._lose_input_focus = function () {
         // Should not be called directly :P
-        // This method is called with this actor loses input focus.
+        // This method is called when this actor loses input focus.
 
         _is_player = false;
-        var deleted = false;
         if (this._binding === "level") {
             // Actor rebinds and is added back into the level.
             LPCD.CALL.unlink_actor(this, true);
@@ -260,7 +275,9 @@ LPCD.ACTORS.AnimateKind = function (x, y, img) {
             LPCD.CALL.unlink_actor(this, true);
             LPCD.CALL.link_actor(this, false);
         }
-        if (!deleted && this.on_lost_focus !== undefined) { this.on_lost_focus(this); }
+        if (this.on_lost_focus !== undefined) {
+            this.on_lost_focus();
+        }
     };
     
     created.__defineGetter__("_move_speed", function () { return _move_speed; });
@@ -366,7 +383,7 @@ LPCD.ACTORS.AnimateKind = function (x, y, img) {
         if (self._bumped.length > 0) {
             var bumped = self._bumped[0];
             self._bumped = [];
-            if (bumped.on_bumped !== undefined && bumped !== _ignore) {
+            if (bumped.on_bumped !== undefined && bumped !== _ignore && !bumped._is_player) {
                 _ignore = bumped;
                 // call the "on_bumped" method of the other actor.
                 var acted = bumped.on_bumped(bumped, self);
@@ -547,5 +564,6 @@ LPCD.CALL.move_actors = function () {
         visible[i]._reorient(visible[i]);
     }
 };
+
 
 

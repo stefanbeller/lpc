@@ -13,6 +13,8 @@ var LPCD = {
         "layers" : {}
     },
 
+    "CHARS" : {},
+
     "ACTORS" : {
         "registry" : {
             // these refer to where the npc attaches, not if they are the player
@@ -49,6 +51,7 @@ var LPCD = {
     },
 
     "DATA" : {
+        "bootstrapping" : true,
         "ready" : false,
         "level" : {
             "name" : "",
@@ -117,9 +120,10 @@ $(document).ready(function () {
     var doc = LPCD.DOM.doc = $("#lpcd_iframe").contents()[0];
 
     if (window.top === window) {
-        var player = new LPCD.ACTORS.HumonKind(
-            undefined, undefined, "./_static/sprites/char_template.png");
+        LPCD.CHARS.alice(0, 0);
+        var player = LPCD.ACTORS.registry.visible[0];
         player._gain_input_focus();
+        player.dir = 2;
         LPCD.EVENT.on_warp(undefined, undefined, "start1.json");
     }
     else {

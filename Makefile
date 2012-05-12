@@ -16,7 +16,7 @@ GAME_JS_DIR = source/static/demogame/js
 GAME_JS_FILES = $(GAME_JS_DIR)/feature_shiv.js $(GAME_JS_DIR)/header.js \
 	$(GAME_JS_DIR)/map_loader.js $(GAME_JS_DIR)/controls.js \
 	$(GAME_JS_DIR)/actor_model.js $(GAME_JS_DIR)/graphics.js \
-	$(GAME_JS_DIR)/api.js
+	$(GAME_JS_DIR)/api.js $(GAME_JS_DIR)/characters.js
 GAME_JS_TARGET = $(GAME_JS_DIR)/lpcd.js
 
 
