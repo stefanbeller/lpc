@@ -94,6 +94,7 @@ var LPCD = {
         "add_warp" : undefined, // (x1, y1, x2, y2, [destination]);
         "get_warp" : undefined, // (x, y)
         "warp_check" : undefined, // (x, y) <-- use instead of get_warp!
+        "mouse_cancel" : undefined, // ()
         "cue_loading" : undefined, // ()
     },
     

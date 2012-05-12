@@ -69,6 +69,14 @@ LPCD.CALL.get_warp = function (x, y) {
 };
 
 
+// "mouse_cancel" is used to manually 'mouse_up'
+LPCD.CALL.mouse_cancel = function () {
+    clearTimeout(LPCD.TIME.mouse_timer);
+    LPCD.DOM.doc.body.onmousemove = undefined;
+    LPCD.CURSOR.active = false;
+    LPCD.TIME.mouse_timer = -1;
+};
+
 
 
 
@@ -106,7 +114,6 @@ LPCD.EVENT.on_mouse_check = function () {
     }
 };
 
-
 LPCD.EVENT.on_mouse_down = function (event) {
     "use strict";
 
@@ -120,19 +127,14 @@ LPCD.EVENT.on_mouse_down = function (event) {
     LPCD.EVENT.on_mouse_check();
 };
 
-
 LPCD.EVENT.on_mouse_move = function (event) {
     LPCD.CURSOR.x = event.x || event.clientX;
     LPCD.CURSOR.y = event.y || event.clientY;
 };
 
-
 LPCD.EVENT.on_mouse_up = function (event) {
     var mark = Date.now();
-    clearTimeout(LPCD.TIME.mouse_timer);
-    LPCD.DOM.doc.body.onmousemove = undefined;
-    LPCD.CURSOR.active = false;
-    LPCD.TIME.mouse_timer = -1;
+    LPCD.CALL.mouse_cancel();
     if (mark - LPCD.CURSOR.downed_time > 300) {
         LPCD.ACTORS.registry.focus._stop();
     }

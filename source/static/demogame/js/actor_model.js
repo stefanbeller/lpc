@@ -126,7 +126,7 @@ LPCD.ACTORS.VisibleKind = function (binding, x, y, img) {
         var focus = LPCD.ACTORS.registry.focus;
         _canvas.style.marginLeft = String((_x-focus.x)/2) + "em";
         _canvas.style.marginTop = String((_y-focus.y)/2) + "em";
-        _canvas.style.zIndex = String(_y);
+        _canvas.style.zIndex = String(Math.floor(_y));
     };
 
     created.img = img;
@@ -135,6 +135,9 @@ LPCD.ACTORS.VisibleKind = function (binding, x, y, img) {
         if (layers.actors !== undefined) {
             layers.actors.contentWindow.document.body.appendChild(_canvas);
         }
+    };
+    created._hide = function () {
+        _canvas.parentNode.removeChild(_canvas);
     };
 
     created._crop = function (sx, sy, sw, sh) {
@@ -189,7 +192,7 @@ LPCD.ACTORS.ObjectKind = function (x, y, img) {
         var draw_y = (self.y-focus.y-self._img_y_offset)/2;
         self._canvas.style.marginLeft = String(draw_x) + "em";
         self._canvas.style.marginTop = String(draw_y) + "em";
-        self._canvas.style.zIndex = String(draw_y);
+        self._canvas.style.zIndex = String(Math.floor(draw_y));
     };
 
     created.on_bumped = function (self, bumped_by) {
@@ -231,10 +234,13 @@ LPCD.ACTORS.AnimateKind = function (x, y, img) {
         LPCD.ACTORS.registry.focus = this;
         LPCD.CALL.unlink_actor(this, true);
         LPCD.ACTORS.registry.visible.push(this);
+        this._show();
         _origin_level = LPCD.DATA.level.name;
         _is_player = true;
         _old_speed = this._move_speed;
         this._move_speed -= 25; // speed up
+
+        if (this.on_gained_focus !== undefined) { this.on_gained_focus(this); }
     };
 
     created._lose_input_focus = function () {
@@ -242,16 +248,19 @@ LPCD.ACTORS.AnimateKind = function (x, y, img) {
         // This method is called with this actor loses input focus.
 
         _is_player = false;
-        if (!(this._binding === "level" && LPCD.DATA.level.name !== _origin_level)) {
-            // Actor rebinds to whatever it was before
+        var deleted = false;
+        if (this._binding === "level") {
+            // Actor rebinds and is added back into the level.
             LPCD.CALL.unlink_actor(this, true);
-            LPCD.CALL.link_actor(this, visible);
+            LPCD.CALL.link_actor(this, true);
             this._move_speed = _old_speed;
         }
         else {
-            // Actor is completely unlinked
-            LPCD.CALL.unlink_actor(this);
+            // Actor rebinds to whatever it was before
+            LPCD.CALL.unlink_actor(this, true);
+            LPCD.CALL.link_actor(this, false);
         }
+        if (!deleted && this.on_lost_focus !== undefined) { this.on_lost_focus(this); }
     };
     
     created.__defineGetter__("_move_speed", function () { return _move_speed; });
@@ -355,14 +364,16 @@ LPCD.ACTORS.AnimateKind = function (x, y, img) {
         }
 
         if (self._bumped.length > 0) {
-            // TODO : add an on_stopped event, to compliment on_bumped.
             var bumped = self._bumped[0];
             self._bumped = [];
             if (bumped.on_bumped !== undefined && bumped !== _ignore) {
                 _ignore = bumped;
                 // call the "on_bumped" method of the other actor.
                 var acted = bumped.on_bumped(bumped, self);
+
                 if (acted) { 
+                    // if on_bumped returned true, interrupt the player's movement
+                    LPCD.CALL.mouse_cancel();
                     stopped_by = bumped;
                     stop = true;
                 }
@@ -374,7 +385,7 @@ LPCD.ACTORS.AnimateKind = function (x, y, img) {
 
         if (stop) {
             self._stop();
-            if ( self.on_stopped !== undefined ) {
+            if ( self.on_stopped !== undefined && !self._is_player ) {
                 self.on_stopped(self, stopped_by);
             }
         }
@@ -403,6 +414,7 @@ LPCD.ACTORS.CritterKind = function (x, y, img, w, h, steps, directional, rate) {
 
     created._block_width = w/16;
     created._block_height = h/16;
+    created._img_y_offset = (h/16)-1;
 
     created._crop(0, 0, w, h);
     if (directional) {
@@ -475,11 +487,11 @@ LPCD.CALL.link_actor = function (actor, visible) {
     if (actor._binding !== undefined) {
         if (registry[actor._binding].indexOf(actor) === -1) {
             registry[actor._binding].push(actor);
-            if (visible) {
-                registry.visible.push(actor);
-                actor._show();
-                actor._reorient(actor);
-            }
+        }
+        if (visible && registry.visible.indexOf(actor) === -1) {
+            registry.visible.push(actor);
+            actor._show();
+            actor._reorient(actor);
         }
     }
     else {
@@ -502,6 +514,7 @@ LPCD.CALL.unlink_actor = function (actor, no_delete) {
         }
         if (visindex !== -1) {
             registry.visible.splice(visindex, 1);
+            actor._hide();
         }
         if (!no_delete) {
             actor.on_delete(actor);

@@ -27,6 +27,9 @@ API.add_warp(0, 0, 1, 128, 126, 39, "start1.json");
 
 // add some fun stuff
 
+LPCD.API.create_barrel(96,55);
+
+
 var batmo = API.create_critter(96, 55, "./_static/sprites/batty_bat.png", 32, 32, 3, true, 150);
 
 batmo.on_bumped = function (self, bumped_by) {
@@ -72,11 +75,13 @@ batmo.on_timeout = function () {
         }
         break;
     }
-    if (!batmo._deleted) {
+    if (!batmo._deleted && !batmo._is_player) {
         setTimeout(batmo.on_timeout, 80);
     }
 };
 batmo.on_timeout();
+batmo.on_lost_focus = function () { batmo.on_timeout(); };
+
 
 
 var alice = API.create_human(80, 70, "./_static/sprites/char_alice.png");
@@ -84,7 +89,7 @@ var pace = 1;
 alice.on_timeout = function () {
     alice._move_to(alice.x + pace*10, alice.y);
     pace *= -1;
-    if (!alice._deleted) {
+    if (!alice._deleted && !alice._is_player) {
         setTimeout(alice.on_timeout, 5000);
     }
 };
@@ -93,6 +98,7 @@ alice.on_bumped = function (self, bumped_by) {
     alert("What a gorgeous day today :)");
     return true;
 };
+alice.on_lost_focus = function () { alice.on_timeout(); };
 
 var bob = API.create_human(81, 36, "./_static/sprites/char_bob.png");
 bob.on_bumped = function (self, bumped_by) {
