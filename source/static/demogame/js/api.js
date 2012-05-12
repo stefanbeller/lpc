@@ -90,7 +90,7 @@ LPCD.API.create_barrel = function (x, y) {
     barrel._crop(0,0,32,48)
     barrel._block_width = 2;
     barrel._block_height = 1;
-    barrel.on_bumped = undefined;
     barrel._img_y_offset = 2;
+    barrel.on_bumped = undefined;
     return barrel;
 };
