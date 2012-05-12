@@ -29,12 +29,6 @@
     z-index: 20;
 }
 
-#character_selector {
-    display: block;
-    text-align: center;
-    margin: auto;
-}
-
 #backdrop {
     position: absolute;
     top: 0px;

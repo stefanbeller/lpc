@@ -21,13 +21,9 @@
      along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 
+ ******************************************************************************
+
+     Check out our git repository: https://gitorious.org/liberated-pixel-cup
+
  ******************************************************************************/
 
-(function () {
-    var ani_timeout = -1;
-    window.RequestAnimationFrame = window.RequestAnimationFrame || window.mozRequestAnimationFrame || window.webkitRequestAnimationFrame || window.msRequestAnimationFrame || function (callback) {
-        if (ani_timeout === -1) {
-            ani_timeout = setTimeout(function(){ callback(); ani_timeout = -1; }, 100/60);
-        }
-    };  
-})();
