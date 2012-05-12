@@ -25,67 +25,13 @@ API.add_warp(0, 0, 1, 128, 126, 39, "start1.json");
 
 
 
-// add some fun stuff
+// add some stuff
 
 API.create_barrel(96,55);
 
 
-var batmo = API.create_critter(96, 55, "./_static/sprites/batty_bat.png", 32, 32, 3, true, 150);
 
-batmo.on_bumped = function (self, bumped_by) {
-    alert("I'm a hedgehog!");
-    if (confirm("Become the derpy bat?")) {
-        batmo._gain_input_focus();
-    }
-    return true;
-};
-
-var locus_x = 86;
-var locus_y = 57;
-batmo.on_timeout = function () {
-    if (Math.round(Math.random()*10) == 10) {
-        batmo.dir = Math.round(Math.random()*3);
-    }
-    switch (batmo.dir) {
-    case 0:
-        if (batmo.y - locus_y < -5) {
-            batmo.dir = 2;
-        }
-        else {
-            batmo.y -= .25;
-        }
-        break;
-    case 1:
-        if (batmo.x - locus_x < -5) {
-            batmo.dir = 3;
-        }
-        batmo.x -= .25;
-        break;
-    case 2:
-        if (batmo.y - locus_y > 5) {
-            batmo.dir = 0;
-        }
-        else {
-            batmo.y += .25;
-        }
-        break;
-    case 3:
-        if (batmo.x - locus_x > 5) {
-            batmo.dir = 1;
-        }
-        else {
-            batmo.x += .25;
-        }
-        break;
-    }
-    if (!batmo._deleted && !batmo._is_player) {
-        setTimeout(batmo.on_timeout, 80);
-    }
-};
-batmo.on_timeout();
-batmo.on_lost_focus = function () { batmo.on_timeout(); };
-
-
+// add some characters
 
 var alice = API.create_human(80, 70, "./_static/sprites/char_alice.png");
 var pace = 1;
