@@ -4,4 +4,5 @@
 /include/
 /local
 /source/static/demogame/js/lpcd.js
+/source/static/demogame/js/lpcd.js-min
 *.pyc
