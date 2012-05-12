@@ -34,6 +34,9 @@ var batmo = API.create_critter(96, 55, "./_static/sprites/batty_bat.png", 32, 32
 
 batmo.on_bumped = function (self, bumped_by) {
     alert("I'm a hedgehog!");
+    if (confirm("Become the derpy bat?")) {
+        batmo._gain_input_focus();
+    }
     return true;
 };
 

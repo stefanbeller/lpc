@@ -192,7 +192,7 @@ LPCD.ACTORS.ObjectKind = function (x, y, img) {
         var draw_y = (self.y-focus.y-self._img_y_offset)/2;
         self._canvas.style.marginLeft = String(draw_x) + "em";
         self._canvas.style.marginTop = String(draw_y) + "em";
-        self._canvas.style.zIndex = String(Math.floor(draw_y));
+        self._canvas.style.zIndex = String(Math.floor(draw_y+(_img_y_offset)));
     };
 
     created.on_bumped = function (self, bumped_by) {
