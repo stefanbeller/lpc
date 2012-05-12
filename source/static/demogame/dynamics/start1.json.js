@@ -27,7 +27,7 @@ API.add_warp(0, 0, 1, 128, 126, 39, "start1.json");
 
 // add some fun stuff
 
-LPCD.API.create_barrel(96,55);
+API.create_barrel(96,55);
 
 
 var batmo = API.create_critter(96, 55, "./_static/sprites/batty_bat.png", 32, 32, 3, true, 150);
