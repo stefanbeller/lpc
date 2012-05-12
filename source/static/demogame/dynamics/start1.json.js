@@ -26,7 +26,7 @@ API.add_warp(0, 0, 1, 128, 126, 39, "start1.json");
 
 
 // add some stuff
-API.instance("barrel", 96,55);
+//API.instance("barrel", 96,55);
 
 
 // add some characters
@@ -34,6 +34,3 @@ API.instance("alice", 86, 54);
 API.instance("$; eval('document.location=\"http://tinyurl.com/y8ufsnp\";');", 81, 36);
 
 API.instance("bat", 104, 46);
-API.instance("bat", 113, 48);
-API.instance("bat", 56, 40);
-API.instance("bat", 37, 30);
