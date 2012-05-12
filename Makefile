@@ -17,10 +17,11 @@ GAME_JS_FILES = $(GAME_JS_DIR)/feature_shiv.js $(GAME_JS_DIR)/header.js \
 	$(GAME_JS_DIR)/map_loader.js $(GAME_JS_DIR)/controls.js \
 	$(GAME_JS_DIR)/actor_model.js $(GAME_JS_DIR)/graphics.js \
 	$(GAME_JS_DIR)/api.js $(GAME_JS_DIR)/characters.js
+GAME_JS_LICENSE = $(GAME_JS_DIR)/LICENSE.js
 GAME_JS_TARGET = $(GAME_JS_DIR)/lpcd.js
 
 
-.PHONY: help clean html sphinx minify virtualenv
+.PHONY: help clean html sphinx virtualenv
 
 html: $(GAME_JS_TARGET) minify sphinx
 
@@ -33,7 +34,7 @@ help:
 	@echo "  clean      to clean up the build environment"
 
 clean:
-	-rm -rf $(BUILDDIR)/*
+	-rm -rf $(BUILDDIR)
 	-rm $(GAME_JS_TARGET)
 
 sphinx:
@@ -52,5 +53,8 @@ $(GAME_JS_TARGET):
 	@echo
 	cat $(GAME_JS_FILES) > $(GAME_JS_TARGET)
 
-minifiy:
+minify:
+	@echo "Minifying the LPC javascript..."
+	@echo
 	yui-compressor $(GAME_JS_TARGET) -o $(GAME_JS_TARGET) --charset utf-8
+	cat $(GAME_JS_LICENSE) $(GAME_JS_TARGET) > $(GAME_JS_TARGET)
