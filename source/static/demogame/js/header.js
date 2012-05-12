@@ -13,6 +13,8 @@ var LPCD = {
         "layers" : {}
     },
 
+    "CHARS" : {},
+
     "ACTORS" : {
         "registry" : {
             // these refer to where the npc attaches, not if they are the player
@@ -25,6 +27,10 @@ var LPCD = {
             // the actor that has input and screen focus
             "focus" : undefined,
         },
+        /*"misc", {
+            "min_x" : 0,
+            "min_y" : 0
+        },*/
         "AbstractKind" : undefined,
         "PersistentKind" : undefined,
         "VisibleKind" : undefined,
@@ -45,6 +51,7 @@ var LPCD = {
     },
 
     "DATA" : {
+        "bootstrapping" : true,
         "ready" : false,
         "level" : {
             "name" : "",
@@ -78,6 +85,7 @@ var LPCD = {
          */
 
         "repaint" : undefined, // ()
+        "find_actor" : undefined, // (key, value)
         "link_actor" : undefined, // (actor, [visible])
         "unlink_actor" : undefined, // (actor)
         "unlink_transients" : undefined, // ()
@@ -90,6 +98,7 @@ var LPCD = {
         "add_warp" : undefined, // (x1, y1, x2, y2, [destination]);
         "get_warp" : undefined, // (x, y)
         "warp_check" : undefined, // (x, y) <-- use instead of get_warp!
+        "mouse_cancel" : undefined, // ()
         "cue_loading" : undefined, // ()
     },
     
@@ -112,9 +121,10 @@ $(document).ready(function () {
     var doc = LPCD.DOM.doc = $("#lpcd_iframe").contents()[0];
 
     if (window.top === window) {
-        var player = new LPCD.ACTORS.HumonKind(
-            undefined, undefined, "./_static/sprites/char_template.png");
+        LPCD.CHARS.alice(0, 0);
+        var player = LPCD.ACTORS.registry.visible[0];
         player._gain_input_focus();
+        player.dir = 2;
         LPCD.EVENT.on_warp(undefined, undefined, "start1.json");
     }
     else {

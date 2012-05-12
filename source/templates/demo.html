@@ -5,28 +5,10 @@
           type="text/javascript"></script>
   <script type="text/javascript" src="{{ pathto('_static/demogame/js/lpcd.js', 1) }}"></script>
   <link rel="stylesheet" type="text/css" href="{{ pathto('_static/demogame/lpcd.css', 1) }}" />
-  <script type="text/javascript">
-$(document).ready(function () {
-    "use strict";
-    $("input[value='female']")[0].onchange = function () {
-        LPCD.DATA.player.offset = 0;
-        LPCD.EVENT.on_redraw();
-    };
-    $("input[value='male']")[0].onchange = function () {
-        LPCD.DATA.player.offset = 4*48;
-        LPCD.EVENT.on_redraw();
-    };
-});
-  </script>
 {% endblock %}
 
 {% block body %}
   <br/>
   <iframe draggable="false" id="lpcd_iframe" scrolling="no" frameborder="0"></iframe>
   <br/>
-  <form action="" id="character_selector">
-    Character Sprite:<br/>
-    <input type="radio" name="gender" value="female" checked="checked" /> Female Template
-    <input type="radio" name="gender" value="male" /> Male Template
-  </form>
 {% endblock %}

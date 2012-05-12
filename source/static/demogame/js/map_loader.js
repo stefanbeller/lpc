@@ -138,13 +138,17 @@ LPCD.CALL.load_dynamics = function () {
     var level = LPCD.DATA.level;
 
     if (level.dynamics) {
+        // the bs cgi query is used to prevent caching
+        var src = LPCD.DATA.level.dynamics + "?a=" + Date.now();
         var dynamo = LPCD.DOM.doc.createElement("iframe");
         dynamo.id = "script_dynamics";
         LPCD.DOM.doc.body.appendChild(dynamo);
 
         dynamo.doc = dynamo.contentWindow.document;
         dynamo.contentWindow.API = LPCD.API;
-        dynamo.doc.write("<script type='text/javascript' src='"+LPCD.DATA.level.dynamics+"'></script>");
+
+
+        dynamo.doc.write("<script type='text/javascript' src='"+src+"'></script>");
         dynamo.doc.close();
     }
 };
@@ -261,16 +265,12 @@ LPCD.EVENT.map_ready = function (mapdata, status) {
         if (mapdata.properties.dynamics !== undefined) {
             LPCD.DATA.level.dynamics = mapdata.properties.dynamics;
         }
-        if (mapdata.properties.spawn_point !== undefined) {
+        if (mapdata.properties.spawn_point !== undefined && LPCD.DATA.bootstrapping) {
             var parts = mapdata.properties.spawn_point.split(",");
             if (parts.length === 2) {
                 var focus = LPCD.ACTORS.registry.focus;
-                if (focus.x === undefined) {
-                    focus.x = parseInt(parts[0], 10);
-                }
-                if (focus.y === undefined) {
-                    focus.y = parseInt(parts[1], 10);
-                }
+                focus.x = parseInt(parts[0], 10);
+                focus.y = parseInt(parts[1], 10);
             }
         }
     }
@@ -278,6 +278,7 @@ LPCD.EVENT.map_ready = function (mapdata, status) {
     LPCD.DOM.layers = {};
     var setup_layer = function (name) {
         var el = LPCD.DOM.doc.createElement("canvas");
+        el.setAttribute("draggable", "false");
         el.ctx = el.getContext('2d');
         el.width = 32 * mapdata.width;
         el.height = 32 * mapdata.height;
@@ -299,13 +300,28 @@ LPCD.EVENT.map_ready = function (mapdata, status) {
 LPCD.EVENT.make = function () {
     "use strict";
     
+    LPCD.DOM.doc.getElementById("text_overlay").style.display = "none";
+    LPCD.DATA.ready = true;
+    LPCD.DATA.bootstrapping = false;
+
+    var stage = LPCD.DOM.layers.actors = LPCD.DOM.doc.createElement("iframe");
+    stage.id = "stage";
+    stage.setAttribute("draggable", "false");
+    stage.setAttribute("scrolling", "no");
+    stage.setAttribute("frameborder", "0");
+    LPCD.DOM.doc.body.appendChild(stage);
+    stage.doc = stage.contentWindow.document;
+    stage.doc.write('<link rel="stylesheet" type="text/css" href="./_static/demogame/lpcd.css" />');
+    stage.doc.close();
+
+    LPCD.ACTORS.registry.focus._bumped = [];
+    LPCD.CALL.mouse_cancel();
+
     var visible = LPCD.ACTORS.registry.visible;
     for (var i=0; i<visible.length; i+=1) {
         visible[i]._show();
     }
 
-    LPCD.DOM.doc.getElementById("text_overlay").style.display = "none";
-    LPCD.DATA.ready = true;
     LPCD.CALL.load_dynamics();
     LPCD.CALL.repaint();
 };
