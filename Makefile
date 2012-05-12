@@ -20,21 +20,26 @@ GAME_JS_FILES = $(GAME_JS_DIR)/feature_shiv.js $(GAME_JS_DIR)/header.js \
 GAME_JS_TARGET = $(GAME_JS_DIR)/lpcd.js
 
 
-.PHONY: help clean html virtualenv
+.PHONY: help clean html sphinx minify virtualenv
 
-html: $(GAME_JS_TARGET)
-	$(SPHINXBUILD) -b html $(ALLSPHINXOPTS) $(BUILDDIR)
-	@echo
-	@echo "Build finished. The HTML pages are in $(BUILDDIR)/"
+html: $(GAME_JS_TARGET) minify sphinx
+
+debug: $(GAME_JS_TARGET) sphinx
 
 help:
 	@echo "Please use \`make <target>' where <target> is one of"
 	@echo "  html       to make standalone HTML files"
+	@echo "  debug      same as html, but without minification"
 	@echo "  clean      to clean up the build environment"
 
 clean:
 	-rm -rf $(BUILDDIR)/*
 	-rm $(GAME_JS_TARGET)
+
+sphinx:
+	$(SPHINXBUILD) -b html $(ALLSPHINXOPTS) $(BUILDDIR)
+	@echo
+	@echo "Build finished. The HTML pages are in $(BUILDDIR)/"
 
 virtualenv:
 	virtualenv .
@@ -46,3 +51,6 @@ $(GAME_JS_TARGET):
 	@echo "Linking together the LPC javascript..."
 	@echo
 	cat $(GAME_JS_FILES) > $(GAME_JS_TARGET)
+
+minifiy:
+	yui-compressor $(GAME_JS_TARGET) -o $(GAME_JS_TARGET) --charset utf-8
