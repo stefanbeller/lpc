@@ -86,18 +86,3 @@ LPCD.API.create_human = function (x, y, img) {
     LPCD.CALL.link_actor(actor, true);
     return actor;
 };
-
-
-
-
-/*** very specific actors ***/
-
-LPCD.API.create_barrel = function (x, y) {
-    var barrel = LPCD.API.create_object(96, 55, "./_static/sprites/barrel.png");
-    barrel._crop(0,0,32,48)
-    barrel._block_width = 2;
-    barrel._block_height = 1;
-    barrel._img_y_offset = 2;
-    barrel.on_bumped = undefined;
-    return barrel;
-};

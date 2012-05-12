@@ -26,9 +26,7 @@ API.add_warp(0, 0, 1, 128, 126, 39, "start1.json");
 
 
 // add some stuff
-
-API.create_barrel(96,55);
-
+API.instance("barrel", 96,55);
 
 
 // add some characters

@@ -23,9 +23,22 @@ defined here.
   For simplicity's sake, we will assume the term "character" refers to all of
 the above.
 
-  ----> None of these functions should return an object. <----
+  These functions don't necessarily need to return an actor, btw.
 
  ******************************************************************************/
+
+
+
+
+LPCD.CHARS.barrel = function (x, y) {
+    var barrel = LPCD.API.create_object(x, y, "./_static/sprites/barrel.png");
+    barrel._crop(0,0,32,48)
+    barrel._block_width = 2;
+    barrel._block_height = 1;
+    barrel._img_y_offset = 2;
+    barrel.on_bumped = undefined;
+    return barrel;
+};
 
 
 
