@@ -123,21 +123,30 @@ LPCD.CHARS.student = function (x, y) {
 
 
 
+LPCD.CHARS.bat = function (x, y) {
+    "use strict";
+
+    var bat = LPCD.API.create_critter(
+        x, y, "./_static/sprites/batty_bat.png", 32, 32, 3, true, 150);
+    bat.name = "Homerun Bat";
+    bat.on_bumped = function () {};
+    bat._frequency = 200;
+    bat.on_lost_focus = function () { bat._wander(10); };
+    setTimeout(function() { bat._wander(10); }, 500);
+    return bat;
+};
+
+
+
+
 LPCD.CHARS.derpy_bat = function (x, y) {
     "use strict";
 
     var focused = LPCD.ACTORS.registry.focus;
     if (focused !== undefined && focused.name === "Derpy Bat") { return; }
 
-
-    var bat = LPCD.API.create_critter(
-        16, 15, "./_static/sprites/batty_bat.png", 32, 32, 3, true, 150);
+    var bat = LPCD.CHARS.bat(x, y);
     bat.name = "Derpy Bat";
-
-    bat.recenter = function () {
-        this.locus_x = this.x;
-        this.locus_y = this.y;
-    };
 
     bat.on_bumped = function () {
         alert("I'm a hedgehog!");
@@ -146,49 +155,4 @@ LPCD.CHARS.derpy_bat = function (x, y) {
         }
         return true;
     };
-
-    bat.on_loop = function (self) {
-        if (Math.round(Math.random()*10) == 10) {
-            self.dir = Math.round(Math.random()*3);
-        }
-        switch (self.dir) {
-        case 0:
-            if (self.y - self.locus_y < -5) {
-                self.dir = 2;
-            }
-            else {
-                self.y -= .25;
-            }
-            break;
-        case 1:
-            if (self.x - self.locus_x < -5) {
-                self.dir = 3;
-            }
-            self.x -= .25;
-            break;
-        case 2:
-            if (self.y - self.locus_y > 5) {
-                self.dir = 0;
-            }
-            else {
-                self.y += .25;
-            }
-            break;
-        case 3:
-            if (self.x - self.locus_x > 5) {
-            self.dir = 1;
-            }
-            else {
-                self.x += .25;
-            }
-            break;
-        }
-    };
-    bat._frequency = 80;
-    bat.on_lost_focus = function () { 
-        bat.recenter();
-        bat._start();
-    };
-    bat.recenter();
-    bat._start();
 };
