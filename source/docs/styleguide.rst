@@ -247,3 +247,5 @@ Pixel Tutorials:
   <http://www.natomic.com/hosted/marks/mpat/shading.html>`_ which
   describes how to avoid the dreaded "pillow shading" style and think
   about lighting placement.
+* http://www.squidi.net/mapmaker/musings/m091016.php -- Describes
+  patterns for reusable tiling
