@@ -11,23 +11,4 @@ API.add_warp(34, 64, 37, 64, 13, 124, "underground_a.json");
 
 
 // add an ncp
-(function () {
-    var chest = API.create_object(8, 10, "./_static/sprites/chests.png");
-    API.store_default("chest", true);
-
-    if (API.fetch("chest")) {
-        chest._crop(0, 0, 32, 32);
-    }
-    else {
-        chest._crop(0, 64, 32, 32);
-    }
-
-    chest.on_bumped = function (self, player) {
-        if (API.fetch("chest")) {
-            chest._crop(0, 64, 32, 32);
-            alert("Woah!  You found something awesome!");
-            API.store("chest", false)
-            return true;
-        }
-    };
-})();
+API.instance("chest", 8, 10);

@@ -99,18 +99,18 @@ LPCD.ACTORS.VisibleKind = function (binding, _x, _y, _img) {
         resize(self);
     };
     var resize = function (self) {
+        var pos = "";
         if (cropped) {
             self._div.style.width = px(sw);
             self._div.style.height = px(sh);
-            self._div.style.backgroundPositionX = px(sx*-1);
-            self._div.style.backgroundPositionY = px(sy*-1);
+            pos += px(sx*-1) + " " + px(sy*-1);
         }
         else {
             self._div.style.width = px(img.width || 0);
             self._div.style.height = px(img.height || 0);
-            self._div.style.backgroundPositionX = "0px";
-            self._div.style.backgroundPositionY = "0px";
+            pos = "0px 0px";
         }
+        self._div.style.backgroundPosition = pos;
         self._dirty();
     };
 
@@ -230,6 +230,7 @@ LPCD.ACTORS.ObjectKind = function (x, y, img) {
     created.__defineGetter__("_block_height", function () { return _block_height; });
     created.__defineSetter__("_block_height", function (foo) {
         _block_height = foo;
+        this._dirty();
     });
     created.__defineGetter__("_img_x_offset", function () { return _img_x_offset; });
     created.__defineSetter__("_img_x_offset", function (foo) {
@@ -258,10 +259,10 @@ LPCD.ACTORS.ObjectKind = function (x, y, img) {
     created._dirty = function (allow_player) {
         if (allow_player || !this._is_player) {
             var _x = (this.x + this._img_x_offset) * 16;
-            var _y = ((this.y + this._img_y_offset) * 16) - this.height;
+            var _y = ((this.y + this._img_y_offset) * 16) - this.height + this._block_height*16;
             this._div.style.top = px(_y);
             this._div.style.left = px(_x);
-            this._div.style.zIndex = String(Math.round(_y));
+            this._div.style.zIndex = String(Math.round(_y) + this.height);
         }
     };
 
@@ -511,7 +512,7 @@ LPCD.ACTORS.CritterKind = function (x, y, img, w, h, steps, directional, rate) {
 
     created._block_width = w/16;
     created._block_height = h/16;
-    created._img_y_offset = (h/16)-1;
+    created._img_y_offset = -1;
 
     created._crop(0, 0, w, h);
     if (directional) {
@@ -547,7 +548,6 @@ LPCD.ACTORS.HumonKind = function (x, y, img) {
 
     created._block_height = 1;
     created._block_width = 2;
-    created._img_y_offset = 1;
     created._move_speed = 60;
 
     created._repaint = function () {

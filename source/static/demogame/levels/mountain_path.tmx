@@ -1,30 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.0" orientation="orthogonal" width="32" height="64" tilewidth="32" tileheight="32">
  <tileset firstgid="1" name="dirt" tilewidth="32" tileheight="32">
-  <image source="../../sprites/dirt.png" width="96" height="192"/>
+  <image source="../../../../sprites/dirt.png" width="96" height="192"/>
  </tileset>
  <tileset firstgid="19" name="grass" tilewidth="32" tileheight="32">
-  <image source="../../sprites/grass.png" width="96" height="192"/>
+  <image source="../../../../sprites/grass.png" width="96" height="192"/>
  </tileset>
  <tileset firstgid="37" name="dirt2" tilewidth="32" tileheight="32">
-  <image source="../../sprites/dirt2.png" width="96" height="192"/>
+  <image source="../../../../sprites/dirt2.png" width="96" height="192"/>
  </tileset>
  <tileset firstgid="55" name="lavarock" tilewidth="32" tileheight="32">
-  <image source="../../sprites/lavarock.png" width="96" height="192"/>
+  <image source="../../../../sprites/lavarock.png" width="96" height="192"/>
  </tileset>
- <tileset firstgid="73" source="../../sprites/wallfloor.tsx"/>
- <tileset firstgid="98" source="../../sprites/trunk.tsx"/>
- <tileset firstgid="116" source="../../sprites/water.tsx"/>
- <tileset firstgid="134" source="../../sprites/watergrass.tsx"/>
- <tileset firstgid="152" source="../../sprites/rock.tsx"/>
+ <tileset firstgid="73" source="../../../../sprites/wallfloor.tsx"/>
+ <tileset firstgid="98" source="../../../../sprites/trunk.tsx"/>
+ <tileset firstgid="116" source="../../../../sprites/water.tsx"/>
+ <tileset firstgid="134" source="../../../../sprites/watergrass.tsx"/>
+ <tileset firstgid="152" source="../../../../sprites/rock.tsx"/>
  <tileset firstgid="154" name="waterfall" tilewidth="32" tileheight="32">
-  <image source="../../sprites/waterfall.png" width="96" height="160"/>
+  <image source="../../../../sprites/waterfall.png" width="96" height="160"/>
  </tileset>
  <tileset firstgid="169" name="cementstair" tilewidth="32" tileheight="32">
-  <image source="../../sprites/cementstair.png" width="160" height="128"/>
+  <image source="../../../../sprites/cementstair.png" width="160" height="128"/>
  </tileset>
  <tileset firstgid="189" name="dungeon" tilewidth="32" tileheight="32">
-  <image source="../../sprites/dungeon.png" width="416" height="416"/>
+  <image source="../../../../sprites/dungeon.png" width="416" height="416"/>
   <tile id="8">
    <properties>
     <property name="wall" value="n"/>
@@ -37,15 +37,15 @@
   </tile>
  </tileset>
  <tileset firstgid="358" name="stairs" tilewidth="32" tileheight="32">
-  <image source="../../sprites/stairs.png" width="256" height="448"/>
+  <image source="../../../../sprites/stairs.png" width="256" height="448"/>
  </tileset>
  <tileset firstgid="470" name="cabinets" tilewidth="32" tileheight="32">
-  <image source="../../sprites/cabinets.png" width="416" height="416"/>
+  <image source="../../../../sprites/cabinets.png" width="416" height="416"/>
  </tileset>
- <tileset firstgid="639" source="../../sprites/house.tsx"/>
- <tileset firstgid="760" source="../../sprites/barrel.tsx"/>
- <tileset firstgid="768" source="../../sprites/treetop.tsx"/>
- <tileset firstgid="810" source="../../sprites/chests.tsx"/>
+ <tileset firstgid="639" source="../../../../sprites/house.tsx"/>
+ <tileset firstgid="760" source="../../../../sprites/barrel.tsx"/>
+ <tileset firstgid="768" source="../../../../sprites/treetop.tsx"/>
+ <tileset firstgid="810" source="../../../../sprites/chests.tsx"/>
  <layer name="base" width="32" height="64">
   <data encoding="base64" compression="zlib">
    eJzlV9FuwjAMjIrYBhTa9J3//80NDUuWdU6cxGnGeDipgsZ3Pl/S9hJCuPwRxDfhHdXnA1vFmrXzmpQmqlPjWUqDxpniqfFhBFbjnKOx39q+W/xCc2/132vfjcgBcdbsXw25Wp5c3hhxhiI/Sj3SdMfKet6wZLtEY0s/rV6Urqf7Pc+c3NxHeWPNgfcZwf0s9SSCGq8Ib/29zkLvuqhvKwfam+j/Gg1rYa8x6O+lI55LVv2rcj0SrTpqvg+iwluag9q1Lftgr3mMfg/p4U1r1jRPrN9bvEbJGqsXuf42cH1jOGTq98joneHKdHhmIuXzHeAqNCCuzckPxJ/yQtPizU84F3ib84Nn34u/NAvy/TPF/fmDD7CuFkhnip9y6JEzrQbq+dRJg4X/Me+j0EAZ2ELbM9rCT/3OgD+V/VJM4Xd/a5nj/PwsyL0H5/gOz+sFcFOvG5gBOhd5XXlWTeK3mdXQuGXeZuX/m3LPmXEv4v4UJ/I/5RHn4j6h7JSC1/16Qs5B+iA1WHvV+CcxS9KCdND9LZyyr4X1xzMkM4n2Sg8gr6058dZBGvbmzuVub9A51Xv2uVmM4icP3p1/ZAb/Qwa+AdILegA=
@@ -58,7 +58,7 @@
  </layer>
  <layer name="edges_a" width="32" height="64">
   <data encoding="base64" compression="zlib">
-   eJztWFtuE0EQXIsrgEJCZOCXo4ASJRDCm1wrPhAcIEhcgAtwBLblLVFqqntndmeMhCipZWs9nqp+zWOH4U+862BLgf9/Ge3rAXX5cXejfevs+8vRrqbvn50NwfMSezXaZQH32lxFeDva9cyYN8Ne67N7ey2vG/J/Gu3DzJiPTsv7hvwGy4HlNsrDhdNy05jfcmC5jfJwEXxvBcuB5TfKAzhb597jXDxjzh65n+Nnzh65Z6i1gDl75J6BOoQGn++z0V505EcdQoPKt2l43lmHabBezPLdUofKu/ViSa+1yInPOzSV9trauuS8Yx02TaW91qouoeF60pTtCR6tepPXYez5VwVaUI8tahLrIM4ofF76vvmtJ9K1NhboB8zN56UfG32OYz1L9qgdfceZSMX/50af41hLzR51K3TgTKTmjuqAtdTuUTv3aeC9UPmZ1eROPKvRshv0XsxafEwiXh/fjJc/cSaMat3HxHMuiQF8N2BNzmqdtTAuF/Cz/6jB6M6SaTHM3Sdwl+L/GifnKtOfabG5onMseKOYsg+ldeO1wHf4hrsx82YxtXEla2ykxe8dfDf291Xlh42L1thh0pZpwdqt7sYlsHHRGjuQtkgD+qZm764BtEW1z2eZtTpOyB6535hD9ZuqyRJYjyi9R0IHOLL7O8ZkdWycqHm/pisdPhbRXsGIzgrgRF1Fa7rXwLEoeYcTrVngRF3x+Dlsp091fi/VUtqXGb86v/fG/dGeumcc295QdQgNa2LKe6OH+fygQEMNuA8M2btRy/djp2ErxkXzK/N8WV3C39MK/rn3v4rveNj3twdqjvnVusiYe/+rcBo8h68+B9DhNRwnupaAOZRGH4vIj6VA/M2vh8m4LE5rwPM+mUzNz3FoqcH4fU6hRXFgfBarGhxNc8E/zrX3U/VKD6hYl9ZJax3QcGhu1tCj7mqBPumd+whqnzg0tv/5/2oN/gs18Au709c/
+   eJztWAlu1EAQ9P4BlINoCd8BJUoghCvAt7IPSh4AEh/gAzwBt3Appaa6PWPPbCRESa1deWenqq85PAx/40MHWwr8/260+z3q8uO+jfa9s++vR7uavn9xNgTPS+zNaJcF3GtzFeH9aNczY94ND3pNy9uG/J9H+zQz5sZp+diQ32A5sNxGebhwWr425rccWG6jPFwE31vBcmC5jfIAzta59zgXz5izR+7n+JmzR+4Zai1gzh65Z6AOocHn+2y0Vx35UYfQoPJtGl521mEarBezfLfUofJuvVjSay1y4vMOTaW9trYuOe9Yh01Taa+1qktouJ40ZXuCR6ve5HUYe/5VgRbUY4uaxDqIPZ/PSz82D3oiXWtjgX7A3Hxe+rnR5zjWs2SP2tF3nIlU/H9t9DmOtdTsUbdCB85Eau6oDlhL7R61c58G3guVn1lN7sSzGi27Qe/FrMXHJOL18c14+RNnwqjWfUw855IYwHcD1uSs1lkL43IBP/uPGozuLJkWw9x9Ancp/q9xcq4y/ZkWmys6x4I3iin7UFo3Xgt8h2+4GzNvFlMbV7LGRlr83sF3Y39fVX7YuGiNHSZtmRas3epuXAIbF62xA2mLNKBvavbuGkBbVPt8llmr45jsmfuNOVS/qZosgfWI0nsgdIAju79jTFbHxoma92u60uFjEe0VjOisAE7UVbSmew0ci5J3ONGaBU7UFY+fw3b6VOf3Ui2lfZnxq/N7bzwZ7YV7xrHtDVWH0LAmprw3epjPTws01ID7wJC9G7V8P3catmJcNL8yz5fVJfw9qeCfe/+r+I6GP/3tgZpjfrUuMube/yqcBM/hq88BdHgNR4muJWAOpdHHIvJjKRB/8+swGZfFaQ143tPJ1Pwch5YajN/nFFoUB8ZnsarBwTQX/ONcez9Vr/SAinVpnbTWAQ375mYNPequFuiT3rmPoPaJfWP7n/9Ra/BfqIHfXqDXcA==
   </data>
  </layer>
  <layer name="edges_b" width="32" height="64">

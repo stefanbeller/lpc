@@ -57,9 +57,34 @@ LPCD.CHARS.barrel = function (x, y) {
     barrel._crop(0, 0, 32, 48)
     barrel._block_width = 2;
     barrel._block_height = 1;
-    barrel._img_y_offset = 1;
     barrel.on_bumped = undefined;
     return barrel;
+};
+
+
+
+
+LPCD.CHARS.chest = function (x, y) {
+    var chest = LPCD.API.create_object(x, y, "./_static/sprites/chests.png");
+    chest._block_width = 2;
+    chest._block_height = 2;
+    LPCD.API.store_default("chest", true);
+
+    if (LPCD.API.fetch("chest")) {
+        chest._crop(0, 0, 32, 32);
+    }
+    else {
+        chest._crop(0, 64, 32, 32);
+    }
+    chest.on_bumped = function (self, player) {
+        if (LPCD.API.fetch("chest")) {
+            chest._crop(0, 64, 32, 32);
+            alert("Woah!  You found something awesome!");
+            LPCD.API.store("chest", false)
+            return true;
+        }
+    };
+    return chest;
 };
 
 
