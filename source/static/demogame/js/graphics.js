@@ -51,6 +51,8 @@ LPCD.CALL.repaint = (function () {
         if (LPCD.DATA.ready) {
             var focus = LPCD.ACTORS.registry.focus;
             var boards = ["below", "actors", "above"];
+            var focused = LPCD.ACTORS.registry.focus;
+            if (focused) { focused._dirty(true); }
             for (var i=0; i<boards.length; i+=1) {
                 var board = LPCD.DOM.doc.getElementById("layer_"+boards[i]);
                 board.style.marginLeft = String(-.5*focus.x) + "em";

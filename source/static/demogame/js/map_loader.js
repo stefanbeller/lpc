@@ -239,12 +239,12 @@ LPCD.EVENT.map_ready = function (mapdata, status) {
 
     for (var i=0; i<mapdata.tilesets.length; i+=1) {
         var tileset = mapdata.tilesets[i];
-        var img_path = tileset.image;
+        tileset.image = "./_static/sprites/" + tileset.image.split("/").slice(-1);
         if (LPCD.DOM.res[tileset.image] === undefined) {
             pending += 1;
             LPCD.DOM.res[tileset.image] = new Image();
             LPCD.DOM.res[tileset.image].onload = image_loaded;
-            LPCD.DOM.res[tileset.image].src = img_path;
+            LPCD.DOM.res[tileset.image].src = tileset.image;
         }
 
         // add some extra functions to help level construction later on

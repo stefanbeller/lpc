@@ -193,12 +193,14 @@ LPCD.ACTORS.VisibleKind = function (binding, _x, _y, _img) {
         resize(this);
     };
 
-    created._dirty = function () {
-        var _x = (this.x*16);
-        var _y = (this.y*16) - this.height;
-        this._div.style.top = px(_y);
-        this._div.style.left = px(_x);
-        this._div.style.zIndex = String(_y);
+    created._dirty = function (allow_player) {
+        if (allow_player || this._is_player === false) {
+            var _x = (this.x*16);
+            var _y = (this.y*16) - this.height;
+            this._div.style.top = px(_y);
+            this._div.style.left = px(_x);
+            this._div.style.zIndex = String(Math.round(_y));
+        }
     };
 
     created._refresh = function () {
@@ -212,120 +214,6 @@ LPCD.ACTORS.VisibleKind = function (binding, _x, _y, _img) {
 };
 
 
-
-// Old prototype object for visible actors (kept for reference)
-/*
-LPCD.ACTORS.CanvasKind = function (binding, x, y, img) {
-    "use strict";
-
-    var parent = new LPCD.ACTORS.AbstractKind(binding);
-    var created = Object.create(parent);
-   
-    var _sx = 0;
-    var _sy = 0;
-    var cropped = false;
-    var repaint = function (self) {
-        if (!!_src) {
-            var _img = LPCD.DOM.res[_src];
-            _ctx.clearRect(0, 0, _canvas.width, _canvas.height);
-            _ctx.drawImage(_img, _sx, _sy, _canvas.width, _canvas.height, 0, 0, _canvas.width, _canvas.height);
-        }
-    };
-
-    var set_img = function (new_src) {
-        var _img = LPCD.DOM.res[new_src];
-        if (!cropped) {
-            _canvas.width = _img.width;
-            _canvas.height = _img.height;
-        }
-        _src = new_src;
-        repaint();
-    };
-
-    var _canvas = LPCD.DOM.doc.createElement("canvas");
-    _canvas.setAttribute("class", "actor");
-    _canvas.width = 0;
-    _canvas.height = 0;
-    var _ctx = _canvas.getContext("2d");
-    created.__defineGetter__("_canvas", function () { return _canvas; });
-    created.__defineGetter__("_ctx", function () { return _ctx; });
-    created.__defineGetter__("width", function() { return _canvas.width; });
-    created.__defineSetter__("width", function(w) { _canvas.width = w; repaint(); });
-    created.__defineGetter__("height", function() { return _canvas.height; });
-    created.__defineSetter__("height", function(h) { _canvas.height = h; repaint(); });
-    var _src = false;
-    created.__defineGetter__("img", function() { return _src; });
-    created.__defineSetter__("img", function(new_src) {
-        var _img;
-        if (LPCD.DOM.res[new_src] !== undefined) {
-            _img = LPCD.DOM.res[new_src];
-            if (_img.width === 0) {
-                var old_onload = _img.onload;
-                _img.onload = function () {
-                    _img.onload();
-                    set_img(new_src);
-                };
-            }
-            else {
-                set_img(new_src);
-            }
-        }
-        else {
-            _img = LPCD.DOM.res[new_src] = new Image();
-            _img.onload = function () {
-                set_img(new_src);
-            };
-            _img.src = new_src;
-        }
-    });
-
-    var _x = x;
-    var _y = y;
-    created.__defineGetter__("x", function () { return _x; });
-    created.__defineSetter__("x", function (newx) { 
-        _x = newx;
-        LPCD.CALL.repaint();
-    });
-    created.__defineGetter__("y", function () { return _y; });
-    created.__defineSetter__("y", function (newy) {
-        _y = newy;
-        LPCD.CALL.repaint();
-    });
-
-    created._reorient = function (self) {
-        var focus = LPCD.ACTORS.registry.focus;
-        _canvas.style.marginLeft = String((_x-focus.x)/2) + "em";
-        _canvas.style.marginTop = String((_y-focus.y)/2) + "em";
-        _canvas.style.zIndex = String(Math.floor(_y));
-    };
-
-    created.img = img;
-    created._show = function () {
-        var layers = LPCD.DOM.layers;
-        if (layers.actors !== undefined) {
-            layers.actors.contentWindow.document.body.appendChild(_canvas);
-        }
-    };
-    created._hide = function () {
-        if (_canvas.parentNode) {
-            _canvas.parentNode.removeChild(_canvas);
-        }
-    };
-
-    created._crop = function (sx, sy, sw, sh) {
-        cropped = true;
-        _sx = sx;
-        _sy = sy;
-        _canvas.width = sw;
-        _canvas.height = sh;
-        repaint(created);
-    };
-
-    return created;
-};
-*/
-
-
 // Actor for non-animated objects.
 LPCD.ACTORS.ObjectKind = function (x, y, img) {
     "use strict";
@@ -336,13 +224,23 @@ LPCD.ACTORS.ObjectKind = function (x, y, img) {
     var _block_width, _block_height, _img_x_offset=0, _img_y_offset=0;
     var px = function (value) { return String(value) + "px"; };
     created.__defineGetter__("_block_width", function () { return _block_width; });
-    created.__defineSetter__("_block_width", function (foo) { _block_width = foo; });
+    created.__defineSetter__("_block_width", function (foo) { 
+        _block_width = foo;
+    });
     created.__defineGetter__("_block_height", function () { return _block_height; });
-    created.__defineSetter__("_block_height", function (foo) { _block_height = foo; });
+    created.__defineSetter__("_block_height", function (foo) {
+        _block_height = foo;
+    });
     created.__defineGetter__("_img_x_offset", function () { return _img_x_offset; });
-    created.__defineSetter__("_img_x_offset", function (foo) { _img_x_offset = foo; });
+    created.__defineSetter__("_img_x_offset", function (foo) {
+        _img_x_offset = foo;
+        this._dirty();
+    });
     created.__defineGetter__("_img_y_offset", function () { return _img_y_offset; });
-    created.__defineSetter__("_img_y_offset", function (foo) { _img_y_offset = foo; });
+    created.__defineSetter__("_img_y_offset", function (foo) {
+        _img_y_offset = foo;
+        this._dirty();
+    });
 
     created._deleted = false;
     created.on_delete = function (self) {
@@ -357,12 +255,14 @@ LPCD.ACTORS.ObjectKind = function (x, y, img) {
         }
     };
 
-    created._dirty = function () {
-        var _x = (this.x + this._img_x_offset) * 16;
-        var _y = ((this.y + this._img_y_offset) * 16) - this.height;
-        this._div.style.top = px(_y);
-        this._div.style.left = px(_x);
-        this._div.style.zIndex = String(_y);
+    created._dirty = function (allow_player) {
+        if (allow_player || !this._is_player) {
+            var _x = (this.x + this._img_x_offset) * 16;
+            var _y = ((this.y + this._img_y_offset) * 16) - this.height;
+            this._div.style.top = px(_y);
+            this._div.style.left = px(_x);
+            this._div.style.zIndex = String(Math.round(_y));
+        }
     };
 
     created.on_bumped = function (self, bumped_by) {
