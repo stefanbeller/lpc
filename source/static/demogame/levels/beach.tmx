@@ -4,37 +4,37 @@
   <property name="spawn_point" value="86,58"/>
  </properties>
  <tileset firstgid="1" name="grass" tilewidth="32" tileheight="32">
-  <image source="../../sprites/grass.png" width="96" height="192"/>
+  <image source="../../../../sprites/grass.png" width="96" height="192"/>
  </tileset>
  <tileset firstgid="19" name="dirt" tilewidth="32" tileheight="32">
-  <image source="../../sprites/dirt.png" width="96" height="192"/>
+  <image source="../../../../sprites/dirt.png" width="96" height="192"/>
  </tileset>
  <tileset firstgid="37" name="dirt2" tilewidth="32" tileheight="32">
-  <image source="../../sprites/dirt2.png" width="96" height="192"/>
+  <image source="../../../../sprites/dirt2.png" width="96" height="192"/>
  </tileset>
- <tileset firstgid="55" source="../../sprites/hole.tsx"/>
+ <tileset firstgid="55" source="../../../../sprites/hole.tsx"/>
  <tileset firstgid="73" name="lavarock" tilewidth="32" tileheight="32">
-  <image source="../../sprites/lavarock.png" width="96" height="192"/>
+  <image source="../../../../sprites/lavarock.png" width="96" height="192"/>
  </tileset>
- <tileset firstgid="91" source="../../sprites/treetop.tsx"/>
- <tileset firstgid="133" source="../../sprites/trunk.tsx"/>
- <tileset firstgid="151" source="../../sprites/water.tsx"/>
+ <tileset firstgid="91" source="../../../../sprites/treetop.tsx"/>
+ <tileset firstgid="133" source="../../../../sprites/trunk.tsx"/>
+ <tileset firstgid="151" source="../../../../sprites/water.tsx"/>
  <tileset firstgid="169" name="waterfall" tilewidth="32" tileheight="32">
-  <image source="../../sprites/waterfall.png" width="96" height="160"/>
+  <image source="../../../../sprites/waterfall.png" width="96" height="160"/>
  </tileset>
- <tileset firstgid="184" source="../../sprites/watergrass.tsx"/>
- <tileset firstgid="202" source="../../sprites/wallfloor.tsx"/>
+ <tileset firstgid="184" source="../../../../sprites/watergrass.tsx"/>
+ <tileset firstgid="202" source="../../../../sprites/wallfloor.tsx"/>
  <tileset firstgid="227" name="shadow" tilewidth="32" tileheight="32">
-  <image source="../../sprites/shadow.png" width="160" height="64"/>
+  <image source="../../../../sprites/shadow.png" width="160" height="64"/>
  </tileset>
- <tileset firstgid="237" source="../../sprites/rock.tsx"/>
- <tileset firstgid="239" source="../../sprites/house.tsx"/>
- <tileset firstgid="360" source="../../sprites/chests.tsx"/>
- <tileset firstgid="366" source="../../sprites/barrel.tsx"/>
+ <tileset firstgid="237" source="../../../../sprites/rock.tsx"/>
+ <tileset firstgid="239" source="../../../../sprites/house.tsx"/>
+ <tileset firstgid="360" source="../../../../sprites/chests.tsx"/>
+ <tileset firstgid="366" source="../../../../sprites/barrel.tsx"/>
  <tileset firstgid="374" name="signs" tilewidth="32" tileheight="32">
-  <image source="../../sprites/signs.png" width="96" height="64"/>
+  <image source="../../../../sprites/signs.png" width="96" height="64"/>
  </tileset>
- <tileset firstgid="380" source="../../sprites/cup.tsx"/>
+ <tileset firstgid="380" source="../../../../sprites/cup.tsx"/>
  <layer name="base_layer" width="64" height="64">
   <properties>
    <property name="target" value="below"/>
@@ -85,12 +85,12 @@
  </layer>
  <layer name="windows_and_doors_a" width="64" height="64">
   <data encoding="base64" compression="zlib">
-   eJzt2TELwjAQhuHGyYLOOuvs7qau4ir+CwcHf7gUnES/kh4cRXAQGpq8Dxy5MRE/uCZVBQAAgDG4htQ7SOtW+PkR7fQ/2KsOqrmqVs1cn7ujzvjQetK6VDXqF66/Z/4bnHW+l9aL1rXqrX7levynn6c2b9MubyXkq58nn7cm8d6G0M+Tzxv5AgAAJbP7GP896udm63Nl9zHtfLwJcT72c7P1uWvn422I87Gfm60HAAAAME7P1BtIbML3DH6ov9yLlMTeCP27YUnsjdC/GwIAAAAAAGA4H2reIdg=
+   eJzt2TELwjAQhuHGSUFnnXV2d1NXcRX/h4M/XApOol+oB2cWB6GpyfvAkRtT8YNrr2kAAACA4buE3DfAEGz1P9ip9qqZaqKaur50Bz3jTedR50LVqp+7/lr4b3DS8z10nnWuVE/1S9fjN2meYt7G77zVkK80Tz5vbea79SHNk88b+QIAAPh8H/Vzs/Wlsu8xcT5eh24+9nOz9aWL8/EmdPOxn5utBwAAAPCf7rkvkNmI9xl8YTtC/12kJrYj9HvDmtiO0O8NAQAAAAAA0J8X84gg+g==
   </data>
  </layer>
  <layer name="windows_and_doors_b" width="64" height="64">
   <data encoding="base64" compression="zlib">
-   eJzt2TEOgzAMBVC6l7nM7f0YmNrbI0t4oTMK0n9vYeUndgjyNAEAwP2tj9FvMNYWnv+8/8+w9ej9/x3PV1j+UjXQdfAOzF81kH4OcJ3ur9RvbfeXHgMA+Jd6R2zuiAAAAKSr2fwc/H9cs/nlyP8NXIeazX8CcwMAAADcwQ5Skwjf
+   eJzt2TEOgCAMAEDYddZZ/+fgpL83jbK4G0l6lxBWCi2BtBQAAKB3e/17BX0Zku1HO//zmadk8Yet3iMsCeOPHHAP8JVWX1vSHGv1pcYAAHjzRgQAACC76M2Pif/H0Zufn/iPhPsQvfk1YdwAAAAAPbgAe8sHkg==
   </data>
  </layer>
  <layer name="trees_low_a" width="64" height="64">
@@ -121,7 +121,7 @@
    <property name="target" value="above"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJzt2bEJACAMBEBd2P1LsbCysggifzdBQj4QSGsAAPxg9NcVvJXefzrzZ2VADqDG3i87BgBwSr+R0vsHAAAAAACo4AdDGpkHgHsTiWIFNQ==
+   eJzt2qERAAAIAzFYmP0lEo1Akdz9BpWNAAAAAOCrygkAAAAAAAAAALjlp8M3Ng8Aew2BlAIs
   </data>
  </layer>
  <layer name="trees_high_b" width="64" height="64">

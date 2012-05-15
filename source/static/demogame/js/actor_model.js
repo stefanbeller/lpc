@@ -74,116 +74,142 @@ LPCD.ACTORS.PersistentKind = function () {
     created.on_player_leaves = function (self, player) {
     };
     return created;
-}
+};
 
 
-// Protoypal object which visible actors should inherit from.
-LPCD.ACTORS.VisibleKind = function (binding, x, y, img) {
+// Prototypal object which visible actors should inherit from.
+LPCD.ACTORS.VisibleKind = function (binding, _x, _y, _img) {
     "use strict";
 
     var parent = new LPCD.ACTORS.AbstractKind(binding);
     var created = Object.create(parent);
-   
-    var _sx = 0;
-    var _sy = 0;
-    var cropped = false;
-    var repaint = function (self) {
-        if (!!_src) {
-            var _img = LPCD.DOM.res[_src];
-            _ctx.clearRect(0, 0, _canvas.width, _canvas.height);
-            _ctx.drawImage(_img, _sx, _sy, _canvas.width, _canvas.height, 0, 0, _canvas.width, _canvas.height);
-        }
-    };
 
-    var set_img = function (new_src) {
-        var _img = LPCD.DOM.res[new_src];
-        if (!cropped) {
-            _canvas.width = _img.width;
-            _canvas.height = _img.height;
-        }
-        _src = new_src;
-        repaint();
-    };
 
-    var _canvas = LPCD.DOM.doc.createElement("canvas");
-    _canvas.setAttribute("class", "actor");
-    _canvas.width = 0;
-    _canvas.height = 0;
-    var _ctx = _canvas.getContext("2d");
-    created.__defineGetter__("_canvas", function () { return _canvas; });
-    created.__defineGetter__("_ctx", function () { return _ctx; });
-    created.__defineGetter__("width", function() { return _canvas.width; });
-    created.__defineSetter__("width", function(w) { _canvas.width = w; repaint(); });
-    created.__defineGetter__("height", function() { return _canvas.height; });
-    created.__defineSetter__("height", function(h) { _canvas.height = h; repaint(); });
-    var _src = false;
-    created.__defineGetter__("img", function() { return _src; });
-    created.__defineSetter__("img", function(new_src) {
-        var _img;
-        if (LPCD.DOM.res[new_src] !== undefined) {
-            _img = LPCD.DOM.res[new_src];
-            if (_img.width === 0) {
-                var old_onload = _img.onload;
-                _img.onload = function () {
-                    _img.onload();
-                    set_img(new_src);
-                };
-            }
-            else {
-                set_img(new_src);
-            }
+    // private vars --------------------------------
+    var x=_x, y=_y, src=false;
+    var cropped=false, sx=0, sy=0, sw=0, sh=0;
+    var img;
+
+
+    // private methods --------------------------------
+    var px = function (value) { return String(value) + "px"; };
+    var update_img = function (self) {
+        img = LPCD.DOM.res[src];
+        self._div.style.backgroundImage = "url('"+src+"')";
+        resize(self);
+    };
+    var resize = function (self) {
+        if (cropped) {
+            self._div.style.width = px(sw);
+            self._div.style.height = px(sh);
+            self._div.style.backgroundPositionX = px(sx*-1);
+            self._div.style.backgroundPositionY = px(sy*-1);
         }
         else {
-            _img = LPCD.DOM.res[new_src] = new Image();
-            _img.onload = function () {
-                set_img(new_src);
-            };
-            _img.src = new_src;
+            self._div.style.width = px(img.width || 0);
+            self._div.style.height = px(img.height || 0);
+            self._div.style.backgroundPositionX = "0px";
+            self._div.style.backgroundPositionY = "0px";
+        }
+        self._dirty();
+    };
+
+
+    // public vars --------------------------------
+    created._div = LPCD.DOM.doc.createElement("div");
+    created._div.setAttribute("class", "actor");
+    created.__defineGetter__("width", function () { return cropped ? sw : img.width; });
+    created.__defineGetter__("height", function () { return cropped ? sh : img.height; });
+    created.__defineGetter__("img", function () { return src; });
+    created.__defineSetter__("img", function (uri) {
+        if (uri !== src) {
+            var self = this;
+            src = uri;
+            var resource = LPCD.DOM.res[src];
+            if (resource !== undefined) {
+                if (resource.width === 0) {
+                    // most likely still downloading
+                    var old_onload = resource.onload;
+                    resource.onload = function () {
+                        try { 
+                            old_onload(); 
+                        } catch (err) { 
+                            // don't worry about it 
+                        }
+                        update_img(self);
+                    };
+                }
+                else {
+                    // resource is available
+                    update_img(self);
+                }
+            }
+            else {
+                img = LPCD.DOM.res[src] = new Image();
+                img.onload = function () {
+                    update_img(self);
+                };
+                img.src = src;
+            }
+        }
+    });
+    created.__defineGetter__("x", function () { return x; });
+    created.__defineSetter__("x", function (_x) {
+        if (_x !== x) {
+            x = _x;
+            this._dirty();
+        }
+    });
+    created.__defineGetter__("y", function () { return y; });
+    created.__defineSetter__("y", function (_y) {
+        if (_y !== y) {
+            y = _y;
+            this._dirty();
         }
     });
 
-    var _x = x;
-    var _y = y;
-    created.__defineGetter__("x", function () { return _x; });
-    created.__defineSetter__("x", function (newx) { 
-        _x = newx;
-        LPCD.CALL.repaint();
-    });
-    created.__defineGetter__("y", function () { return _y; });
-    created.__defineSetter__("y", function (newy) {
-        _y = newy;
-        LPCD.CALL.repaint();
-    });
 
-    created._reorient = function (self) {
-        var focus = LPCD.ACTORS.registry.focus;
-        _canvas.style.marginLeft = String((_x-focus.x)/2) + "em";
-        _canvas.style.marginTop = String((_y-focus.y)/2) + "em";
-        _canvas.style.zIndex = String(Math.floor(_y));
-    };
-
-    created.img = img;
+    // public methods --------------------------------
     created._show = function () {
-        var layers = LPCD.DOM.layers;
-        if (layers.actors !== undefined) {
-            layers.actors.contentWindow.document.body.appendChild(_canvas);
+        var layer = LPCD.DOM.layers.actors;
+        if (layer !== undefined) {
+            layer.contentWindow.document.body.appendChild(this._div);
+            this._refresh();
         }
     };
+
     created._hide = function () {
-        if (_canvas.parentNode) {
-            _canvas.parentNode.removeChild(_canvas);
+        if (this._div.parentNode) {
+            this._div.parentNode.removeChild(this._div);
+        }
+    };
+    
+    created._crop = function (_sx, _sy, _sw, _sh) {
+        cropped = true;
+        sx = _sx;
+        sy = _sy;
+        sw = _sw;
+        sh = _sh;
+        resize(this);
+    };
+
+    created._dirty = function (allow_player) {
+        if (allow_player || this._is_player === false) {
+            var _x = (this.x*16);
+            var _y = (this.y*16) - this.height;
+            this._div.style.top = px(_y);
+            this._div.style.left = px(_x);
+            this._div.style.zIndex = String(Math.round(_y));
         }
     };
 
-    created._crop = function (sx, sy, sw, sh) {
-        cropped = true;
-        _sx = sx;
-        _sy = sy;
-        _canvas.width = sw;
-        _canvas.height = sh;
-        repaint(created);
+    created._refresh = function () {
+        update_img(this);
     };
 
+
+    // finish up --------------------------------
+    created.img = _img;
     return created;
 };
 
@@ -196,14 +222,25 @@ LPCD.ACTORS.ObjectKind = function (x, y, img) {
     var created = Object.create(parent);
 
     var _block_width, _block_height, _img_x_offset=0, _img_y_offset=0;
+    var px = function (value) { return String(value) + "px"; };
     created.__defineGetter__("_block_width", function () { return _block_width; });
-    created.__defineSetter__("_block_width", function (foo) { _block_width = foo; });
+    created.__defineSetter__("_block_width", function (foo) { 
+        _block_width = foo;
+    });
     created.__defineGetter__("_block_height", function () { return _block_height; });
-    created.__defineSetter__("_block_height", function (foo) { _block_height = foo; });
+    created.__defineSetter__("_block_height", function (foo) {
+        _block_height = foo;
+    });
     created.__defineGetter__("_img_x_offset", function () { return _img_x_offset; });
-    created.__defineSetter__("_img_x_offset", function (foo) { _img_x_offset = foo; });
+    created.__defineSetter__("_img_x_offset", function (foo) {
+        _img_x_offset = foo;
+        this._dirty();
+    });
     created.__defineGetter__("_img_y_offset", function () { return _img_y_offset; });
-    created.__defineSetter__("_img_y_offset", function (foo) { _img_y_offset = foo; });
+    created.__defineSetter__("_img_y_offset", function (foo) {
+        _img_y_offset = foo;
+        this._dirty();
+    });
 
     created._deleted = false;
     created.on_delete = function (self) {
@@ -218,16 +255,14 @@ LPCD.ACTORS.ObjectKind = function (x, y, img) {
         }
     };
 
-    created._reorient = function (self) {
-        var focus = LPCD.ACTORS.registry.focus;
-        if (focus === undefined) {
-            focus = {"x":0, "y":0};
+    created._dirty = function (allow_player) {
+        if (allow_player || !this._is_player) {
+            var _x = (this.x + this._img_x_offset) * 16;
+            var _y = ((this.y + this._img_y_offset) * 16) - this.height;
+            this._div.style.top = px(_y);
+            this._div.style.left = px(_x);
+            this._div.style.zIndex = String(Math.round(_y));
         }
-        var draw_x = (self.x-focus.x-self._img_x_offset)/2;
-        var draw_y = (self.y-focus.y-self._img_y_offset)/2;
-        self._canvas.style.marginLeft = String(draw_x) + "em";
-        self._canvas.style.marginTop = String(draw_y) + "em";
-        self._canvas.style.zIndex = String(Math.floor(draw_y-_block_height-_img_y_offset));
     };
 
     created.on_bumped = function (self, bumped_by) {
@@ -310,14 +345,15 @@ LPCD.ACTORS.AnimateKind = function (x, y, img) {
     created.__defineGetter__("_is_moving", function () { return !!_walking; });
     created.__defineGetter__("_is_player", function () { return _is_player; });
 
+    created._repaint = function () {};
+
     created.__defineGetter__("dir", function () { return _dir; });
     created.__defineSetter__("dir", function (new_dir) {
         if (new_dir >= 4 || new_dir <= 4) {
             new_dir = new_dir % 4;
         }
         _dir = new_dir;
-        created._reorient(created);
-        LPCD.CALL.repaint();
+        this._repaint();
     });
 
     created._look_at = function (look_x, look_y) {
@@ -453,6 +489,7 @@ LPCD.ACTORS.AnimateKind = function (x, y, img) {
             _move_timer = setTimeout(function() {_movecycle(self);}, self._move_speed);
         }
 
+        self._repaint();
         LPCD.CALL.repaint();
         if (_is_player) {
             LPCD.CALL.warp_check(self.x, self.y);
@@ -470,6 +507,7 @@ LPCD.ACTORS.CritterKind = function (x, y, img, w, h, steps, directional, rate) {
     var parent = new LPCD.ACTORS.AnimateKind(x, y, img);
     var created = Object.create(parent);
     var _step = 0;
+    var reorient;
 
     created._block_width = w/16;
     created._block_height = h/16;
@@ -477,15 +515,13 @@ LPCD.ACTORS.CritterKind = function (x, y, img, w, h, steps, directional, rate) {
 
     created._crop(0, 0, w, h);
     if (directional) {
-        created._reorient = function (self) {
-            self._crop(w*_step, h*self.dir, w, h);
-            parent._reorient(self);
+        created._repaint = function () {
+            this._crop(w*_step, h*this.dir, w, h);
         };
     }
     else {
-        created._reorient = function (self) {
-            self._crop(w*_step, 0, w, h);
-            parent._reorient(self);
+        created._repaint = function () {
+            this._crop(w*_step, 0, w, h);
         };
     }
     // animation loop
@@ -494,7 +530,7 @@ LPCD.ACTORS.CritterKind = function (x, y, img, w, h, steps, directional, rate) {
         if (_step >= steps) {
             _step = 0;
         }
-        LPCD.CALL.repaint();
+        created._repaint();
         if (!created._deleted) { setTimeout(animate, rate); }
     })();
 
@@ -511,19 +547,18 @@ LPCD.ACTORS.HumonKind = function (x, y, img) {
 
     created._block_height = 1;
     created._block_width = 2;
-    created._img_y_offset = 2;
+    created._img_y_offset = 1;
     created._move_speed = 60;
 
-    created._reorient = function (self) {
+    created._repaint = function () {
         var frame = 0;
-        if (self._is_moving) {
-            frame = self._steps % 8 + 1;
+        if (this._is_moving) {
+            frame = this._steps % 8 + 1;
         }
-        self._crop(32 * frame, 48*self.dir, 32, 48);
-        parent._reorient(self);
+        this._crop(32 * frame, 48*this.dir, 32, 48);
     };
 
-    created._reorient(created);
+    created._repaint(created);
     return created;
 };
 
@@ -550,7 +585,6 @@ LPCD.CALL.link_actor = function (actor, visible) {
         if (visible && registry.visible.indexOf(actor) === -1) {
             registry.visible.push(actor);
             actor._show();
-            actor._reorient(actor);
         }
     }
     else {
@@ -593,17 +627,6 @@ LPCD.CALL.unlink_transients = function () {
     var targets = LPCD.ACTORS.registry.level;
     while (targets.length > 0) {
         LPCD.CALL.unlink_actor(targets[0]);
-    }
-};
-
-
-// "move_actors" Calls the "_reorient" method on all visible actors.
-LPCD.CALL.move_actors = function () {
-    "use strict";
-
-    var visible = LPCD.ACTORS.registry.visible;
-    for (var i=0; i<visible.length; i+=1) {
-        visible[i]._reorient(visible[i]);
     }
 };
 

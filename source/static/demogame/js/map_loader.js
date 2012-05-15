@@ -223,7 +223,7 @@ LPCD.EVENT.map_ready = function (mapdata, status) {
     var hold = true;
     var make_it_so = function () {
         LPCD.CALL.build_map(mapdata);
-        LPCD.EVENT.make();
+        LPCD.EVENT.make(mapdata);
         LPCD.DOM.doc.body.onmousedown = LPCD.EVENT.on_mouse_down;        
         LPCD.DOM.doc.body.onmouseup = LPCD.EVENT.on_mouse_up;
     };
@@ -239,12 +239,12 @@ LPCD.EVENT.map_ready = function (mapdata, status) {
 
     for (var i=0; i<mapdata.tilesets.length; i+=1) {
         var tileset = mapdata.tilesets[i];
-        var img_path = tileset.image;
+        tileset.image = "./_static/sprites/" + tileset.image.split("/").slice(-1);
         if (LPCD.DOM.res[tileset.image] === undefined) {
             pending += 1;
             LPCD.DOM.res[tileset.image] = new Image();
             LPCD.DOM.res[tileset.image].onload = image_loaded;
-            LPCD.DOM.res[tileset.image].src = img_path;
+            LPCD.DOM.res[tileset.image].src = tileset.image;
         }
 
         // add some extra functions to help level construction later on
@@ -316,7 +316,7 @@ LPCD.EVENT.map_ready = function (mapdata, status) {
 
 
 // "make" is used to build the level, bootstrap the game, and start the demo.
-LPCD.EVENT.make = function () {
+LPCD.EVENT.make = function (mapdata) {
     "use strict";
     
     LPCD.DOM.doc.getElementById("text_overlay").style.display = "none";
@@ -324,10 +324,13 @@ LPCD.EVENT.make = function () {
     LPCD.DATA.bootstrapping = false;
 
     var stage = LPCD.DOM.layers.actors = LPCD.DOM.doc.createElement("iframe");
-    stage.id = "stage";
+    stage.id = "layer_actors";
     stage.setAttribute("draggable", "false");
     stage.setAttribute("scrolling", "no");
     stage.setAttribute("frameborder", "0");
+    stage.style.width = String(32 * mapdata.width) + "px";
+    stage.style.height = String(32 * mapdata.height) + "px";
+
     LPCD.DOM.doc.body.appendChild(stage);
     stage.doc = stage.contentWindow.document;
     stage.doc.write('<link rel="stylesheet" type="text/css" href="./_static/demogame/lpcd.css" />');

@@ -54,10 +54,10 @@ the above.
 
 LPCD.CHARS.barrel = function (x, y) {
     var barrel = LPCD.API.create_object(x, y, "./_static/sprites/barrel.png");
-    barrel._crop(0,0,32,48)
+    barrel._crop(0, 0, 32, 48)
     barrel._block_width = 2;
     barrel._block_height = 1;
-    barrel._img_y_offset = 2;
+    barrel._img_y_offset = 1;
     barrel.on_bumped = undefined;
     return barrel;
 };
