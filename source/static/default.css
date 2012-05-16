@@ -35,14 +35,15 @@
 body {
     font-family: sans-serif;
     font-size: 100%;
-    background-color: #11303d;
+    background-color: #101820; /* was #11303d */
     color: #000;
     margin: 0;
     padding: 0;
 }
 
 div.document {
-    background-color: #1c4e63;
+    position: relative;
+    background-color: #2f8136; /* was #1c4e63 */
 }
 
 div.documentwrapper {
@@ -74,7 +75,8 @@ div.footer a {
 }
 
 div.related {
-    background-color: #133f52;
+    /*background-color: #133f52;*/
+    background-color: #004337;
     line-height: 30px;
     color: #ffffff;
 }
@@ -84,6 +86,7 @@ div.related a {
 }
 
 div.sphinxsidebar {
+    background-color: #101820;
 }
 
 div.sphinxsidebar h3 {
@@ -132,6 +135,17 @@ div.sphinxsidebar input {
     font-size: 1em;
 }
 
+div.sphinxsidebar:after {
+    display: block;
+    content: " ";
+    background-color: #101820;
+    background-image: url('./sprites/styleguide_sidebar.png');
+    width: 230px;
+    height: 450px; /* image height is 416px */
+    background-repeat: no-repeat;
+    background-position: bottom left;
+}
+
 
 
 /* -- hyperlink styles ------------------------------------------------------ */
@@ -163,8 +177,8 @@ div.body h6 {
     font-family: 'Trebuchet MS', sans-serif;
     background-color: #f2f2f2;
     font-weight: normal;
-    color: #20435c;
-    border-bottom: 1px solid #ccc;
+    color: #101820; /*#20435c;*/
+    /*border-bottom: 1px solid #ccc;*/
     margin: 20px -20px 10px -20px;
     padding: 3px 0 3px 10px;
 }
@@ -275,18 +289,46 @@ div.viewcode-block:target {
 }
 
 
+/*** for the demo */
+#lpc_demo {
+    background-color: white;
+    margin: 0px;
+    padding: 0px;
+}
+#lpcd_iframe {
+    margin-bottom: 1em;
+}
+
+
+
+
 
 /*** index specific stuff */
-#liberated-pixel-cup-style-guide-assets-and-demo {
-    position: relative;
-    min-height: 600px;
-    padding: 0px;
-    margin: 0px;
-    margin-left: -250px;
-    margin-right: -20px;
-    margin-bottom: -30px;
-    background-color: white;
+@media screen and (min-width: 766px) {
+    /* larger screen */
+    #liberated-pixel-cup-style-guide-assets-and-demo {
+        position: absolute;
+        top: 0px;
+        bottom: 0px;
+        left: 0px;
+        right: 0px;
+        padding: 0px;
+        background-color: white;
+    }
 }
+@media screen and (max-width: 765px) {
+    /* small screens */
+    #liberated-pixel-cup-style-guide-assets-and-demo {
+        position: relative;
+        padding: 0px;
+        margin: 0px;
+        margin-left: -250px;
+        margin-right: -20px;
+        margin-bottom: -30px;
+        background-color: white;
+    }
+}
+
 
 #liberated-pixel-cup-style-guide-assets-and-demo > h1 {
     text-align: center;
@@ -294,17 +336,31 @@ div.viewcode-block:target {
     margin-right: 0px;
 }
 
-
-#liberated-pixel-cup-style-guide-assets-and-demo > div.thumbtoc_container {
-    margin: auto;
-    text-align: center;
-    margin-top: 8em;
+@media screen and (min-width: 766px) {
+    /* larger screens */
+    #liberated-pixel-cup-style-guide-assets-and-demo > div.thumbtoc_container {
+        margin: auto;
+        text-align: center;
+        margin-top: 8em;
+    }
+}
+@media screen and (max-width: 765px) {
+    /* small screens */
+    #liberated-pixel-cup-style-guide-assets-and-demo > div.thumbtoc_container {
+        margin: auto;
+        text-align: center;
+        margin-top: 2em;
+    }
 }
 
 #liberated-pixel-cup-style-guide-assets-and-demo > div.thumbtoc_container > div.thumbtoc_item {
     display: inline-block;
     text-align: center;
     margin: auto;
+}
+
+#liberated-pixel-cup-style-guide-assets-and-demo > div.thumbtoc_container > div.thumbtoc_item:last-child {
+    margin-bottom: 4em;
 }
 
 #liberated-pixel-cup-style-guide-assets-and-demo > div.thumbtoc_container > div.thumbtoc_item img {
