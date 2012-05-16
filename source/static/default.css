@@ -273,3 +273,55 @@ div.viewcode-block:target {
     border-top: 1px solid #ac9;
     border-bottom: 1px solid #ac9;
 }
+
+
+
+/*** index specific stuff */
+#liberated-pixel-cup-style-guide-assets-and-demo {
+    position: relative;
+    min-height: 600px;
+    padding: 0px;
+    margin: 0px;
+    margin-left: -250px;
+    margin-right: -20px;
+    margin-bottom: -30px;
+    background-color: white;
+}
+
+#liberated-pixel-cup-style-guide-assets-and-demo > h1 {
+    text-align: center;
+    margin-left: 0px;
+    margin-right: 0px;
+}
+
+
+#liberated-pixel-cup-style-guide-assets-and-demo > div.thumbtoc_container {
+    margin: auto;
+    text-align: center;
+    margin-top: 8em;
+}
+
+#liberated-pixel-cup-style-guide-assets-and-demo > div.thumbtoc_container > div.thumbtoc_item {
+    display: inline-block;
+    text-align: center;
+    margin: auto;
+}
+
+#liberated-pixel-cup-style-guide-assets-and-demo > div.thumbtoc_container > div.thumbtoc_item img {
+    border: 1px solid black;
+    border-radius: .5em;
+}
+
+
+#liberated-pixel-cup-style-guide-assets-and-demo > div.thumbtoc_container > div.thumbtoc_item > p {
+    text-align: center;
+}
+
+
+#liberated-pixel-cup-style-guide-assets-and-demo > p {
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    width: 100%;
+    text-align: center;
+}
