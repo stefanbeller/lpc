@@ -1,8 +1,8 @@
 Liberated Pixel Cup styleguide
 ==============================
 
-Preamble?  Rationale?
----------------------
+Preamble / Rationale
+--------------------
 
 The purpose of this style guide is to allow pixel artists to
 collaborate on a top-down set of artwork and produce content that is
@@ -78,15 +78,16 @@ paying attention to its volume.  Lines should be added afterward, and
 generally only around the edges and with very important details.
 Details should mostly be implied by form and color, not by outlines.
 
-TODO: give pictures showing various stages of the workflow for something
-like, say, a cracked rock
+.. image:: ../static/images/process-scaled.png
+   :alt: Process of blocking in a sprite
 
 Outdoor lighting should come from above, with a light source slightly
 to the left.  Inside lighting shouting should be dead center from
 above.  Anything that is meant to be both inside and outside or that
 has a very small impact on the scene should be lighted from above.
 
-TODO: Add illustration
+.. image:: ../static/images/sunpoint.gif
+   :alt: Lighting example
 
 Lighting in a given scene should feature a hue shift between
 highlights and low lights.  The best way to do this is to first pick
@@ -112,18 +113,23 @@ Color
 
 * Dithering should be used sparingly if at all.  None of the base
   artwork has dithering.
-* Don't reach for that RGB color selector.  See that #00ff00 swatch
+* Don't reach for that RGB color selector.  See that #00FF00 swatch
   that you're thinking about using for grass?  Don't do it!  If your
   color has a zero as any of the RGB components, it's probably not a
   good color to use.
-* No colors are pure.  Saturation should be high, but no #00FF00 for
-  green please..
 * To put it simply, don't think of colors in terms of numbers.  Use
   the HSV color picker.
 * Your light to dark color ramps should *never* all have the same hue.
   Vary the hue and saturation a bit as you go from light to dark, or
   your objects will look flat.
 
+There's no specific palette *required* for Liberated Pixel Cup asset
+conformance, but it's generally best to try to match to the colors
+used in the base set.  So that said, here's a palette that may be
+useful in producing matching assets.
+
+.. image:: ../static/images/colors.png
+   :alt: Suggested palette
 
 Outlines
 --------
@@ -155,14 +161,11 @@ having a single repeating tile.
 Edged tiles such as walls and floors should be arranged in a similar
 manner as the establishing art.
 
-[examples here]
+.. image:: ../static/images/tiles_example_scene.png
+   :alt: An example scene using tiles from the base set
 
-TODO: Should we make notes on external scenes versus internal scenes? Yes. Absolutely =)
-
-TODO: Examples go here.  Important examples which illustrate things:
- * grass tiles and edges
- * Buildings
- * Interior walls, including entrances/exits
+*Demonstrating creating tiles that can be used to make more complex
+patterns.*
 
 
 Characters
@@ -190,14 +193,9 @@ keep generally for characters.)
 .. image:: ../static/images/characters_accessorized.png
    :alt: Example of unaccessorized characters
 
-
-
-
-Monsters are cute so far.
-
-TODO: Expand above wording
-TODO: [insert example monster bases]
-
+These concepts can generally be expanded to monsters and other
+creatures, of course accounting for different proportions of said
+characters.
 
 Props and other objects
 -----------------------
@@ -206,8 +204,11 @@ Props should be colored so that they don't blend in with the
 surrounding background tiles (vary color, brightness, and saturation
 to provide contrast).
 
-large difference in lighting between sides and top[be more specific,
-and give a visual example]
+There's should be a large difference in lighting between the sides and
+the top of objects.  Look at these objects as example:
+
+.. image:: ../static/images/barrel_and_bucket.png
+   :alt: Examples of object lighting via a barrel and a bucket
 
 Props should have shadows, or they will appear not to be part of the
 scene.  Shadows should follow the same transparency blending rules as
