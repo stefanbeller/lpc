@@ -9,11 +9,29 @@ This is a list of all assets!
 Characters and base
 ===================
 
-.. asset:: ../static/sprites/female_spritesheet.png
-   :name: female character template
+.. asset:: ../static/sprites/female_walkcycle.png
+   :name: female character template / walkcycle
 
-.. asset:: ../static/sprites/male_spritesheet.png
-   :name: male character template
+.. asset:: ../static/sprites/female_hurt.png
+   :name: female hurt animation
+
+.. asset:: ../static/sprites/female_slash.png
+   :name: female slash animation
+
+.. asset:: ../static/sprites/female_spellcast.png
+   :name: female spellcasting animation
+
+.. asset:: ../static/sprites/male_walkcycle.png
+   :name: male character template / walkcycle
+
+.. asset:: ../static/sprites/male_hurt.png
+   :name: male hurt animation
+
+.. asset:: ../static/sprites/male_slash.png
+   :name: male slash animation
+
+.. asset:: ../static/sprites/male_spellcast.png
+   :name: male spellcasting animation
 
 .. asset:: ../static/sprites/princess.png
    :name: "princess" example character

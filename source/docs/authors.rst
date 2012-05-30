@@ -71,8 +71,14 @@ Stephen Challener (AKA Redshrike)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Character templates
- - female_spritesheet.png
- - male_spritesheet.png
+ - female_walkcycle.png
+ - female_hurt.png
+ - female_slash.png
+ - female_spellcast.png
+ - male_walkcycle.png
+ - male_hurt.png
+ - male_slash.png
+ - male_spellcast.png
 
 Much style guide work
 
