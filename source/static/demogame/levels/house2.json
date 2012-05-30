@@ -86,7 +86,7 @@
  "tilesets":[
         {
          "firstgid":1,
-         "image":".\/_static\/sprites\/inside.png",
+         "image":".\/_static\/gamesprites\/inside.png",
          "imageheight":416,
          "imagewidth":416,
          "margin":0,

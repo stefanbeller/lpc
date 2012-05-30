@@ -90,7 +90,7 @@
  "tilesets":[
         {
          "firstgid":1,
-         "image":".\/_static\/sprites\/dirt.png",
+         "image":".\/_static\/gamesprites\/dirt.png",
          "imageheight":192,
          "imagewidth":96,
          "margin":0,
@@ -105,7 +105,7 @@
         }, 
         {
          "firstgid":19,
-         "image":".\/_static\/sprites\/dirt2.png",
+         "image":".\/_static\/gamesprites\/dirt2.png",
          "imageheight":192,
          "imagewidth":96,
          "margin":0,
@@ -120,7 +120,7 @@
         }, 
         {
          "firstgid":37,
-         "image":".\/_static\/sprites\/wall.png",
+         "image":".\/_static\/gamesprites\/wall.png",
          "imageheight":160,
          "imagewidth":160,
          "margin":0,
@@ -218,7 +218,7 @@
         }, 
         {
          "firstgid":62,
-         "image":".\/_static\/sprites\/dungeon.png",
+         "image":".\/_static\/gamesprites\/dungeon.png",
          "imageheight":416,
          "imagewidth":416,
          "margin":0,
@@ -233,7 +233,7 @@
         }, 
         {
          "firstgid":231,
-         "image":".\/_static\/sprites\/barrel.png",
+         "image":".\/_static\/gamesprites\/barrel.png",
          "imageheight":64,
          "imagewidth":128,
          "margin":0,
@@ -279,7 +279,7 @@
         }, 
         {
          "firstgid":239,
-         "image":".\/_static\/sprites\/chests.png",
+         "image":".\/_static\/gamesprites\/chests.png",
          "imageheight":96,
          "imagewidth":64,
          "margin":0,
@@ -321,7 +321,7 @@
         }, 
         {
          "firstgid":245,
-         "image":".\/_static\/sprites\/rock.png",
+         "image":".\/_static\/gamesprites\/rock.png",
          "imageheight":32,
          "imagewidth":64,
          "margin":0,
@@ -347,7 +347,7 @@
         }, 
         {
          "firstgid":247,
-         "image":".\/_static\/sprites\/hole.png",
+         "image":".\/_static\/gamesprites\/hole.png",
          "imageheight":192,
          "imagewidth":96,
          "margin":0,
@@ -437,7 +437,7 @@
         }, 
         {
          "firstgid":265,
-         "image":".\/_static\/sprites\/water.png",
+         "image":".\/_static\/gamesprites\/water.png",
          "imageheight":192,
          "imagewidth":96,
          "margin":0,
@@ -519,7 +519,7 @@
         }, 
         {
          "firstgid":283,
-         "image":".\/_static\/sprites\/waterfall.png",
+         "image":".\/_static\/gamesprites\/waterfall.png",
          "imageheight":160,
          "imagewidth":96,
          "margin":0,
@@ -534,7 +534,7 @@
         }, 
         {
          "firstgid":298,
-         "image":".\/_static\/sprites\/cement.png",
+         "image":".\/_static\/gamesprites\/cement.png",
          "imageheight":192,
          "imagewidth":96,
          "margin":0,
@@ -549,7 +549,7 @@
         }, 
         {
          "firstgid":316,
-         "image":".\/_static\/sprites\/cementstair.png",
+         "image":".\/_static\/gamesprites\/cementstair.png",
          "imageheight":128,
          "imagewidth":160,
          "margin":0,
@@ -575,7 +575,7 @@
         }, 
         {
          "firstgid":336,
-         "image":".\/_static\/sprites\/brackish.png",
+         "image":".\/_static\/gamesprites\/brackish.png",
          "imageheight":192,
          "imagewidth":96,
          "margin":0,
@@ -590,7 +590,7 @@
         }, 
         {
          "firstgid":354,
-         "image":".\/_static\/sprites\/holek.png",
+         "image":".\/_static\/gamesprites\/holek.png",
          "imageheight":192,
          "imagewidth":96,
          "margin":0,
@@ -680,7 +680,7 @@
         }, 
         {
          "firstgid":372,
-         "image":".\/_static\/sprites\/holemid.png",
+         "image":".\/_static\/gamesprites\/holemid.png",
          "imageheight":192,
          "imagewidth":96,
          "margin":0,
@@ -766,7 +766,7 @@
         }, 
         {
          "firstgid":390,
-         "image":".\/_static\/sprites\/lavarock.png",
+         "image":".\/_static\/gamesprites\/lavarock.png",
          "imageheight":192,
          "imagewidth":96,
          "margin":0,
@@ -781,7 +781,7 @@
         }, 
         {
          "firstgid":408,
-         "image":".\/_static\/sprites\/lava.png",
+         "image":".\/_static\/gamesprites\/lava.png",
          "imageheight":192,
          "imagewidth":96,
          "margin":0,

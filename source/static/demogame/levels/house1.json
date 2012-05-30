@@ -119,7 +119,7 @@
  "tilesets":[
         {
          "firstgid":1,
-         "image":".\/_static\/sprites\/house.png",
+         "image":".\/_static\/gamesprites\/house.png",
          "imageheight":352,
          "imagewidth":352,
          "margin":0,
@@ -225,7 +225,7 @@
         }, 
         {
          "firstgid":122,
-         "image":".\/_static\/sprites\/inside.png",
+         "image":".\/_static\/gamesprites\/inside.png",
          "imageheight":416,
          "imagewidth":416,
          "margin":0,
@@ -495,7 +495,7 @@
         }, 
         {
          "firstgid":291,
-         "image":".\/_static\/sprites\/cabinets.png",
+         "image":".\/_static\/gamesprites\/cabinets.png",
          "imageheight":416,
          "imagewidth":416,
          "margin":0,

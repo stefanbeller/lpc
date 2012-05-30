@@ -64,7 +64,7 @@
  "tilesets":[
         {
          "firstgid":1,
-         "image":".\/_static\/sprites\/inside.png",
+         "image":".\/_static\/gamesprites\/inside.png",
          "imageheight":416,
          "imagewidth":416,
          "margin":0,
@@ -334,7 +334,7 @@
         }, 
         {
          "firstgid":170,
-         "image":".\/_static\/sprites\/barrel.png",
+         "image":".\/_static\/gamesprites\/barrel.png",
          "imageheight":64,
          "imagewidth":128,
          "margin":0,
@@ -349,7 +349,7 @@
         }, 
         {
          "firstgid":178,
-         "image":".\/_static\/sprites\/buckets.png",
+         "image":".\/_static\/gamesprites\/buckets.png",
          "imageheight":64,
          "imagewidth":96,
          "margin":0,
@@ -364,7 +364,7 @@
         }, 
         {
          "firstgid":184,
-         "image":".\/_static\/sprites\/chests.png",
+         "image":".\/_static\/gamesprites\/chests.png",
          "imageheight":96,
          "imagewidth":64,
          "margin":0,
@@ -406,7 +406,7 @@
         }, 
         {
          "firstgid":190,
-         "image":".\/_static\/sprites\/cabinets.png",
+         "image":".\/_static\/gamesprites\/cabinets.png",
          "imageheight":416,
          "imagewidth":416,
          "margin":0,
@@ -421,7 +421,7 @@
         }, 
         {
          "firstgid":359,
-         "image":".\/_static\/sprites\/country.png",
+         "image":".\/_static\/gamesprites\/country.png",
          "imageheight":128,
          "imagewidth":160,
          "margin":0,
@@ -503,7 +503,7 @@
         }, 
         {
          "firstgid":379,
-         "image":".\/_static\/sprites\/desklamp.png",
+         "image":".\/_static\/gamesprites\/desklamp.png",
          "imageheight":96,
          "imagewidth":192,
          "margin":0,
@@ -518,7 +518,7 @@
         }, 
         {
          "firstgid":397,
-         "image":".\/_static\/sprites\/kitchen.png",
+         "image":".\/_static\/gamesprites\/kitchen.png",
          "imageheight":128,
          "imagewidth":64,
          "margin":0,

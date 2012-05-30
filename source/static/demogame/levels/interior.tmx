@@ -4,7 +4,7 @@
   <property name="dynamics" value="./dynamics/interior.js"/>
  </properties>
  <tileset firstgid="1" name="inside" tilewidth="32" tileheight="32">
-  <image source="../../sprites/inside.png" width="416" height="416"/>
+  <image source="../../gamesprites/inside.png" width="416" height="416"/>
   <tile id="0">
    <properties>
     <property name="wall" value="a"/>
@@ -322,13 +322,13 @@
   </tile>
  </tileset>
  <tileset firstgid="170" name="barrel" tilewidth="32" tileheight="32">
-  <image source="../../sprites/barrel.png" width="128" height="64"/>
+  <image source="../../gamesprites/barrel.png" width="128" height="64"/>
  </tileset>
  <tileset firstgid="178" name="buckets" tilewidth="32" tileheight="32">
-  <image source="../../sprites/buckets.png" width="96" height="64"/>
+  <image source="../../gamesprites/buckets.png" width="96" height="64"/>
  </tileset>
  <tileset firstgid="184" name="chests" tilewidth="32" tileheight="32">
-  <image source="../../sprites/chests.png" width="64" height="96"/>
+  <image source="../../gamesprites/chests.png" width="64" height="96"/>
   <tile id="0">
    <properties>
     <property name="wall" value="a"/>
@@ -361,10 +361,10 @@
   </tile>
  </tileset>
  <tileset firstgid="190" name="cabinets" tilewidth="32" tileheight="32">
-  <image source="../../sprites/cabinets.png" width="416" height="416"/>
+  <image source="../../gamesprites/cabinets.png" width="416" height="416"/>
  </tileset>
  <tileset firstgid="359" name="country" tilewidth="32" tileheight="32">
-  <image source="../../sprites/country.png" width="160" height="128"/>
+  <image source="../../gamesprites/country.png" width="160" height="128"/>
   <tile id="2">
    <properties>
     <property name="wall" value="a"/>
@@ -447,10 +447,10 @@
   </tile>
  </tileset>
  <tileset firstgid="379" name="desklamp" tilewidth="32" tileheight="32">
-  <image source="../../sprites/desklamp.png" width="192" height="96"/>
+  <image source="../../gamesprites/desklamp.png" width="192" height="96"/>
  </tileset>
  <tileset firstgid="397" name="kitchen" tilewidth="32" tileheight="32">
-  <image source="../../sprites/kitchen.png" width="64" height="128"/>
+  <image source="../../gamesprites/kitchen.png" width="64" height="128"/>
   <tile id="6">
    <properties>
     <property name="wall" value="a"/>

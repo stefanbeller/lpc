@@ -288,7 +288,7 @@
  "tilesets":[
         {
          "firstgid":1,
-         "image":"..\/..\/..\/..\/sprites\/grass.png",
+         "image":"..\/..\/gamesprites\/grass.png",
          "imageheight":192,
          "imagewidth":96,
          "margin":0,
@@ -303,7 +303,7 @@
         }, 
         {
          "firstgid":19,
-         "image":"..\/..\/..\/..\/sprites\/dirt.png",
+         "image":"..\/..\/gamesprites\/dirt.png",
          "imageheight":192,
          "imagewidth":96,
          "margin":0,
@@ -318,7 +318,7 @@
         }, 
         {
          "firstgid":37,
-         "image":"..\/..\/..\/..\/sprites\/dirt2.png",
+         "image":"..\/..\/gamesprites\/dirt2.png",
          "imageheight":192,
          "imagewidth":96,
          "margin":0,
@@ -333,7 +333,7 @@
         }, 
         {
          "firstgid":55,
-         "image":"..\/..\/..\/..\/sprites\/hole.png",
+         "image":"..\/..\/gamesprites\/hole.png",
          "imageheight":192,
          "imagewidth":96,
          "margin":0,
@@ -423,7 +423,7 @@
         }, 
         {
          "firstgid":73,
-         "image":"..\/..\/..\/..\/sprites\/lavarock.png",
+         "image":"..\/..\/gamesprites\/lavarock.png",
          "imageheight":192,
          "imagewidth":96,
          "margin":0,
@@ -438,7 +438,7 @@
         }, 
         {
          "firstgid":91,
-         "image":"..\/..\/..\/..\/sprites\/treetop.png",
+         "image":"..\/..\/gamesprites\/treetop.png",
          "imageheight":224,
          "imagewidth":192,
          "margin":0,
@@ -468,7 +468,7 @@
         }, 
         {
          "firstgid":133,
-         "image":"..\/..\/..\/..\/sprites\/trunk.png",
+         "image":"..\/..\/gamesprites\/trunk.png",
          "imageheight":96,
          "imagewidth":192,
          "margin":0,
@@ -498,7 +498,7 @@
         }, 
         {
          "firstgid":151,
-         "image":"..\/..\/..\/..\/sprites\/water.png",
+         "image":"..\/..\/gamesprites\/water.png",
          "imageheight":192,
          "imagewidth":96,
          "margin":0,
@@ -580,7 +580,7 @@
         }, 
         {
          "firstgid":169,
-         "image":"..\/..\/..\/..\/sprites\/waterfall.png",
+         "image":"..\/..\/gamesprites\/waterfall.png",
          "imageheight":160,
          "imagewidth":96,
          "margin":0,
@@ -595,7 +595,7 @@
         }, 
         {
          "firstgid":184,
-         "image":"..\/..\/..\/..\/sprites\/watergrass.png",
+         "image":"..\/..\/gamesprites\/watergrass.png",
          "imageheight":192,
          "imagewidth":96,
          "margin":0,
@@ -677,7 +677,7 @@
         }, 
         {
          "firstgid":202,
-         "image":"..\/..\/..\/..\/sprites\/wallfloor.png",
+         "image":"..\/..\/gamesprites\/wallfloor.png",
          "imageheight":160,
          "imagewidth":160,
          "margin":0,
@@ -783,7 +783,7 @@
         }, 
         {
          "firstgid":227,
-         "image":"..\/..\/..\/..\/sprites\/shadow.png",
+         "image":"..\/..\/gamesprites\/shadow.png",
          "imageheight":64,
          "imagewidth":160,
          "margin":0,
@@ -798,7 +798,7 @@
         }, 
         {
          "firstgid":237,
-         "image":"..\/..\/..\/..\/sprites\/rock.png",
+         "image":"..\/..\/gamesprites\/rock.png",
          "imageheight":32,
          "imagewidth":64,
          "margin":0,
@@ -824,7 +824,7 @@
         }, 
         {
          "firstgid":239,
-         "image":"..\/..\/..\/..\/sprites\/house.png",
+         "image":"..\/..\/gamesprites\/house.png",
          "imageheight":352,
          "imagewidth":352,
          "margin":0,
@@ -930,7 +930,7 @@
         }, 
         {
          "firstgid":360,
-         "image":"..\/..\/..\/..\/sprites\/chests.png",
+         "image":"..\/..\/gamesprites\/chests.png",
          "imageheight":96,
          "imagewidth":64,
          "margin":0,
@@ -972,7 +972,7 @@
         }, 
         {
          "firstgid":366,
-         "image":"..\/..\/..\/..\/sprites\/barrel.png",
+         "image":"..\/..\/gamesprites\/barrel.png",
          "imageheight":64,
          "imagewidth":128,
          "margin":0,
@@ -1018,7 +1018,7 @@
         }, 
         {
          "firstgid":374,
-         "image":"..\/..\/..\/..\/sprites\/signs.png",
+         "image":"..\/..\/gamesprites\/signs.png",
          "imageheight":64,
          "imagewidth":96,
          "margin":0,
@@ -1033,7 +1033,7 @@
         }, 
         {
          "firstgid":380,
-         "image":"..\/..\/..\/..\/sprites\/cup.png",
+         "image":"..\/..\/gamesprites\/cup.png",
          "imageheight":64,
          "imagewidth":32,
          "margin":0,

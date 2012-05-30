@@ -239,7 +239,7 @@ LPCD.EVENT.map_ready = function (mapdata, status) {
 
     for (var i=0; i<mapdata.tilesets.length; i+=1) {
         var tileset = mapdata.tilesets[i];
-        tileset.image = "./_static/sprites/" + tileset.image.split("/").slice(-1);
+        tileset.image = "./_static/gamesprites/" + tileset.image.split("/").slice(-1);
         if (LPCD.DOM.res[tileset.image] === undefined) {
             pending += 1;
             LPCD.DOM.res[tileset.image] = new Image();

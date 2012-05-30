@@ -5,16 +5,16 @@
   <property name="spawn_point" value="32,32"/>
  </properties>
  <tileset firstgid="1" name="dirt" tilewidth="32" tileheight="32">
-  <image source="../../sprites/dirt.png" width="96" height="192"/>
+  <image source="../../gamesprites/dirt.png" width="96" height="192"/>
  </tileset>
  <tileset firstgid="19" name="grassalt" tilewidth="32" tileheight="32">
-  <image source="../../sprites/grassalt.png" width="96" height="192"/>
+  <image source="../../gamesprites/grassalt.png" width="96" height="192"/>
  </tileset>
  <tileset firstgid="37" name="house" tilewidth="32" tileheight="32">
-  <image source="../../sprites/house.png" width="352" height="352"/>
+  <image source="../../gamesprites/house.png" width="352" height="352"/>
  </tileset>
  <tileset firstgid="158" name="trunk" tilewidth="32" tileheight="32">
-  <image source="../../sprites/trunk.png" width="192" height="96"/>
+  <image source="../../gamesprites/trunk.png" width="192" height="96"/>
   <tile id="1">
    <properties>
     <property name="wall" value="a"/>
@@ -37,7 +37,7 @@
   </tile>
  </tileset>
  <tileset firstgid="176" name="barrel" tilewidth="32" tileheight="32">
-  <image source="../../sprites/barrel.png" width="128" height="64"/>
+  <image source="../../gamesprites/barrel.png" width="128" height="64"/>
   <tile id="0">
    <properties>
     <property name="wall" value="s"/>
@@ -75,10 +75,10 @@
   </tile>
  </tileset>
  <tileset firstgid="184" name="hole" tilewidth="32" tileheight="32">
-  <image source="../../sprites/hole.png" width="96" height="192"/>
+  <image source="../../gamesprites/hole.png" width="96" height="192"/>
  </tileset>
  <tileset firstgid="202" name="rock" tilewidth="32" tileheight="32">
-  <image source="../../sprites/rock.png" width="64" height="32"/>
+  <image source="../../gamesprites/rock.png" width="64" height="32"/>
   <tile id="0">
    <properties>
     <property name="wall" value="a"/>
@@ -91,10 +91,10 @@
   </tile>
  </tileset>
  <tileset firstgid="204" name="shadow" tilewidth="32" tileheight="32">
-  <image source="../../sprites/shadow.png" width="160" height="64"/>
+  <image source="../../gamesprites/shadow.png" width="160" height="64"/>
  </tileset>
  <tileset firstgid="214" name="wallfloor" tilewidth="32" tileheight="32">
-  <image source="../../sprites/wallfloor.png" width="160" height="160"/>
+  <image source="../../gamesprites/wallfloor.png" width="160" height="160"/>
   <tile id="0">
    <properties>
     <property name="wall" value="se"/>
@@ -207,10 +207,10 @@
   </tile>
  </tileset>
  <tileset firstgid="239" name="cup" tilewidth="32" tileheight="32">
-  <image source="../../sprites/cup.png" width="32" height="64"/>
+  <image source="../../gamesprites/cup.png" width="32" height="64"/>
  </tileset>
  <tileset firstgid="241" name="treetop" tilewidth="32" tileheight="32">
-  <image source="../../sprites/treetop.png" width="192" height="224"/>
+  <image source="../../gamesprites/treetop.png" width="192" height="224"/>
   <tile id="6">
    <properties>
     <property name="wall" value="a"/>
@@ -338,13 +338,13 @@
   </tile>
  </tileset>
  <tileset firstgid="283" name="water" tilewidth="32" tileheight="32">
-  <image source="../../sprites/water.png" width="96" height="192"/>
+  <image source="../../gamesprites/water.png" width="96" height="192"/>
  </tileset>
  <tileset firstgid="301" name="waterfall" tilewidth="32" tileheight="32">
-  <image source="../../sprites/waterfall.png" width="96" height="160"/>
+  <image source="../../gamesprites/waterfall.png" width="96" height="160"/>
  </tileset>
  <tileset firstgid="316" name="watergrass" tilewidth="32" tileheight="32">
-  <image source="../../sprites/watergrass.png" width="96" height="192"/>
+  <image source="../../gamesprites/watergrass.png" width="96" height="192"/>
  </tileset>
  <layer name="dirt" width="32" height="32">
   <properties>
