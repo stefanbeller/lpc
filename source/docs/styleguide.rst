@@ -81,10 +81,9 @@ Details should mostly be implied by form and color, not by outlines.
 .. image:: ../static/images/process-scaled.png
    :alt: Process of blocking in a sprite
 
-Outdoor lighting should come from above, with a light source slightly
-to the left.  Inside lighting shouting should be dead center from
-above.  Anything that is meant to be both inside and outside or that
-has a very small impact on the scene should be lighted from above.
+Lighting should primarily come from above.  If there is any side
+directionality, it should come from the left, but not by much: keep it
+mostly center.
 
 .. image:: ../static/images/sunpoint.gif
    :alt: Lighting example
