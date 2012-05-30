@@ -56,7 +56,7 @@ tiles, that's wrong.
    :alt: Chest perspective example
 
 The following image is a 3d rendering
-(`source <_static/images/perspective.blend`_)
+(`source <_static/images/perspective.blend>`_)
 demonstrating orthographic projection.  For examples of actual
 proportions, see existing body of pixel art.
 
@@ -89,8 +89,8 @@ mostly center.
 .. image:: ../static/images/sunpoint.gif
    :alt: Lighting example
 
-An example scene in blender with a sun light pointing in the
-appropriate location:
+An `example scene in blender <_static/images/perspective.blend>`_ with
+a sun light pointing in the appropriate location:
 
 .. image:: ../static/images/lighting_direction.png
    :alt: Lighting blender screenshot example
