@@ -63,8 +63,8 @@ pixel art.
    :alt: 60 degree camera perspective example
 
 
-Lighting and shading
---------------------
+Lighting, colors, and shading
+-----------------------------
 
 Roughly a "toon style rendering" with medium-low levels of texturing.
 We want some detail, but not so much that things are so ornate that it
@@ -103,10 +103,6 @@ opacity.  If it makes sense, one may also provide a combined version
 of two tiles, so only one layer is needed to, say, put a house on a
 grass background.
 
-
-Color
------
-
 * Dithering should be used sparingly if at all.  None of the base
   artwork has dithering.
 * Don't reach for that RGB color selector.  See that #00FF00 swatch
@@ -136,13 +132,6 @@ Outlines
 Outlines should be a darker version of the current color, or a dark
 color generally, not black.  (Extreme circumstances obviously may have
 exceptions.)
-
-
-Hue Shifting
-------------
-
- * Shadows should head towards the blue/purple end of the spectrum.
- * Highlights should head towards the yellow end of the spectrum.
 
 
 Tile authoring
