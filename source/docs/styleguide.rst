@@ -55,9 +55,10 @@ tiles, that's wrong.
 .. image:: ../static/images/chest_perspective.png
    :alt: Chest perspective example
 
-The following image is a 3d rendering demonstrating orthographic
-projection.  For examples of actual proportions, see existing body of
-pixel art.
+The following image is a 3d rendering
+(`source <_static/images/perspective.blend`_)
+demonstrating orthographic projection.  For examples of actual
+proportions, see existing body of pixel art.
 
 .. image:: ../static/images/60perspective.png
    :alt: 60 degree camera perspective example
@@ -88,6 +89,12 @@ mostly center.
 .. image:: ../static/images/sunpoint.gif
    :alt: Lighting example
 
+An example scene in blender with a sun light pointing in the
+appropriate location:
+
+.. image:: ../static/images/lighting_direction.png
+   :alt: Lighting blender screenshot example
+
 Your light to dark color ramps should *never* all have the same hue.
 Vary the hue and saturation a bit as you go from light to dark, or
 your objects will look flat.
@@ -117,6 +124,7 @@ useful in producing matching assets.
 
 .. image:: ../static/images/colors.png
    :alt: Suggested palette
+
 
 Outlines
 --------
