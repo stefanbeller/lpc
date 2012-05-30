@@ -9,8 +9,11 @@ This is a list of all assets!
 Characters and base
 ===================
 
-.. asset:: ../static/sprites/char_template.png
-   :name: character template
+.. asset:: ../static/sprites/female_spritesheet.png
+   :name: female character template
+
+.. asset:: ../static/sprites/male_spritesheet.png
+   :name: male character template
 
 .. asset:: ../static/sprites/princess.png
    :name: "princess" example character
