@@ -72,12 +72,6 @@ Outdoors
 .. asset:: ../static/sprites/trunk.png
    :name: trunks
 
-.. asset:: ../static/sprites/wall.png
-   :name: walls
-
-.. asset:: ../static/sprites/wallfloor.png
-   :name: walls with visible floor
-
 .. asset:: ../static/sprites/waterfall.png
    :name: waterfall
 
