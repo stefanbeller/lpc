@@ -48,6 +48,10 @@ Also comes with a `source XCF file <_static/sprites/princess.xcf>`_.
 
 `source XCF file <_static/sprites/hairmale.xcf>`_
 
+.. asset:: ../static/sprites/male_pants.png
+   :name: male pants (should be layerable over walkcycle)
+
+
 Outdoors
 ========
 
