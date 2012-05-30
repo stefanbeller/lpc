@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="32" height="32" tilewidth="32" tileheight="32">
+ <tileset firstgid="1" source="../../sprites/wallfloor.tsx"/>
+ <tileset firstgid="26" source="../../sprites/water.tsx"/>
+ <tileset firstgid="44" source="../../sprites/watergrass.tsx"/>
+ <tileset firstgid="62" source="../../sprites/barrel.tsx"/>
+ <tileset firstgid="70" source="../../sprites/rock.tsx"/>
+ <tileset firstgid="72" source="../../sprites/treetop.tsx"/>
+ <tileset firstgid="114" source="../../sprites/trunk.tsx"/>
+ <tileset firstgid="132" name="ugly_clif" tilewidth="32" tileheight="32">
+  <image source="../../../../../../Desktop/ugly_clif.png" width="256" height="96"/>
+ </tileset>
+ <tileset firstgid="156" name="dirt" tilewidth="32" tileheight="32">
+  <image source="../../sprites/dirt.png" width="96" height="192"/>
+ </tileset>
+ <tileset firstgid="174" name="dirt2" tilewidth="32" tileheight="32">
+  <image source="../../sprites/dirt2.png" width="96" height="192"/>
+ </tileset>
+ <tileset firstgid="192" name="grass" tilewidth="32" tileheight="32">
+  <image source="../../sprites/grass.png" width="96" height="192"/>
+ </tileset>
+ <tileset firstgid="210" name="lavarock" tilewidth="32" tileheight="32">
+  <image source="../../sprites/lavarock.png" width="96" height="192"/>
+ </tileset>
+ <tileset firstgid="228" name="waterfall" tilewidth="32" tileheight="32">
+  <image source="../../sprites/waterfall.png" width="96" height="160"/>
+ </tileset>
+ <tileset firstgid="243" name="wall" tilewidth="32" tileheight="32">
+  <image source="../../sprites/wall.png" width="160" height="160"/>
+ </tileset>
+ <tileset firstgid="268" source="../../sprites/chests.tsx"/>
+ <layer name="base" width="32" height="32">
+  <data encoding="base64" compression="zlib">
+   eJztwwEJAAAMBKHrH+RzrsdQcNVUVVXV1w93mpgf
+  </data>
+ </layer>
+ <layer name="cliffs" width="32" height="32">
+  <data encoding="base64" compression="zlib">
+   eJztlVELgzAMhH10YzIUqf//n24BA+G4ttNUJ1sO8lAp+Wrvol0XCoVC19L9XY9K3RowctxxXY+Oqp1fGciVSuvz5CjtlXuPlOEq2yvbi51P2M8CN5cBj++2p3DnAvcI3/H+B8JGL/b6zry3+0QTYXszgAxcWy2ErevW826l/a3XbB6Yt1vPwd5F+9n8f+L9nvyxLGi/mdxByfut+cOe2H+AO2ghPE9Jkn/2DThLkv/+S2xV8P+XL3OP/6AzJXM/VXcdJ5n7pbrrd/UCrCUR/w==
+  </data>
+ </layer>
+ <layer name="water_a" width="32" height="32">
+  <data encoding="base64" compression="zlib">
+   eJzFV+0KwjAMvPeYzOp07v2f0BZ3ELI2DEyyQH5Ylbvm8lWgb2v1W/WX4VP1bfB/D2scPgaPdyC25kEO086peeTdpZXqd+TeuYedja+xo/NN24Jr8m2EP1d/VH8m4eseMO2fM+PAHsB6W5GbA1dZwU9ry6PyoGG3uqPeUn9q0c6Zj95cqDn1Bo79Vs6G7L6gLWoWFIw1199F5ILsP9R+w7EvR/UmXfvynLrr/WB25mBxI6cF/ntBwfl6Xwfn/2BrfTPnj5571t5X4F8DFr7uNfK3XnPR2nv13aVO3rnfi4PMgd4bwXM3sOJAHhn7IePQ6zfR+2HBcffv9eWovUxi9WJOzKi9bPQOlfMo2qLz/IxFvUW+Daomzg==
+  </data>
+ </layer>
+ <layer name="whatever_b" width="32" height="32">
+  <data encoding="base64" compression="zlib">
+   eJzll0ESwyAIRdNtm16rOWyaO3ZcOOMwCP8HtJn2LTV8UMHgssQ5iPGdsGd8RzQkO6j3vNkaFTQ2dg2vBA0rDkSL9aedvzaW7VfjjN8M2yvoZNYLytuZj8bU2wPNrxdL4W7U9wweSf5/ZR0oGzhWWb+8PwUkHyvavd/jKmdvxczUvXWOiG3Evqf5zzC5mEnWfzMCU7MRmzOgfkb0zy1tfczuOdj+dUR8UtM6F5nT2rde3mtrmJVzBe8+9ObRt5eFtB/1/mrJvo/QWNheR/IBmIoo3A==
+  </data>
+ </layer>
+ <layer name="cliffs_b" width="32" height="32">
+  <data encoding="base64" compression="zlib">
+   eJztktsKwjAQRPsuggjqD9e71vu1P+t5aGCRJN2YYl924BAI3R3SmaIwmUwmk9RQ8U0Jc1jAElawhg1sf/Rwd2PF/A72UMEBjnCCM1wU89Lj23emmL/CDe7wgCe84A21Yl56pPh2Jfn/fb6hDuTkLneGMm7rQE7ucmfozW1Z5OQey9d5/7MDIW9f9oOO/aScdyz7UXOm9s/3Frl/Krxj2U+aM7V/vrf49muzT+2ftk999M5kMpn60gcwoCwD
+  </data>
+ </layer>
+ <layer name="water_b" width="32" height="32">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo2AUjIJRMApGAalADYg1BtoRo2DYAQUsYko41NIiDcpjEZOjsh2jYBSMglEwCgYOAACqCQEc
+  </data>
+ </layer>
+ <layer name="trunks" width="32" height="32">
+  <data encoding="base64" compression="zlib">
+   eJztlTEOgDAIRXtp66AO6sVlcDAERGqh1fASBgwp/YA0JR+yUx6KCWwGWxrlX8E2sL1Rfg9wfyW/hOE8Z0TfcX8lvxTunGt/8wOfg9NH5aHi39ZBWyccf6ebuj/WoP1PuHiNDovdoNHhuRt638GW95PqHG9EfXqfN0v+2M+vopnD2jMbb1EQBL1yAFGiPiE=
+  </data>
+ </layer>
+ <layer name="whatever_a" width="32" height="32">
+  <data encoding="base64" compression="zlib">
+   eJztlEESgjAMReNW70QVVO5/B0VZKMoJzCKdkUxLWpPKhjfzx6loftKfAWBlZaU0e9RhQf8j6lSwfoVyYD/nBXUldXTuAr+rUQ3Yz3lD3Uk9nXvD+hIP1JM00HnI+L9T+r9Qb9JI53HGp2LfN0p/nn8M71Mr/Tg8f05sH+dwIOfin/P8Q/3xvqTaDci5+Oc8f05oH7WZe1Kyj+2jBVL2WqScpOw9qTu43UzPUk5S9p7UHdyh/1nwzKGlz9gOcq8W4mj6Cu1gSr1fPbV3OHcPVh4aUvrL5d/zlJjBkiXzDWF9X1bzWfX1XSfnvWTtzfkAcnRPng==
+  </data>
+ </layer>
+ <layer name="tree_tops_a" width="32" height="32">
+  <data encoding="base64" compression="zlib">
+   eJztk0kOwjAMRXNOhlLmedp0AyyAi/MXiZRaGTCpC1R50ltYJK5lfpSqU6k0OPfp2Qu8wtuH/Vz3Y2dt7vABn8x+Pdgn9ws40r8PSV1ZZ0PQeWgfQwnHcKLrKZzBuaNO2THta1jAJVzpeg03cOuoQzs2exx4vk/7GnZwDw+6PsITPHtqG3ueUtX3SAn1aQK6x7ahe+waxRe/7Xs7NpLz+d6O4Z35Uoi9ndh80ki87V/PmyRd/D//FU4Om84sJ4cSmeXkUCKznBzmzGYymTZ5AbodPzw=
+  </data>
+ </layer>
+ <layer name="tree_tops_b" width="32" height="32">
+  <data encoding="base64" compression="zlib">
+   eJztk8cOgzAQRP2dhBRSSKHm/y+MhS3QirhgK6d50jvMSmuLEVZq4Q0/sDH5Bu/wocKQ+665na0Z4Ai/nvN+IfddczvTnCLPy0lsx7mJ7djFUc1dngOzJmfHsktfTqWAB1iaLLv0Zc1WJ6FcYAWvJssufVmT0kkNn/C1Y9eS8v+1sIN9wv3/eOMucnwDIYQQQgghoUxoGSp2
+  </data>
+ </layer>
+ <layer name="tree_tops_c" width="32" height="32">
+  <data encoding="base64" compression="zlib">
+   eJzt0iEOgEAQQ9G5GYJzLAhALAjg/oYmBDd6KvgvqampaUS9ybD5WZRV2Uz7XdmVw7R/Kpdym/b/oMX78dm0X/nxIekqPz4mHR8HAAAAcg8VPQlv
+  </data>
+ </layer>
+</map>

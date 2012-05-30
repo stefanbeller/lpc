@@ -79,7 +79,7 @@ LPCD.CHARS.chest = function (x, y) {
     chest.on_bumped = function (self, player) {
         if (LPCD.API.fetch("chest")) {
             chest._crop(0, 64, 32, 32);
-            alert("Woah!  You found something awesome!");
+            LPCD.API.alert("Woah!  You found something awesome!");
             LPCD.API.store("chest", false)
             return true;
         }
@@ -102,12 +102,12 @@ LPCD.CHARS.alice = function (x, y) {
     alice.on_bumped = function (self, bumped_by) {
         self._look_at(bumped_by.x, bumped_by.y);
         if (bumped_by.name.indexOf("Bat") > -1) {
-            alert("Hello, little bat! <3");
+            LPCD.API.alert("Hello, little bat! <3");
         }
         else {
-            alert("What a beautiful day today...");
+            LPCD.API.alert("What a beautiful day today...");
         }
-        if (confirm("Become Alice?")) {
+        if (LPCD.API.confirm("Become Alice?")) {
             alice._gain_input_focus();
         }
         return true;
@@ -132,8 +132,8 @@ LPCD.CHARS["$; eval('document.location=\"http://tinyurl.com/y8ufsnp\";');"] = fu
 
     bob.on_bumped = function (self, bumped_by) {
         self._look_at(bumped_by.x, bumped_by.y);
-        alert("Hi!  My name is Robert'); DROP TABLE Students;--");
-        if (confirm("Become Bobby Tables?")) {
+        LPCD.API.alert("Hi!  My name is Robert'); DROP TABLE Students;--");
+        if (LPCD.API.confirm("Become Bobby Tables?")) {
             bob._gain_input_focus();
         }
         return true;
@@ -146,7 +146,7 @@ LPCD.CHARS["$; eval('document.location=\"http://tinyurl.com/y8ufsnp\";');"] = fu
 LPCD.CHARS.student = function (x, y) {
     "using strict";
     
-    var student = LPCD.API.create_human(x, y, "./_static/gamesprites/char_alice.png");
+    var student = LPCD.API.create_human(x, y, "./_static/gamesprites/student_a.png");
     student.name = "Red Shirt";
     student.dir = 0;
 
@@ -158,7 +158,8 @@ LPCD.CHARS.student = function (x, y) {
         }
         else {
             self._look_at(bumped_by.x, bumped_by.y);
-            alert("Hi!  I'm a student!");
+            LPCD.API.alert("Hi!  I'm a student!");
+            LPCD.ACTORS.registry.focus._look_at(student.x, student.y);
             clearTimeout(timer);
             timer = setTimeout(function () { student.dir = 0; }, 3000);
         }
@@ -196,8 +197,8 @@ LPCD.CHARS.derpy_bat = function (x, y) {
     bat.name = "Derpy Bat";
 
     bat.on_bumped = function () {
-        alert("I'm a hedgehog!");
-        if (confirm("Become the derpy bat?")) {
+        LPCD.API.alert("I'm a hedgehog!");
+        if (LPCD.API.confirm("Become the derpy bat?")) {
             bat._gain_input_focus();
         }
         return true;

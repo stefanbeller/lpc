@@ -374,6 +374,7 @@ LPCD.ACTORS.AnimateKind = function (x, y, img) {
             // north east
             created.dir = delta(created.x, look_x) > delta(created.y, look_y) ? 3 : 2;
         }
+        this._repaint();
     };
 
     created._move_to = function (pick_x, pick_y) {
@@ -549,13 +550,14 @@ LPCD.ACTORS.HumonKind = function (x, y, img) {
     created._block_height = 1;
     created._block_width = 2;
     created._move_speed = 60;
+    created._img_x_offset = -1;
 
     created._repaint = function () {
         var frame = 0;
         if (this._is_moving) {
             frame = this._steps % 8 + 1;
         }
-        this._crop(32 * frame, 48*this.dir, 32, 48);
+        this._crop(64 * frame, 64*this.dir, 64, 64);
     };
 
     created._repaint(created);

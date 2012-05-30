@@ -76,6 +76,20 @@ LPCD.API.instance = function (name, x, y) {
 };
 
 
+LPCD.API.alert = function (message) {
+    LPCD.CALL.mouse_cancel();
+    LPCD.ACTORS.registry.focus._stop();
+    return alert(message);
+};
+
+
+LPCD.API.confirm = function (message) {
+    LPCD.CALL.mouse_cancel();
+    LPCD.ACTORS.registry.focus._stop();
+    return confirm(message);
+};
+
+
 
 
 /*** actor creation functions ***/
