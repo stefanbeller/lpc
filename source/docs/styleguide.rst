@@ -88,14 +88,11 @@ mostly center.
 .. image:: ../static/images/sunpoint.gif
    :alt: Lighting example
 
-Lighting in a given scene should feature a hue shift between
-highlights and low lights.  The best way to do this is to first pick
-the dominant color of an object.  This dominant color will tend to be
-more warm with outside objects and more cool with inside objects.  To
-create the lowlight color, move the hue (hsv selector) slightly
-towards the closest purple.  To create highlight color, move the hue
-slightly towards the closest yellow.  Adjust as necessary until it
-looks "right".
+To create shadows or lowlights, once you have the main color the shade
+you want it to be move the hue (hsv selector) slightly towards the
+closest purple. To create highlight color, do the same but instead of
+purple and shade move the hue slightly towards the closest yellow and
+lighten it up. Adjust as necessary until it looks "right".
 
 Inside, things will be cooler in overall color, with slightly less
 contrast.  This is doubly true for things like basements, caves and
