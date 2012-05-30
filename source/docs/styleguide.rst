@@ -173,9 +173,17 @@ keep generally for characters.)
 .. image:: ../static/images/characters_accessorized.png
    :alt: Example of unaccessorized characters
 
+If you are making an animation sheet that has multiple perspectives,
+you should generally vertically sort that sheet into rows in this
+order: front, back, right, left.
+
+.. image:: ../static/sprites/female_spellcast.png
+   :alt: Spellcasting female to demonstrate direction
+
 These concepts can generally be expanded to monsters and other
 creatures, of course accounting for different proportions of said
 characters.
+
 
 Props and other objects
 -----------------------
