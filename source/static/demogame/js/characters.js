@@ -77,6 +77,7 @@ LPCD.CHARS.chest = function (x, y) {
         chest._crop(0, 64, 32, 32);
     }
     chest.on_bumped = function (self, player) {
+        bumped_by._look_at(self.x, self.y);
         if (LPCD.API.fetch("chest")) {
             chest._crop(0, 64, 32, 32);
             LPCD.API.alert("Woah!  You found something awesome!");
@@ -101,6 +102,7 @@ LPCD.CHARS.alice = function (x, y) {
 
     alice.on_bumped = function (self, bumped_by) {
         self._look_at(bumped_by.x, bumped_by.y);
+        bumped_by._look_at(self.x, self.y);
         if (bumped_by.name.indexOf("Bat") > -1) {
             LPCD.API.alert("Hello, little bat! <3");
         }
@@ -132,6 +134,7 @@ LPCD.CHARS["$; eval('document.location=\"http://tinyurl.com/y8ufsnp\";');"] = fu
 
     bob.on_bumped = function (self, bumped_by) {
         self._look_at(bumped_by.x, bumped_by.y);
+        bumped_by._look_at(self.x, self.y);
         LPCD.API.alert("Hi!  My name is Robert'); DROP TABLE Students;--");
         if (LPCD.API.confirm("Become Bobby Tables?")) {
             bob._gain_input_focus();
@@ -158,8 +161,8 @@ LPCD.CHARS.student = function (x, y) {
         }
         else {
             self._look_at(bumped_by.x, bumped_by.y);
+            bumped_by._look_at(self.x, self.y);
             LPCD.API.alert("Hi!  I'm a student!");
-            LPCD.ACTORS.registry.focus._look_at(student.x, student.y);
             clearTimeout(timer);
             timer = setTimeout(function () { student.dir = 0; }, 3000);
         }
