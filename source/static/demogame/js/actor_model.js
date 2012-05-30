@@ -118,8 +118,12 @@ LPCD.ACTORS.VisibleKind = function (binding, _x, _y, _img) {
     // public vars --------------------------------
     created._div = LPCD.DOM.doc.createElement("div");
     created._div.setAttribute("class", "actor");
-    created.__defineGetter__("width", function () { return cropped ? sw : img.width; });
-    created.__defineGetter__("height", function () { return cropped ? sh : img.height; });
+    created.__defineGetter__("width", function () { 
+        return cropped ? sw : img !== undefined ? img.width : 0;
+    });
+    created.__defineGetter__("height", function () {
+        return cropped ? sh : img !== undefined ? img.height : 0;
+    });
     created.__defineGetter__("img", function () { return src; });
     created.__defineSetter__("img", function (uri) {
         if (uri !== src) {
