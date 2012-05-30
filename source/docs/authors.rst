@@ -60,6 +60,7 @@ Base tileset
  - waterfall.png
  - watergrass.png
  - water.png
+ - princess_0.png and princess_0.xcf
 
 Much style guide work
 

@@ -6,11 +6,16 @@ This is a list of all assets!
 
 .. _assets-character-base:
 
-Character base
-==============
+Characters and base
+===================
 
 .. asset:: ../static/sprites/char_template.png
    :name: character template
+
+.. asset:: ../static/sprites/princess_0.png
+   :name: "princess" example character
+   
+Also comes with a `source XCF file <_static/sprites/princess_0.xcf>`_.
 
 
 Outdoors
