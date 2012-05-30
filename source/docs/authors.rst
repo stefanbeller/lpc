@@ -89,7 +89,8 @@ Monsters
 Manuel Riecke (AKA MrBeast)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Hairdos
+ - hairfemale.png and hairfemale.xcf
+ - hairmale.png and hairmale.xcf
 
 The 60 degree perspective render in the style guide
 

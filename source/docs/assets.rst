@@ -17,6 +17,15 @@ Characters and base
    
 Also comes with a `source XCF file <_static/sprites/princess_0.xcf>`_.
 
+.. asset:: ../static/sprites/hairfemale.png
+   :name: female hair examples
+
+`source XCF file <_static/sprites/hairfemale.xcf>`_
+
+.. asset:: ../static/sprites/hairmale.png
+   :name: male hair examples
+
+`source XCF file <_static/sprites/hairmale.xcf>`_
 
 Outdoors
 ========
