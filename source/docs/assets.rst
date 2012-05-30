@@ -12,10 +12,10 @@ Characters and base
 .. asset:: ../static/sprites/char_template.png
    :name: character template
 
-.. asset:: ../static/sprites/princess_0.png
+.. asset:: ../static/sprites/princess.png
    :name: "princess" example character
    
-Also comes with a `source XCF file <_static/sprites/princess_0.xcf>`_.
+Also comes with a `source XCF file <_static/sprites/princess.xcf>`_.
 
 .. asset:: ../static/sprites/hairfemale.png
    :name: female hair examples
@@ -29,6 +29,9 @@ Also comes with a `source XCF file <_static/sprites/princess_0.xcf>`_.
 
 Outdoors
 ========
+
+.. asset:: ../static/sprites/bridges.png
+   :name: bridges
 
 .. asset:: ../static/sprites/dirt.png
    :name: dirt
@@ -53,6 +56,9 @@ Outdoors
 
 .. asset:: ../static/sprites/house.png
    :name: house tiles (external)
+
+.. asset:: ../static/sprites/mountains.png
+   :name: mountains, cliffs, walls, and slopes
 
 .. asset:: ../static/sprites/signs.png
    :name: signs
@@ -82,6 +88,8 @@ Outdoors
    :name: water
 
 
+
+
 Building indoors
 ================
 
@@ -94,14 +102,15 @@ Building indoors
 .. asset:: ../static/sprites/country.png
    :name: country furniture
 
-.. asset:: ../static/sprites/desklamp.png
-   :name: desk lamps
-
 .. asset:: ../static/sprites/kitchen.png
    :name: kitchen
 
 .. asset:: ../static/sprites/stairs.png
    :name: house stairs
+
+.. asset:: ../static/sprites/victoria.png
+   :name: victorian furniture and decoration
+
 
 Sewer / Dungeon
 ===============
@@ -150,6 +159,9 @@ Misc
 
 .. asset:: ../static/sprites/frame.gif
    :name: LPC homepage frame
+
+.. asset:: ../static/sprites/lpc_home_cup.gif
+   :name: LPC homepage artwork
 
 .. asset:: ../static/sprites/shadow.png
    :name: shadows

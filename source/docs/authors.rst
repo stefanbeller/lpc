@@ -12,6 +12,8 @@ Jonathan Palecek (Creative Commons)
 
  - Liberated Pixel Cup game demo
  - theming
+ - co-author of LPC background cup image
+
 
 Christopher Allan Webber (Creative Commons)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -29,13 +31,13 @@ Base tileset
  - barrel.png
  - brackish.png
  - buckets.png
+ - bridges.png
  - cabinets.png
  - cement.png
  - cementstair.png
  - chests.png
  - country.png
  - cup.png
- - desklamp.png
  - dirt2.png
  - dirt.png
  - dungeon.png
@@ -49,21 +51,21 @@ Base tileset
  - kitchen.png
  - lava.png
  - lavarock.png
+ - mountains.png
  - rock.png
  - shadow.png
  - signs.png
  - stairs.png
  - treetop.png
  - trunk.png
- - wallfloor.png
- - wall.png
  - waterfall.png
  - watergrass.png
  - water.png
- - princess_0.png and princess_0.xcf
+ - princess.png and princess.xcf
 
 Much style guide work
 
+co-author of LPC background cup image
 
 Stephen Challener (AKA Redshrike)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
