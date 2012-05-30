@@ -50,7 +50,7 @@ The camera angle is top-down, roughly 60 degrees.
 Rendering should be orthographic, which means there is *no*
 perspective... things **do not** get smaller as they move into the
 distance.  If you're using perspective techniques on your props or
-tiles, ur doin it wrong.
+tiles, that's wrong.
 
 .. image:: ../static/images/chest_perspective.png
    :alt: Chest perspective example
