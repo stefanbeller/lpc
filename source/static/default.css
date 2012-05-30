@@ -139,7 +139,7 @@ div.sphinxsidebar:after {
     display: block;
     content: " ";
     background-color: #101820;
-    background-image: url('./sprites/styleguide_sidebar.png');
+    background-image: url('./images/styleguide_sidebar.png');
     width: 230px;
     height: 450px; /* image height is 416px */
     background-repeat: no-repeat;
