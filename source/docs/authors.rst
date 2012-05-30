@@ -79,6 +79,7 @@ Character templates
  - male_hurt.png
  - male_slash.png
  - male_spellcast.png
+ - male_pants.png
 
 Much style guide work
 
