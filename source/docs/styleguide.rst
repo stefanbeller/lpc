@@ -88,6 +88,10 @@ mostly center.
 .. image:: ../static/images/sunpoint.gif
    :alt: Lighting example
 
+Your light to dark color ramps should *never* all have the same hue.
+Vary the hue and saturation a bit as you go from light to dark, or
+your objects will look flat.
+
 To create shadows or lowlights, once you have the main color the shade
 you want it to be move the hue (hsv selector) slightly towards the
 closest purple. To create highlight color, do the same but instead of
@@ -103,17 +107,8 @@ opacity.  If it makes sense, one may also provide a combined version
 of two tiles, so only one layer is needed to, say, put a house on a
 grass background.
 
-* Dithering should be used sparingly if at all.  None of the base
-  artwork has dithering.
-* Don't reach for that RGB color selector.  See that #00FF00 swatch
-  that you're thinking about using for grass?  Don't do it!  If your
-  color has a zero as any of the RGB components, it's probably not a
-  good color to use.
-* To put it simply, don't think of colors in terms of numbers.  Use
-  the HSV color picker.
-* Your light to dark color ramps should *never* all have the same hue.
-  Vary the hue and saturation a bit as you go from light to dark, or
-  your objects will look flat.
+Dithering should be used sparingly if at all.  None of the base
+artwork has dithering.
 
 There's no specific palette *required* for Liberated Pixel Cup asset
 conformance, but it's generally best to try to match to the colors
