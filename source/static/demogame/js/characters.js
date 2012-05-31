@@ -76,7 +76,7 @@ LPCD.CHARS.chest = function (x, y) {
     else {
         chest._crop(0, 64, 32, 32);
     }
-    chest.on_bumped = function (self, player) {
+    chest.on_bumped = function (self, bumped_by) {
         bumped_by._look_at(self.x, self.y);
         if (LPCD.API.fetch("chest")) {
             chest._crop(0, 64, 32, 32);
@@ -225,7 +225,7 @@ LPCD.CHARS.eyeball = function (x, y) {
     "use strict";
 
     var critter = LPCD.API.create_critter(
-        x, y, "./_static/gamesprites/eyeball.png", 32, 38, 3, true, 150);
+        x, y, "./_static/gamesprites/eyeball.png", 32, 38, 3, true, 100);
     critter._img_y_offset = -2;
     critter.name = "Eyeball";
     critter.on_bumped = function () {};

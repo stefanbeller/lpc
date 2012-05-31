@@ -15,3 +15,20 @@ API.add_warp(111, 47, 112, 48, 16, 28, "underground_a.json");
 
 API.add_warp(120, 56, 121, 57, 74, 94, "underground_a.json");
 API.add_warp(73, 93, 73, 94, 119, 57, "underground_a.json");
+
+
+// add an ncp
+API.instance("chest", 68, 102);
+
+
+// some monsters
+API.instance("slime", 21, 84);
+API.instance("slime", 22, 18);
+API.instance("bat", 7, 21);
+API.instance("bat", 23, 68);
+
+API.instance("eyeball", 90, 93);
+API.instance("eyeball", 76, 100);
+
+API.instance("slime", 88, 10);
+API.instance("slime", 82, 15);

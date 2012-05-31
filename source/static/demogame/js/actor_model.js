@@ -514,6 +514,7 @@ LPCD.ACTORS.CritterKind = function (x, y, img, w, h, steps, directional, rate) {
     var created = Object.create(parent);
     var _step = 0;
     var reorient;
+    var oscilation = 1;
 
     created._block_width = w/16;
     created._block_height = h/16;
@@ -532,9 +533,14 @@ LPCD.ACTORS.CritterKind = function (x, y, img, w, h, steps, directional, rate) {
     }
     // animation loop
     (function animate () {
-        _step += 1;
+        _step += 1 * oscilation;
         if (_step >= steps) {
+            _step = steps -1;
+            oscilation = -1;
+        }
+        if (_step < 0) {
             _step = 0;
+            oscilation = 1;
         }
         created._repaint();
         if (!created._deleted) { setTimeout(animate, rate); }

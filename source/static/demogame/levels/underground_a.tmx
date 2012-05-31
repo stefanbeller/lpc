@@ -58,7 +58,7 @@
  </layer>
  <layer name="objects_b" width="64" height="64">
   <data encoding="base64" compression="zlib">
-   eJzt2ksKwjAQgOG4FHqUnkIXev9LWN9u6toEJhCCWtSMic7/wVAopUkmKXlQ5wD8mqF2BSrY+BglDspltZjfvVyvEhp6uWrn91Xz2f37pfupz94Zx5tGWZ/oJB8a/ZS/M4y19JtrKQ/BOP1IUSEPWx875XK6B2O+BUcfp9qVABRpzrMAAABASWFPvPD7x2XDe0htK9/2tbS/tTOLb8nPbgAAeIfVeTRiHgUAAKjHwlr0WRvztehFsyKVWF1vD0lYkv5/GMOS/P9Di6z1uXWMd+fOtSsBAAAA4O/dAH3XMiQ=
+   eJzt2ksKwjAQgOG6FHqUnkIXev9LWJ+4qWsTmEAIPqhmzMj8HwyFUppkkpIH7ToA/2ZsXYEGdiEmiZNyWRbze5TrTULDIFft/M61XDy+X7ufhuKdabxplPWNXvKh0U/lO+NYy785S3mIpvePVBXzsA9xUC6nfzLmLTiHuLSuBKBIc54FAAAAaop74lXYP64N7yG1bULbt9J+a2cWv1Ke3QAA8Amv82jCPAoAANCOh7XoqzaWa9GrZkUa8breHrPwJP//MIUn5f+HHnnrc+8Y7wAAAACg7w7ZGzE1
   </data>
  </layer>
  <layer name="over_head" width="64" height="64">
