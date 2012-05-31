@@ -224,9 +224,15 @@ LPCD.CHARS.worm = function (x, y) {
 LPCD.CHARS.eyeball = function (x, y) {
     "use strict";
 
-    var eye = LPCD.CHARS.critter(x, y, "./_static/gamesprites/eyeball.png");
-    eye.name = "Floating Eye";
-    return eye;
+    var critter = LPCD.API.create_critter(
+        x, y, "./_static/gamesprites/eyeball.png", 32, 38, 3, true, 150);
+    critter._img_y_offset = -2;
+    critter.name = "Eyeball";
+    critter.on_bumped = function () {};
+    critter._frequency = 200;
+    critter.on_lost_focus = function () { critter._wander(10); };
+    setTimeout(function() { critter._wander(10); }, 500);
+    return critter;
 };
 
 
