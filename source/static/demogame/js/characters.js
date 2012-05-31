@@ -174,17 +174,81 @@ LPCD.CHARS.student = function (x, y) {
 
 
 
+LPCD.CHARS.critter = function (x, y, sprite) {
+    var critter = LPCD.API.create_critter(
+        x, y, sprite!==undefined?sprite:"./_static/gamesprites/batty_bat.png", 32, 32, 3, true, 150);
+    critter.name = "critter";
+    critter.on_bumped = function () {};
+    critter._frequency = 200;
+    critter.on_lost_focus = function () { critter._wander(10); };
+    setTimeout(function() { critter._wander(10); }, 500);
+    return critter;
+};
+
+
+
+
 LPCD.CHARS.bat = function (x, y) {
     "use strict";
 
-    var bat = LPCD.API.create_critter(
-        x, y, "./_static/gamesprites/batty_bat.png", 32, 32, 3, true, 150);
+    var bat = LPCD.CHARS.critter(x, y, "./_static/gamesprites/batty_bat.png");
     bat.name = "Homerun Bat";
-    bat.on_bumped = function () {};
-    bat._frequency = 200;
-    bat.on_lost_focus = function () { bat._wander(10); };
-    setTimeout(function() { bat._wander(10); }, 500);
     return bat;
+};
+
+
+
+
+LPCD.CHARS.bee = function (x, y) {
+    "use strict";
+
+    var bee = LPCD.CHARS.critter(x, y, "./_static/gamesprites/bee.png");
+    bee.name = "Lazy Bee";
+    return bee;
+};
+
+
+
+
+LPCD.CHARS.worm = function (x, y) {
+    "use strict";
+
+    var worm = LPCD.CHARS.critter(x, y, "./_static/gamesprites/small_worm.png");
+    worm.name = "Little Worm";
+    return worm;
+};
+
+
+
+
+LPCD.CHARS.eyeball = function (x, y) {
+    "use strict";
+
+    var eye = LPCD.CHARS.critter(x, y, "./_static/gamesprites/eyeball.png");
+    eye.name = "Floating Eye";
+    return eye;
+};
+
+
+
+
+LPCD.CHARS.slime = function (x, y) {
+    "use strict";
+
+    var slime = LPCD.CHARS.critter(x, y, "./_static/gamesprites/slime.png");
+    slime.name = "Green Slime";
+    return slime;
+};
+
+
+
+
+LPCD.CHARS.snake = function (x, y) {
+    "use strict";
+
+    var snake = LPCD.CHARS.critter(x, y, "./_static/gamesprites/snake.png");
+    snake.name = "Oh so snake!";
+    return snake;
 };
 
 
