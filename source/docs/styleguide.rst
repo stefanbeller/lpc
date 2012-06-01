@@ -95,6 +95,10 @@ a sun light pointing in the appropriate location:
 .. image:: ../static/images/lighting_direction.png
    :alt: Lighting blender screenshot example
 
+*Left example shows from the "top-facing" camera used in this style;
+right example shows a sideview.  Yellow "sun" with ray is the light
+source, big orange triangle on right is the camera.*
+
 Your light to dark color ramps should *never* all have the same hue.
 Vary the hue and saturation a bit as you go from light to dark, or
 your objects will look flat.
