@@ -173,6 +173,28 @@ Objects
    :name: the Liberated Pixel Cup
 
 
+Creatures
+=========
+
+.. asset:: ../static/sprites/bat.png
+   :name: bat monster
+
+.. asset:: ../static/sprites/bee.png
+   :name: bee monster
+
+.. asset:: ../static/sprites/eyeball.png
+   :name: floating eyeball monster
+
+.. asset:: ../static/sprites/slime.png
+   :name: slime monster
+
+.. asset:: ../static/sprites/small_worm.png
+   :name: small worm monster
+
+.. asset:: ../static/sprites/snake.png
+   :name: snake monster
+
+
 Castle
 ======
 

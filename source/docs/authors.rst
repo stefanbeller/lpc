@@ -88,10 +88,12 @@ Charles Sanchez (AKA CharlesGabriel)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Monsters
- - batty_bat.png
- - spider (not yet included in repo)
- - eyeball (not yet included in repo)
- - snake (not yet included in repo)
+ - bat.png
+ - bee.png
+ - eyeball.png
+ - slime.png
+ - small_worm.png
+ - snake.png
 
 
 Manuel Riecke (AKA MrBeast)
