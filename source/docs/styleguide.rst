@@ -183,7 +183,8 @@ keep generally for characters.)
 
 If you are making an animation sheet that has multiple perspectives,
 you should generally vertically sort that sheet into rows in this
-order: front, back, right, left.
+order: back, left, front, right.  Having the sprites arranged this
+way simplfies the code side of things a little bit.
 
 .. image:: ../static/sprites/female_spellcast.png
    :alt: Spellcasting female to demonstrate direction
