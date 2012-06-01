@@ -1,7 +1,7 @@
 Asset list
 ----------
 
-This is a list of all assets!
+This is a list of all base assets packaged for Liberated Pixel Cup.
 
 
 .. _assets-character-base:
