@@ -106,8 +106,13 @@ The 60 degree perspective render in the style guide
 Daniel Armstrong (AKA HughSpectrum)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Castle work (not yet included in repository)
+Castle work:
 
+ - castlewalls.png
+ - castlefloors.png
+ - castle_outside.png
+ - castlefloors_outside.png
+ - castle_lightsources.png
 
 
 Additional Liberated Pixel Cup coordination done by:

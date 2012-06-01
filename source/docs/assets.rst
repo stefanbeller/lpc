@@ -173,6 +173,31 @@ Objects
    :name: the Liberated Pixel Cup
 
 
+Castle
+======
+
+*Note: we love these castle tiles, but note that they're a bit
+trickier to view as examples... some of them look like they have
+perspective lines, but that's actually a reflection of more complex
+geometry in the building.  In general, it's better and easier to stick
+to simpler geometry that won't give this kind of illusion.*
+
+.. asset:: ../static/sprites/castlewalls.png
+   :name: Castle (interior)
+
+.. asset:: ../static/sprites/castlefloors.png
+   :name: Castle floors (interior)
+
+.. asset:: ../static/sprites/castle_outside.png
+   :name: Castle (exterior)
+
+.. asset:: ../static/sprites/castlefloors_outside.png
+   :name: Castle floors (exterior)
+
+.. asset:: ../static/sprites/castle_lightsources.png
+   :name: Castle light sources
+
+
 Misc
 ====
 
