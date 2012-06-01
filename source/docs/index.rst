@@ -1,8 +1,3 @@
-.. Liberated Pixel Cup styleguide documentation master file, created by
-   sphinx-quickstart on Fri Apr 27 10:21:46 2012.
-   You can adapt this file completely to your liking, but it should at least
-   contain the root `toctree` directive.
-
 Liberated Pixel Cup style guide, assets, and demo
 ================================================
 
