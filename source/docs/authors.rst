@@ -90,11 +90,12 @@ Charles Sanchez (AKA CharlesGabriel)
 Monsters
  - bat.png
  - bee.png
+ - big_worm.png
  - eyeball.png
+ - man_eater_flower.png
  - slime.png
  - small_worm.png
  - snake.png
-
 
 Manuel Riecke (AKA MrBeast)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~

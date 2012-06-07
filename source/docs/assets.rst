@@ -191,9 +191,14 @@ Creatures
 .. asset:: ../static/sprites/small_worm.png
    :name: small worm monster
 
+.. asset:: ../static/sprites/big_worm.png
+   :name: big worm monster
+
 .. asset:: ../static/sprites/snake.png
    :name: snake monster
 
+.. asset:: ../static/sprites/man_eater_flower.png
+   :name: man eater flower monster
 
 Castle
 ======
