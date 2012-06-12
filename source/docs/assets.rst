@@ -51,6 +51,12 @@ Also comes with a `source XCF file <_static/sprites/princess.xcf>`_.
 .. asset:: ../static/sprites/male_pants.png
    :name: male pants (should be layerable over walkcycle)
 
+.. asset:: ../static/sprites/soldier.png
+   :name: "soldier" example character
+
+.. asset:: ../static/sprites/soldier_altcolor.png
+   :name: "soldier" example character, alternate color
+
 
 Outdoors
 ========

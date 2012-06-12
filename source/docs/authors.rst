@@ -104,6 +104,8 @@ Manuel Riecke (AKA MrBeast)
 
  - hairfemale.png and hairfemale.xcf
  - hairmale.png and hairmale.xcf
+ - soldier.png
+ - soldier_altcolor.png
 
 The 60 degree perspective render in the style guide
 
