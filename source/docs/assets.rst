@@ -177,28 +177,34 @@ Creatures
 =========
 
 .. asset:: ../static/sprites/bat.png
-   :name: bat monster
+   :name: bat
 
 .. asset:: ../static/sprites/bee.png
-   :name: bee monster
+   :name: bee
 
 .. asset:: ../static/sprites/eyeball.png
-   :name: floating eyeball monster
+   :name: floating eyeball
+
+.. asset:: ../static/sprites/ghost.png
+   :name: ghost
+
+.. asset:: ../static/sprites/pumpking.png
+   :name: pumpking
 
 .. asset:: ../static/sprites/slime.png
-   :name: slime monster
+   :name: slime
 
 .. asset:: ../static/sprites/small_worm.png
-   :name: small worm monster
+   :name: small worm
 
 .. asset:: ../static/sprites/big_worm.png
-   :name: big worm monster
+   :name: big worm
 
 .. asset:: ../static/sprites/snake.png
-   :name: snake monster
+   :name: snake
 
 .. asset:: ../static/sprites/man_eater_flower.png
-   :name: man eater flower monster
+   :name: man eater flower
 
 Castle
 ======

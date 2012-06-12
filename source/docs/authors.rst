@@ -92,7 +92,9 @@ Monsters
  - bee.png
  - big_worm.png
  - eyeball.png
+ - ghost.png
  - man_eater_flower.png
+ - pumpking.png
  - slime.png
  - small_worm.png
  - snake.png
