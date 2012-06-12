@@ -51,6 +51,15 @@ Also comes with a `source XCF file <_static/sprites/princess.xcf>`_.
 .. asset:: ../static/sprites/male_pants.png
    :name: male pants (should be layerable over walkcycle)
 
+.. asset:: ../static/sprites/male_slash_pants.png
+   :name: male pants, slashing (should be layerable over slash spritesheet)
+
+.. asset:: ../static/sprites/male_spellcast_pants.png
+   :name: male pants, spellcasting (should be layerable over spellcast spritesheet)
+
+.. asset:: ../static/sprites/male_hurt_pants.png
+   :name: male pants, character hurt (should be layerable over hurt spritesheet)
+
 .. asset:: ../static/sprites/soldier.png
    :name: "soldier" example character
 

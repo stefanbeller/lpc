@@ -80,6 +80,9 @@ Character templates
  - male_slash.png
  - male_spellcast.png
  - male_pants.png
+ - male_hurt_pants.png
+ - male_fall_down_pants.png
+ - male_slash_pants.png
 
 Much style guide work
 
