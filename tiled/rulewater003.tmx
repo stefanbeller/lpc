@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE map SYSTEM "http://mapeditor.org/dtd/1.0/map.dtd">
+<map version="1.0" orientation="orthogonal" width="13" height="7" tilewidth="32" tileheight="32">
+ <tileset firstgid="1" name="ruleset" tilewidth="32" tileheight="32">
+  <image source="ruleset.png" trans="ff00ff" width="64" height="64"/>
+ </tileset>
+ <tileset firstgid="5" name="water" tilewidth="32" tileheight="32">
+  <image source="../sprites/water.png" trans="ff00ff" width="96" height="192"/>
+ </tileset>
+ <layer name="ruleregions" width="13" height="7">
+  <data encoding="base64" compression="zlib">
+   eJxjYCAPsEAxsWxy9QwntwEAXWwAgQ==
+  </data>
+ </layer>
+ <layer name="ruleset" width="13" height="7">
+  <data encoding="base64" compression="zlib">
+   eJxjYKAuYIJidDayPAOaOC41lLqDGvYQ8g8pAAAXrAAh
+  </data>
+ </layer>
+ <layer name="rule_Water" width="13" height="7">
+  <data encoding="base64" compression="zlib">
+   eJxjYKAuYEPjs6PxuaE0L5XtRQeCUFqYQnM40fhcFJgFAD/cAF0=
+  </data>
+ </layer>
+</map>

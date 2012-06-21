@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE map SYSTEM "http://mapeditor.org/dtd/1.0/map.dtd">
+<map version="1.0" orientation="orthogonal" width="15" height="9" tilewidth="32" tileheight="32">
+ <tileset firstgid="1" name="ruleset" tilewidth="32" tileheight="32">
+  <image source="ruleset.png" trans="ff00ff" width="256" height="64"/>
+ </tileset>
+ <tileset firstgid="17" name="grass" tilewidth="32" tileheight="32">
+  <image source="../sprites/grass.png" trans="ff00ff" width="96" height="192"/>
+ </tileset>
+ <layer name="ruleregions" width="15" height="9">
+  <data encoding="base64" compression="zlib">
+   eJxjYKAMcEExsWxq6aUEDEU3DwQAAKYrAUE=
+  </data>
+ </layer>
+ <layer name="ruleset" width="15" height="9">
+  <data encoding="base64" compression="zlib">
+   eJxjYKAMMEMxOptYvbj4zDjUUANQYi8l/h1qAABCPAAx
+  </data>
+ </layer>
+ <layer name="rule0_Grass" width="15" height="9">
+  <data encoding="base64" compression="zlib">
+   eJxjYKANEEfjS+JQJwSlhWnkDlxAFEqLUck8WTS+PJXMHUgAAPBcAL0=
+  </data>
+ </layer>
+</map>
